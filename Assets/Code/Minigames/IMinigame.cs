@@ -7,4 +7,5 @@ public interface IMinigame
     public StatsModel GetStatsFromGame();
     public void CloseGame();
     public void ShowGame();
+		public bool IsDisplayed();
 }

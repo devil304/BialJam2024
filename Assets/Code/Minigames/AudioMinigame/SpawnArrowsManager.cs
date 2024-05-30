@@ -13,9 +13,15 @@ public class SpawnArrowsManager : MonoBehaviour
 		private float spawnTime = 1f;
 		private float lastSpawnTime;
 
+		private float gameTime = 0;
+		private float maxGameTime = 0;
+
     // Update is called once per frame
     void Update()
     {
+				if (gameTime >= maxGameTime) return;
+
+				gameTime += Time.deltaTime;
         lastSpawnTime += Time.deltaTime;
 				if(spawnTime <= lastSpawnTime) {
 					lastSpawnTime = 0;
@@ -44,6 +50,12 @@ public class SpawnArrowsManager : MonoBehaviour
 					newArrowRotation = Quaternion.Euler(0, 0, -90);
 				break;
 			}
-			Instantiate(ArrowPrefab, newArrowPosition, newArrowRotation);
+			Transform arrow = Instantiate(ArrowPrefab, newArrowPosition, newArrowRotation);
+			arrow.parent = transform.parent;
+		}
+
+		public void StartGame(float maxGameTime) {
+			this.maxGameTime = maxGameTime;
+			gameTime = 0;
 		}
 }

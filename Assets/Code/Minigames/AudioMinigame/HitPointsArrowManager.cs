@@ -18,17 +18,21 @@ public class HitPointsArrowManager : MonoBehaviour
 
 		private int score;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+		private void OnEnable() {
         GameManager.Instance.MainInput.Main.LeftArrow.started += HandleLeftArrowClick;
         GameManager.Instance.MainInput.Main.UpArrow.performed += HandleUpArrowClick;
         GameManager.Instance.MainInput.Main.RightArrow.performed += HandleRightArrowClick;
         GameManager.Instance.MainInput.Main.DownArrow.started += HandleDownArrowClick;
 				score = 0;
 				scoreLabel.text = "0";
-				// Time.timeScale = 0.5f;
-    }
+		}
+
+		private void OnDisable() {
+        GameManager.Instance.MainInput.Main.LeftArrow.started -= HandleLeftArrowClick;
+        GameManager.Instance.MainInput.Main.UpArrow.performed -= HandleUpArrowClick;
+        GameManager.Instance.MainInput.Main.RightArrow.performed -= HandleRightArrowClick;
+        GameManager.Instance.MainInput.Main.DownArrow.started -= HandleDownArrowClick;
+		}
 
 		void HandleLeftArrowClick (InputAction.CallbackContext e) {
 				Collider2D hittedElement = Physics2D.OverlapCircle(LeftArrowHitpointPosition.position, hitboxRadius);
