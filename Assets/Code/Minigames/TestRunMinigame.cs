@@ -10,7 +10,7 @@ public class TestRunMinigame : MonoBehaviour {
 
 	private void Update() {
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			if (minigame.IsDisplayed())
+			if (minigame.IsDisplayed)
 				minigame.CloseGame();
 			else
 				minigame.ShowGame();
