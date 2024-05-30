@@ -14,8 +14,8 @@ public class MemoryGameHandler : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
 
+        transform.DOMove(Vector3.zero, 0.5f);
         flippedCards = new();
         InitCards();
 
