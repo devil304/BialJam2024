@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public partial class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public MainInput MainInput => _mainInput;
