@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         _mainInput = new MainInput();
         _mainInput.Enable();
+        _mainInput.Main.Enable();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
