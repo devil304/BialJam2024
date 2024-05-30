@@ -100,6 +100,15 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     void  GameOver(float score)
     {
+
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Card")
+            {
+                child.GetComponent<MemoryGameCardScript>().isGameOver = true;
+            }
+        }
+
         gameStats = new((0, score, 0, 0, 0));
         MinigameFinished?.Invoke();
     }

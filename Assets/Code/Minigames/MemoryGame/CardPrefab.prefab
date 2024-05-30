@@ -134,6 +134,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f05e5dde92760149acb07f505bc2e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flipSounds:
+  - {fileID: 8300000, guid: ed71b0f9395a5d048bda0687a9d83665, type: 3}
+  - {fileID: 8300000, guid: 79ada3f83c25a104fb41bdd9944906d6, type: 3}
+  - {fileID: 8300000, guid: 8ea9e76f91255164296967298aa45370, type: 3}
+  - {fileID: 8300000, guid: 8a34fa957b9dfa841b15dcf2f6b3623a, type: 3}
+  matchSound: {fileID: 8300000, guid: 7eb4391ecbe588b41b3c6a1fa15ab575, type: 3}
+  missSound: {fileID: 8300000, guid: ee060dec312c27e4eaaf5a29e5e159d0, type: 3}
   isFlipped: 0
   cardNum: 0
   awers: {fileID: 3098207091148031678}
