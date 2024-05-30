@@ -5,11 +5,11 @@ using System.Linq;
 
 public class StatsModel
 {
-    public float Code { get; private set; }
-    public float Design { get; private set; }
-    public float Art { get; private set; }
-    public float Audio { get; private set; }
-    public float QA { get; private set; }
+    public float Code { get; private set; } //0
+    public float Design { get; private set; } //1
+    public float Art { get; private set; } //2
+    public float Audio { get; private set; } //3
+    public float QA { get; private set; } //4
 
     public StatsModel((float, float, float, float, float) stats)
     {
@@ -54,31 +54,52 @@ public class StatsModel
 
     public void GenerateRandom()
     {
-        int sumStats = StrongRandom.RNG.Next(DataObjectAccess.MinSumStats, DataObjectAccess.MinSumStats);
+        float sumStats = StrongRandom.RNG.Next(DataObjectAccess.MinSumStats * 10, DataObjectAccess.MinSumStats * 10) / 10f;
         int mainStat = StrongRandom.RNG.Next(0, 5);
-        switch (mainStat)
-        {
-            case 0:
-                Code = sumStats / 2;
-                break;
-            case 1:
-                Design = sumStats / 2;
-                break;
-            case 2:
-                Art = sumStats / 2;
-                break;
-            case 3:
-                Audio = sumStats / 2;
-                break;
-            case 4:
-                QA = sumStats / 2;
-                break;
-        }
 
-        sumStats -= sumStats / 2;
+        Reset();
+        ModifyStat(mainStat, sumStats / 2f);
+
+        sumStats -= sumStats / 2f;
 
         List<int> statsList = (new int[5]).ToList().Select((x, i) => i).Where((i) => i != mainStat).ToList();
         statsList.Shuffle();
 
+        for (int i = 0; i < statsList.Count; i++)
+        {
+            if (i == statsList.Count - 1)
+            {
+                ModifyStat(i, sumStats);
+            }
+            else
+            {
+                var stat = StrongRandom.RNG.Next(0, (int)sumStats * 10) / 10f;
+                sumStats -= stat;
+                ModifyStat(i, stat);
+                if (sumStats <= 0) break;
+            }
+        }
+    }
+
+    public void ModifyStat(int StatIndex, float val)
+    {
+        switch (StatIndex)
+        {
+            case 0:
+                Code += val;
+                break;
+            case 1:
+                Design += val;
+                break;
+            case 2:
+                Art += val;
+                break;
+            case 3:
+                Audio += val;
+                break;
+            case 4:
+                QA += val;
+                break;
+        }
     }
 }
