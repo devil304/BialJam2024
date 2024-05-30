@@ -36,6 +36,42 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""LeftArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed3923f7-521e-49a4-a112-b7c1ab06fc88"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UpArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""94165587-c57f-4f23-8f88-e9577c74c4dd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""da5edb8d-fa65-49dd-8574-acdf9a16f873"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DownArrow"",
+                    ""type"": ""Button"",
+                    ""id"": ""7044adb0-7a14-4793-8c96-ef6343038730"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -47,6 +83,50 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""MousePos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56aeaa36-f2b8-408b-8920-c17e9c7b3b26"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac20a52c-72d9-4c8e-8d49-135d617c13cd"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UpArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8da0c47c-d357-408a-a1cc-095637cec19c"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef5e4278-c585-4b29-be99-3dc5aeceb8e7"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DownArrow"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -119,6 +199,10 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         // Main
         m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
         m_Main_MousePos = m_Main.FindAction("MousePos", throwIfNotFound: true);
+        m_Main_LeftArrow = m_Main.FindAction("LeftArrow", throwIfNotFound: true);
+        m_Main_UpArrow = m_Main.FindAction("UpArrow", throwIfNotFound: true);
+        m_Main_RightArrow = m_Main.FindAction("RightArrow", throwIfNotFound: true);
+        m_Main_DownArrow = m_Main.FindAction("DownArrow", throwIfNotFound: true);
     }
 
     ~@MainInput()
@@ -186,11 +270,19 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Main;
     private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
     private readonly InputAction m_Main_MousePos;
+    private readonly InputAction m_Main_LeftArrow;
+    private readonly InputAction m_Main_UpArrow;
+    private readonly InputAction m_Main_RightArrow;
+    private readonly InputAction m_Main_DownArrow;
     public struct MainActions
     {
         private @MainInput m_Wrapper;
         public MainActions(@MainInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @MousePos => m_Wrapper.m_Main_MousePos;
+        public InputAction @LeftArrow => m_Wrapper.m_Main_LeftArrow;
+        public InputAction @UpArrow => m_Wrapper.m_Main_UpArrow;
+        public InputAction @RightArrow => m_Wrapper.m_Main_RightArrow;
+        public InputAction @DownArrow => m_Wrapper.m_Main_DownArrow;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -203,6 +295,18 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @MousePos.started += instance.OnMousePos;
             @MousePos.performed += instance.OnMousePos;
             @MousePos.canceled += instance.OnMousePos;
+            @LeftArrow.started += instance.OnLeftArrow;
+            @LeftArrow.performed += instance.OnLeftArrow;
+            @LeftArrow.canceled += instance.OnLeftArrow;
+            @UpArrow.started += instance.OnUpArrow;
+            @UpArrow.performed += instance.OnUpArrow;
+            @UpArrow.canceled += instance.OnUpArrow;
+            @RightArrow.started += instance.OnRightArrow;
+            @RightArrow.performed += instance.OnRightArrow;
+            @RightArrow.canceled += instance.OnRightArrow;
+            @DownArrow.started += instance.OnDownArrow;
+            @DownArrow.performed += instance.OnDownArrow;
+            @DownArrow.canceled += instance.OnDownArrow;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -210,6 +314,18 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @MousePos.started -= instance.OnMousePos;
             @MousePos.performed -= instance.OnMousePos;
             @MousePos.canceled -= instance.OnMousePos;
+            @LeftArrow.started -= instance.OnLeftArrow;
+            @LeftArrow.performed -= instance.OnLeftArrow;
+            @LeftArrow.canceled -= instance.OnLeftArrow;
+            @UpArrow.started -= instance.OnUpArrow;
+            @UpArrow.performed -= instance.OnUpArrow;
+            @UpArrow.canceled -= instance.OnUpArrow;
+            @RightArrow.started -= instance.OnRightArrow;
+            @RightArrow.performed -= instance.OnRightArrow;
+            @RightArrow.canceled -= instance.OnRightArrow;
+            @DownArrow.started -= instance.OnDownArrow;
+            @DownArrow.performed -= instance.OnDownArrow;
+            @DownArrow.canceled -= instance.OnDownArrow;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -275,5 +391,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     public interface IMainActions
     {
         void OnMousePos(InputAction.CallbackContext context);
+        void OnLeftArrow(InputAction.CallbackContext context);
+        void OnUpArrow(InputAction.CallbackContext context);
+        void OnRightArrow(InputAction.CallbackContext context);
+        void OnDownArrow(InputAction.CallbackContext context);
     }
 }

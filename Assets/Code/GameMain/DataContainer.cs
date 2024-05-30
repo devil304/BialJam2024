@@ -4,6 +4,6 @@ using UnityEngine;
 public class DataContainer : ScriptableObject
 {
     public string[] NickNames;
-    [Range(0, 500)] public int CharMinStatsSum;
-    [Range(0, 500)] public int CharMaxStatsSum;
+    [Range(0, 200)] public int CharMinStatsSum;
+    [Range(0, 200)] public int CharMaxStatsSum;
 }
