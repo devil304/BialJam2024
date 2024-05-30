@@ -6,7 +6,7 @@ using UnityEngine;
 public static class DataObjectAccess
 {
     static DataContainer _dataContainer;
-    public static Queue<string> NickNames;
+    public static Queue<string> NickNames = new();
     public static int MinSumStats => _dataContainer.CharMinStatsSum;
     public static int MaxSumStats => _dataContainer.CharMaxStatsSum;
 
@@ -17,12 +17,12 @@ public static class DataObjectAccess
 
     public static void ClearNicks()
     {
-        NickNames.Clear();
+        NickNames = null;
     }
 
     public static string GetNick()
     {
-        if (NickNames.Count == 0)
+        if (NickNames == null)
             ShuffleNames();
         return NickNames.Dequeue();
     }
@@ -30,11 +30,7 @@ public static class DataObjectAccess
     static void ShuffleNames()
     {
         List<string> nicks = _dataContainer.NickNames.ToList();
-        while (nicks.Count > 0)
-        {
-            var index = StrongRandom.RNG.Next(0, nicks.Count);
-            NickNames.Enqueue(nicks[index]);
-            nicks.RemoveAt(index);
-        }
+        nicks.Shuffle();
+        NickNames = new(nicks);
     }
 }

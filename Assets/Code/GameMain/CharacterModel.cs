@@ -7,7 +7,7 @@ public class CharacterModel
 
     public CharacterModel()
     {
-        CharStats = new StatsModel();
+        CharStats = new();
         CharStats.GenerateRandom();
         NickName = DataObjectAccess.GetNick();
     }

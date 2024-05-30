@@ -13,11 +13,11 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _mainInput = new MainInput();
+        _mainInput = new();
         _mainInput.Enable();
         _mainInput.Main.Enable();
-        StatsAct = new StatsModel();
-        StatsTeam = new StatsModel();
+        StatsAct = new();
+        StatsTeam = new();
     }
 
     public void StartGame()

@@ -1,4 +1,7 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 public class StatsModel
 {
@@ -73,6 +76,9 @@ public class StatsModel
         }
 
         sumStats -= sumStats / 2;
+
+        List<int> statsList = (new int[5]).ToList().Select((x, i) => i).Where((i) => i != mainStat).ToList();
+        statsList.Shuffle();
 
     }
 }

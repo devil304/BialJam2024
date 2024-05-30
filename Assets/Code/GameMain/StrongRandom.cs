@@ -8,7 +8,7 @@ public class StrongRandom
     static StrongRandom()
     {
         var randomNumberGenerator = RandomNumberGenerator.Create();
-        RNG = new Random(RandomNumberGenerator.GetInt32(int.MaxValue));
+        RNG = new(RandomNumberGenerator.GetInt32(int.MaxValue));
         randomNumberGenerator.Dispose();
     }
 }
