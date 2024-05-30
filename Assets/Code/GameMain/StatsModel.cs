@@ -102,4 +102,14 @@ public class StatsModel
                 break;
         }
     }
+
+    public void Normalize()
+    {
+        var sum = Code + Design + Art + Audio + QA;
+        Code = Code / sum * 100f;
+        Design = Design / sum * 100f;
+        Art = Art / sum * 100f;
+        Audio = Audio / sum * 100f;
+        QA = QA / sum * 100f;
+    }
 }
