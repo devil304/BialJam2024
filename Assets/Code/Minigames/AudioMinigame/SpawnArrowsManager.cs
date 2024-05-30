@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using UnityEngine;
 
 public class SpawnArrowsManager : MonoBehaviour
@@ -16,10 +17,15 @@ public class SpawnArrowsManager : MonoBehaviour
 		private float gameTime = 0;
 		private float maxGameTime = 0;
 
+		private bool shouldSpawn = false;
+
+		Tween startSpawnTweenCall;
+
     // Update is called once per frame
     void Update()
     {
-				if (gameTime >= maxGameTime) return;
+			Debug.Log($"Should spawn {shouldSpawn}");
+				if (gameTime >= maxGameTime || !shouldSpawn) return;
 
 				gameTime += Time.deltaTime;
         lastSpawnTime += Time.deltaTime;
@@ -54,8 +60,11 @@ public class SpawnArrowsManager : MonoBehaviour
 			arrow.parent = transform.parent;
 		}
 
-		public void StartGame(float maxGameTime) {
+		public void SetGameTime(float maxGameTime) {
+			startSpawnTweenCall?.Kill();
+			shouldSpawn = false;
 			this.maxGameTime = maxGameTime;
 			gameTime = 0;
+			startSpawnTweenCall = DOVirtual.DelayedCall(2f, () => shouldSpawn = true, false);
 		}
 }

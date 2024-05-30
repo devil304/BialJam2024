@@ -18,8 +18,9 @@ public class ArrowMovement : MonoBehaviour
     }
 
 		void DeleteArrow(bool withEffect) {
-			if (withEffect)
+			if (withEffect) {
 				Instantiate(missEffect, transform.position,  Quaternion.Euler(-90, 0, 0));
+			}
 			transform.DOKill();
 			Destroy(gameObject);
 		}
