@@ -370,7 +370,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1557422594}
   - {fileID: 1568765469}
@@ -1001,6 +1001,7 @@ MonoBehaviour:
   ArrowRightSpawnPoint: {fileID: 1821835607}
   ArrowDownSpawnPoint: {fileID: 1852555560}
   ArrowPrefab: {fileID: 6857233450082639138, guid: d5d70a03963500148a6c058cb8c51052, type: 3}
+  spawnTime: 0.5
 --- !u!1 &1568765468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,6 +1056,7 @@ MonoBehaviour:
   DownArrowHitpointPosition: {fileID: 1202952743}
   scoreLabel: {fileID: 243123519}
   arrowHitEffect: {fileID: 6579669232948825848, guid: cdb4b490a0e2dfc4d8cdabf146903273, type: 3}
+  hitboxRadius: 0.75
 --- !u!1001 &1602254134
 PrefabInstance:
   m_ObjectHideFlags: 0

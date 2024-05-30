@@ -9,7 +9,7 @@ public class SpawnArrowsManager : MonoBehaviour
 		[SerializeField] Transform ArrowDownSpawnPoint;
 		[SerializeField] Transform ArrowPrefab;
 
-		// [SerializeField]
+		[SerializeField]
 		private float spawnTime = 1f;
 		private float lastSpawnTime;
 

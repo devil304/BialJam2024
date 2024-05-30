@@ -5,14 +5,15 @@ public class ArrowMovement : MonoBehaviour
 {
 		[SerializeField] ParticleSystem missEffect;
 		Tween tween;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+		[SerializeField] float arrowDisplacementTime = 2f;
     void Start()
     {
 				var initialScale = transform.localScale;
 				transform.localScale = Vector3.zero;
 				transform.DOScale(initialScale, 0.5f);
-        transform.DOMoveY(-6f, 2f).SetEase(Ease.Linear);
-				tween = DOVirtual.DelayedCall(2.5f, DeleteArrow, false);
+        transform.DOMoveY(-6f, arrowDisplacementTime).SetEase(Ease.Linear);
+				tween = DOVirtual.DelayedCall(arrowDisplacementTime + 0.5f, DeleteArrow, false);
     }
 
 		void DeleteArrow() {
