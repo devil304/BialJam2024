@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 430906246737014709}
   m_Layer: 0
   m_Name: Bug
-  m_TagString: Untagged
+  m_TagString: Bug
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handler: {fileID: 0}
+  swapper: {fileID: 0}
 --- !u!70 &430906246737014709
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,7 +11,6 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 {
 
     public List<MemoryGameCardScript> flippedCards;
-    public float milliseconds, seconds, minutes, hours;
     public TMP_Text countdownTimerText;
     private float currTime;
     public float countdownTime;
@@ -26,6 +25,8 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     private void OnEnable()
     {
+        transform.DOMove(Vector3.zero, 0.5f);
+
         countdownTime = timer.Evaluate(GameManager.Instance.StatsTeam.Design);
 
         
@@ -125,8 +126,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     public void ShowGame()
     {
-        this.gameObject.SetActive(true);
-        transform.DOMove(Vector3.zero, 0.5f);
+        this.gameObject.SetActive(true);   
     }
 
     public bool IsDisplayed => gameObject.activeInHierarchy;
