@@ -1,37 +1,56 @@
+using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Rendering;
+using Object = UnityEngine.Object;
 
 public static class Sound
 {
+    static List<AudioMixerGroup> _mixers = null;
 
-    public static AudioSource PlaySoundAtPos(Vector3 target, AudioClip clip, float vol = 1f, bool play_right_away = true, bool sound2D = false, bool destroyAfter = false, float initialFadeDur = 0)
+    static Sound()
+    {
+        if (_mixers == null)
+        {
+            _mixers = new List<AudioMixerGroup>();
+            var mixer = Resources.Load<AudioMixer>("Audio/Main");
+            foreach (var mixerenum in Enum.GetNames(typeof(MixerTypes)))
+            {
+                _mixers.Add(mixer.FindMatchingGroups(mixerenum)[0]);
+            }
+        }
+    }
+
+    public static AudioSource PlaySoundAtPos(Vector3 target, AudioClip clip, MixerTypes mixer, float vol = 1f, bool play_right_away = true, bool sound2D = false, bool destroyAfter = false, float initialFadeDur = 0)
     {
         var AudioGO = new GameObject(clip.name);
         AudioGO.transform.parent = null;
         AudioGO.transform.position = target;
         AudioGO.transform.rotation = Quaternion.identity;
         var AudioS = AudioGO.AddComponent<AudioSource>();
-        Play(AudioS, clip, vol, play_right_away, sound2D, destroyAfter, initialFadeDur);
+        Play(AudioS, clip, mixer, vol, play_right_away, sound2D, destroyAfter, initialFadeDur);
         return AudioS;
     }
 
-    public static AudioSource PlaySoundAtTarget(Transform target, AudioClip clip, float vol = 1f, bool play_right_away = true, bool sound2D = false, bool destroyAfter = false, float initialFadeDur = 0)
+    public static AudioSource PlaySoundAtTarget(Transform target, AudioClip clip, MixerTypes mixer, float vol = 1f, bool play_right_away = true, bool sound2D = false, bool destroyAfter = false, float initialFadeDur = 0)
     {
         var AudioGO = new GameObject(clip.name);
         AudioGO.transform.parent = target;
         AudioGO.transform.localPosition = Vector3.zero;
         AudioGO.transform.localRotation = Quaternion.identity;
         var AudioS = AudioGO.AddComponent<AudioSource>();
-        Play(AudioS, clip, vol, play_right_away, sound2D, destroyAfter, initialFadeDur);
+        Play(AudioS, clip, mixer, vol, play_right_away, sound2D, destroyAfter, initialFadeDur);
         return AudioS;
     }
 
-    public static void Play(AudioSource AudioS, AudioClip clip, float vol = 1f, bool play_right_away = true, bool sound2D = false, bool destroyAfter = false, float initialFadeDur = 0)
+    public static void Play(AudioSource AudioS, AudioClip clip, MixerTypes mixer, float vol = 1f, bool play_right_away = true, bool sound2D = false, bool destroyAfter = false, float initialFadeDur = 0)
     {
         AudioS.clip = clip;
         AudioS.volume = vol;
+        AudioS.outputAudioMixerGroup = _mixers[(int)mixer];
         AudioS.spatialBlend = sound2D ? 0 : 1;
         if (play_right_away)
         {
@@ -55,6 +74,7 @@ public static class Sound
         AS.Play();
         AS.gameObject.name = newClip.name;
         AS.spatialBlend = baseAS.spatialBlend;
+        AS.outputAudioMixerGroup = baseAS.outputAudioMixerGroup;
         float targetVol = customVolToFadeTo < 0 ? baseAS.volume : customVolToFadeTo;
         float oldVol = baseAS.volume;
         if (fadeCurve == null)
@@ -76,4 +96,6 @@ public static class Sound
         DOVirtual.DelayedCall(duration + 0.1f, () => Object.Destroy(baseAS));
         return AS;
     }
+
+    public enum MixerTypes { Master, BGMMain, BGMMinigames, SFX };
 }
