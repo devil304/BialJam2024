@@ -62,7 +62,7 @@ public static class Sound
             AudioS.Play();
         }
         if (destroyAfter && play_right_away)
-            DOVirtual.DelayedCall(clip.length + 0.1f + initialFadeDur, () => Object.Destroy(AudioS));
+            DOVirtual.DelayedCall(clip.length + 0.1f + initialFadeDur, () => Object.Destroy(AudioS.gameObject));
     }
 
     public static AudioSource CrossFade(AudioSource baseAS, AudioClip newClip, float duration, float customVolToFadeTo = -1, AnimationCurve fadeCurve = null)
