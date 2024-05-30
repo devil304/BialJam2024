@@ -5,12 +5,16 @@ using UnityEngine.InputSystem;
 
 public class HitPointsArrowManager : MonoBehaviour
 {
+		[Header("References")]
 		[SerializeField] Transform LeftArrowHitpointPosition;
 		[SerializeField] Transform UpArrowHitpointPosition;
 		[SerializeField] Transform RightArrowHitpointPosition;
 		[SerializeField] Transform DownArrowHitpointPosition;
 		[SerializeField] TextMeshProUGUI scoreLabel;
 		[SerializeField] ParticleSystem arrowHitEffect;
+
+		[Header("Configurations")]
+		[SerializeField] float hitboxRadius = 0.75f;
 
 		private int score;
 
@@ -26,31 +30,21 @@ public class HitPointsArrowManager : MonoBehaviour
 				// Time.timeScale = 0.5f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
 		void HandleLeftArrowClick (InputAction.CallbackContext e) {
-				Collider2D hittedElement = Physics2D.OverlapCircle(LeftArrowHitpointPosition.position, 0.75f);
+				Collider2D hittedElement = Physics2D.OverlapCircle(LeftArrowHitpointPosition.position, hitboxRadius);
 				OnArrowHit(hittedElement, LeftArrowHitpointPosition);
-				// Debug.Log($"Left Arrow Clicked! {hittedElement?.name}");
 		}
 		void HandleUpArrowClick (InputAction.CallbackContext e) {
-				Collider2D hittedElement = Physics2D.OverlapCircle(UpArrowHitpointPosition.position, 0.75f);
+				Collider2D hittedElement = Physics2D.OverlapCircle(UpArrowHitpointPosition.position, hitboxRadius);
 				OnArrowHit(hittedElement, UpArrowHitpointPosition);
-				// Debug.Log("Up Arrow Clicked!");
 		}
 		void HandleRightArrowClick (InputAction.CallbackContext e) {
-				Collider2D hittedElement = Physics2D.OverlapCircle(RightArrowHitpointPosition.position, 0.75f);
+				Collider2D hittedElement = Physics2D.OverlapCircle(RightArrowHitpointPosition.position, hitboxRadius);
 				OnArrowHit(hittedElement, RightArrowHitpointPosition);
-				// Debug.Log("Right Arrow Clicked!");
 		}
 		void HandleDownArrowClick (InputAction.CallbackContext e) {
-				Collider2D hittedElement = Physics2D.OverlapCircle(DownArrowHitpointPosition.position, 0.75f);
+				Collider2D hittedElement = Physics2D.OverlapCircle(DownArrowHitpointPosition.position, hitboxRadius);
 				OnArrowHit(hittedElement, DownArrowHitpointPosition);
-				// Debug.Log("Down Arrow Clicked!");
 		}
 
 		void OnArrowHit(Collider2D hittedArrowCollider, Transform hitPointArrowPosition) {
