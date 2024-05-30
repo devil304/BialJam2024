@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TrailMinigameManager : MonoBehaviour
+public class TrailMinigameManager : MonoBehaviour, IMinigame
 {
     [SerializeField] SpriteRenderer _spriteRenderer;
     [SerializeField] EdgeCollider2D _collider;
@@ -10,6 +11,10 @@ public class TrailMinigameManager : MonoBehaviour
     int _index = 0;
     List<Vector2> _points;
     bool _mouseOver;
+
+    public Action MinigameFinished { get; set; }
+
+    public bool IsDisplayed => throw new NotImplementedException();
 
     private void OnEnable()
     {
@@ -35,7 +40,6 @@ public class TrailMinigameManager : MonoBehaviour
         _index = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_index == _points.Count) return;
@@ -81,5 +85,21 @@ public class TrailMinigameManager : MonoBehaviour
         _mouseOver = false;
         if (_index > 0 && _index < _points.Count)
             Debug.Log("Left line");
+    }
+
+    public StatsModel GetStatsFromGame()
+    {
+        //TODO
+        return new();
+    }
+
+    public void CloseGame()
+    {
+        //TODO
+    }
+
+    public void ShowGame()
+    {
+        //TODO
     }
 }
