@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[DefaultExecutionOrder(-1000)]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -14,12 +15,19 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance != null) return;
         Instance = this;
         _mainInput = new();
         _mainInput.Enable();
         _mainInput.Main.Enable();
         StatsAct = new();
         StatsTeam = new();
+    }
+
+    private void OnEnable()
+    {
+        if (Instance == null)
+            Awake();
     }
 
     public void StartGame()

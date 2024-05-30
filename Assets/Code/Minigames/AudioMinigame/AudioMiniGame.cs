@@ -28,19 +28,20 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 			Debug.Log("Show Game");
 		}
 
-		public bool IsDisplayed() => gameObject.activeInHierarchy;
+	public bool IsDisplayed => gameObject.activeInHierarchy;
 
-		Tween gameOverTween;
-		private float initializationTime = 0.6f;
+	Tween gameOverTween;
+	private float initializationTime = 0.6f;
 
-		[SerializeField]
-		SpawnArrowsManager spawnArrowsManager;
+	[SerializeField]
+	SpawnArrowsManager spawnArrowsManager;
 
-		[SerializeField]
-		HitPointsArrowManager hitPointsArrowManager;
+	[SerializeField]
+	HitPointsArrowManager hitPointsArrowManager;
 
-		public void GameOver() {
-			MinigameFinished?.Invoke();
-			CloseGame();
-		}
+	public void GameOver()
+	{
+		MinigameFinished?.Invoke();
+		CloseGame();
+	}
 }
