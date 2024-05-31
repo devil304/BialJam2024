@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,6 +18,7 @@ public class GameplayManager : MonoBehaviour
     float _anomalyTimer;
     IMinigame _actMG = null;
     bool _anomalyOn = false;
+    List<int> _chances = new List<int>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +33,14 @@ public class GameplayManager : MonoBehaviour
         _anomalyTimer = StrongRandom.RNG.Next(15, 18);
         _anomalySystem.OnAnomalyStart += AnomalyStart;
         _anomalySystem.OnAnomalyEnd += AnomalyEnd;
+        for (int i = 0; i < 5; i++)
+        {
+            int[] arr = new int[Mathf.RoundToInt(GameManager.I.StatsTeam.Stats[i])];
+            Array.Fill(arr, i);
+            _chances.AddRange(arr);
+        }
+        _chances.Shuffle();
+        Debug.Log($"Team stats: Code {GameManager.I.StatsTeam.GetStat(StatsTypes.Code)}, Design {GameManager.I.StatsTeam.GetStat(StatsTypes.Design)}, Art {GameManager.I.StatsTeam.GetStat(StatsTypes.Art)}, Audio {GameManager.I.StatsTeam.GetStat(StatsTypes.Audio)}, QA {GameManager.I.StatsTeam.GetStat(StatsTypes.QA)}");
     }
 
     private void AnomalyEnd()
@@ -64,7 +75,8 @@ public class GameplayManager : MonoBehaviour
             _mGameTimer -= Time.deltaTime;
             if (_mGameTimer <= 0)
             {
-                _actMG = GameManager.I._minigames[StrongRandom.RNG.Next(0, 5)];
+                var filtered = _chances.Where(i => GameManager.I.StatsAct.GetStat((StatsTypes)i) < 90f).ToList();
+                _actMG = GameManager.I._minigames[filtered[StrongRandom.RNG.Next(0, filtered.Count)]];
                 _actMG.ShowGame();
                 _actMG.MinigameFinished += MGFinished;
 
