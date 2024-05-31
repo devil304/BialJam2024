@@ -65,6 +65,11 @@ public static class Sound
             DOVirtual.DelayedCall(clip.length + 0.1f + initialFadeDur, () => Object.Destroy(AudioS.gameObject));
     }
 
+    public static AudioMixerGroup GetMixer(MixerTypes mixer)
+    {
+        return _mixers[(int)mixer];
+    }
+
     public static AudioSource CrossFade(AudioSource baseAS, AudioClip newClip, float duration, float customVolToFadeTo = -1, AnimationCurve fadeCurve = null)
     {
         var AS = baseAS.gameObject.AddComponent<AudioSource>();

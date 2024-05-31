@@ -894,6 +894,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f722834dd00cf4e9142618526d263f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainRender: {fileID: 1397666280421381871}
+  srBG:
+  - {fileID: 3187716773208115949}
+  - {fileID: 8366700883000775020}
+  - {fileID: 5010967898106581006}
+  - {fileID: 4741662804181314810}
+  - {fileID: 684293202618383753}
+  - {fileID: 24679976345509729}
   sr:
   - {fileID: 1093819405401571980}
   - {fileID: 6752048148327849012}

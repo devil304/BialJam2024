@@ -84,6 +84,8 @@ public class BugScript : MonoBehaviour
 
     IEnumerator WaitAfterDead()
     {
+        GetComponent<CapsuleCollider2D>().enabled = false;
+        handler.score += 1;
         GetComponent<SpriteRenderer>().sprite = ded;
         source.DOFade(0, 0.5f);
         transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
@@ -92,7 +94,6 @@ public class BugScript : MonoBehaviour
 
         yield return new WaitForSeconds(2);
         {
-            handler.score += 1;
             Destroy(this.gameObject);
         }
 

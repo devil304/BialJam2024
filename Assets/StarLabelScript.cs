@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StarLabelScript : MonoBehaviour
 {
-
+    [SerializeField] SpriteRenderer mainRender;
+    [SerializeField] List<SpriteRenderer> srBG;
     [SerializeField] List<SpriteRenderer> sr;
     [SerializeField] List<Sprite> icons;
     [SerializeField] SpriteRenderer iconRender;
@@ -24,7 +25,7 @@ public class StarLabelScript : MonoBehaviour
 
     public void InitStats(float stats, int id)
     {
-        int a = Mathf.RoundToInt(stats.Remap(0, 100f, 0, 6f));
+        int a = Mathf.CeilToInt(stats.Remap(0, 100f, 0, 6f));
 
         for(int i = 0; i < a; i++)
         {
