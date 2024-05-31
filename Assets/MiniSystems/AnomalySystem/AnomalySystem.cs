@@ -31,17 +31,12 @@ public class AnomalySystem : MonoBehaviour
 		decisionCanvas.DOFade(0, 0);
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
-
 	void DisplayAnomaly()
 	{
 		Debug.Log("ANOMALY CAN BE DISPLAYED!");
 		decisionCanvas.DOFade(1f, 1f).SetDelay(1f);
 		activeCard = Instantiate(anomalyCardPrefab, transform.position, Quaternion.identity);
+		activeCard.GetComponent<AnomalyCard>();
 		activeCard.transform.parent = transform;
 
 		GameManager.I.MainInput.Main.LeftArrow.started += HandleLeftArrowClick;
