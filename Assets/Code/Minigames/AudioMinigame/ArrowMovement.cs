@@ -37,7 +37,7 @@ public class ArrowMovement : MonoBehaviour
 
 		private void PlayMissClip() {
 			if(missAudioClip != null) {
-				Sound.PlaySoundAtPos(Vector3.zero, missAudioClip, Sound.MixerTypes.BGMMinigames, 1f, true, false, true);
+				Sound.PlaySoundAtPos(Vector3.zero, missAudioClip, Sound.MixerTypes.SFX, 1f, true, false, true);
 			}
 		}
 }

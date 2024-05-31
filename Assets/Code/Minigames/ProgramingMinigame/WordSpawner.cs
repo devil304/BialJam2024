@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -26,16 +27,27 @@ public class WordSpawner : MonoBehaviour {
 
 	private bool shouldSpawn = false;
 
+	[SerializeField]
+	TextMeshProUGUI timeLabel;
 	private void Start() {
 		inputField.onValueChanged.AddListener(OnInputFieldChanged);
 	}
 
 	private void Update() {
+		UpdateTime();
 		if (gameTime >= maxGameTime || !shouldSpawn) return;
 
 		gameTime += Time.deltaTime;
 
 		if (tryFocus && gameObject.activeInHierarchy && shouldSpawn) inputField.Select();
+	}
+
+	private void UpdateTime() {
+		float timeDiff = maxGameTime - gameTime;
+		if(timeDiff < 0) timeDiff = 0;
+		TimeSpan gameTimeSpan = TimeSpan.FromSeconds(timeDiff);
+		string milisecondsTime = gameTimeSpan.Milliseconds.ToString();
+		timeLabel.text = $"{gameTimeSpan.Seconds}:{milisecondsTime}";
 	}
 
 	public void SetupGame() {
@@ -94,13 +106,13 @@ public class WordSpawner : MonoBehaviour {
 
 	private void PlayKeyboardClip() {
 		if (audioClips.Count > 0) {
-			AudioClip audioClip = audioClips[Random.Range(0, audioClips.Count)];
-			Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.BGMMinigames, 1f, true, false, true);
+			AudioClip audioClip = audioClips[UnityEngine.Random.Range(0, audioClips.Count)];
+			Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.SFX, 1f, true, false, true);
 		}
 	}
 
 	private string GetNewWord() {
-		int newIndex = Random.Range(0, keywords.Count);
+		int newIndex = UnityEngine.Random.Range(0, keywords.Count);
 		if (activeWordIndex != newIndex) {
 			activeWordIndex = newIndex;
 			return keywords[newIndex];
