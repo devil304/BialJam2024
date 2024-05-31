@@ -673,8 +673,8 @@ MonoBehaviour:
   body:
   - {fileID: 1449274003118846632, guid: d9e17b65773d6b74090371f652016a7a, type: 3}
   head:
-  - {fileID: -9201241512177023075, guid: c9028c6081f5d294497b975c6dbdca8b, type: 3}
-  - {fileID: 7699275862779515057, guid: 0ac1635ed2240494697f524e5a371852, type: 3}
+  - {fileID: 21300000, guid: c9028c6081f5d294497b975c6dbdca8b, type: 3}
+  - {fileID: 21300000, guid: 0ac1635ed2240494697f524e5a371852, type: 3}
   hair:
   - {fileID: 6291076074326483787, guid: 73b659910c7775345abe1237d75a9ecb, type: 3}
   accessory:
@@ -1289,6 +1289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minigamesPrefabs: []
+  _debug: 0
 --- !u!1 &1209193027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 794480752963951252, guid: ad24cc2388bd75848b9e5bc42d4a62c9, type: 3}
