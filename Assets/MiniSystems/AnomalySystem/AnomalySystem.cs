@@ -30,6 +30,8 @@ public class AnomalySystem : MonoBehaviour
 	private StatsPanel neutralStatsPanel;
 	private List<AnomalyData> allAnomaliesData;
 	private List<AnomalyData> drawdedAnomalies = new List<AnomalyData>();
+	[SerializeField]
+	private GameObject background;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -37,6 +39,7 @@ public class AnomalySystem : MonoBehaviour
 		alertInfoText.OnJumpingTextEnd += DisplayAnomaly;
 		decisionCanvas.DOFade(0, 0);
 		LoadAllAnomalyData();
+		background.transform.localScale = Vector3.zero;
 	}
 
 	private void LoadAllAnomalyData() {
@@ -80,6 +83,7 @@ public class AnomalySystem : MonoBehaviour
 		activeCard.SetupCard(activeAnomaly.GetAnomalyData());
 		activeCard.transform.parent = transform;
 		activeCard.OnDecisionActions += OnDecisionMake;
+		background.transform.DOScale(30, 1f);
 
 		GameManager.I.MainInput.Main.LeftArrow.started += HandleLeftArrowClick;
 		GameManager.I.MainInput.Main.RightArrow.performed += HandleRightArrowClick;
@@ -110,6 +114,7 @@ public class AnomalySystem : MonoBehaviour
 		activeCard.OnDecisionActions -= OnDecisionMake;
 		DOVirtual.DelayedCall(1f, () =>
 		{
+			background.transform.DOScale(0, 0.5f);
 			GameManager.I.ModifyStats(activeAnomaly.GetStatsModel(decision));
 			activeCard = null;
 			OnAnomalyEnd?.Invoke();

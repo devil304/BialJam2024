@@ -464,6 +464,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5493763722458567297}
   - {fileID: 2190777659545345170}
   - {fileID: 4593356150345016151}
   m_Father: {fileID: 0}
@@ -486,6 +487,7 @@ MonoBehaviour:
   positiveStatsPanel: {fileID: 5601410111534802171}
   negativeStatsPanel: {fileID: 5832042677119512604}
   neutralStatsPanel: {fileID: 2860862151680893805}
+  background: {fileID: 6221931221511591011}
 --- !u!1 &3506250153297928931
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +760,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5493763722458567297}
   - {fileID: 1160137407346331770}
   m_Father: {fileID: 4320762004793051074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -788,7 +789,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &7896212907610655795
 MonoBehaviour:
@@ -868,11 +869,11 @@ Transform:
   m_GameObject: {fileID: 6221931221511591011}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -640, y: -360, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4593356150345016151}
+  m_Father: {fileID: 4320762004793051074}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &482683669576431044
 SpriteRenderer:
@@ -1522,8 +1523,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287335317
-  m_fontColor: {r: 0.5849056, g: 0.5435208, b: 0.5435208, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
