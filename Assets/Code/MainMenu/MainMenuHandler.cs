@@ -111,12 +111,12 @@ public class MainMenuHandler : MonoBehaviour
 
     public void ExitGame()
     {
-        Debug.Log("Bye bye");
+        Application.Quit();
     }
 
     public void StartGame()
     {
-        Application.Quit();
+        SceneManager.LoadScene(1);
     }
 
 }
