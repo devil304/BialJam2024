@@ -749,6 +749,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0ac1635ed2240494697f524e5a371852, type: 3}
   hair:
   - {fileID: 6291076074326483787, guid: 73b659910c7775345abe1237d75a9ecb, type: 3}
+  - {fileID: 21300000, guid: 83b625bf4f5ba9d4898147a0199c3995, type: 3}
+  - {fileID: 21300000, guid: 97d2fcccfc52e4543a9cd5379db42078, type: 3}
+  - {fileID: 21300000, guid: 1b65207724f85cc47b7387ab94596d6f, type: 3}
+  - {fileID: 21300000, guid: 78e22da5b57e0be4ba9f32b54ad078d5, type: 3}
+  - {fileID: 21300000, guid: 4809894b0814e0242b788523b2365b05, type: 3}
+  - {fileID: 21300000, guid: 4cebc683cc3ae9c4e825d4b96f35379d, type: 3}
+  - {fileID: 21300000, guid: 68372b2abc24f284cb1324dcc2c0cc5e, type: 3}
+  - {fileID: 21300000, guid: 09307ecd97ccc58488500c1d557229ca, type: 3}
+  - {fileID: 21300000, guid: 02e86ad2ae8103c4bb54a5d011d41593, type: 3}
+  - {fileID: 21300000, guid: 79ab08706bfef5c458d34201fa8c5c5d, type: 3}
+  - {fileID: 21300000, guid: 8af376a5e8d9bf04a9ecc46f577998e5, type: 3}
+  - {fileID: 21300000, guid: b6e5c91ebdf88984e9b54ef20db8ef99, type: 3}
+  - {fileID: 21300000, guid: 1761001971991794d863f7e10cdf517e, type: 3}
+  - {fileID: 21300000, guid: 6392094bf7a18e4429ec7e475a6bb409, type: 3}
+  - {fileID: 21300000, guid: 9212dc8b783445947998db69421351b8, type: 3}
+  - {fileID: 21300000, guid: 66f6c06e6bab76d49bfe0d78603592e3, type: 3}
+  - {fileID: 21300000, guid: 30ab62bf406680143a64e632615b4df6, type: 3}
+  - {fileID: 21300000, guid: 8a9b42c04f58761448c5384925bcdeb3, type: 3}
+  - {fileID: 0}
   accessory:
   - {fileID: 3490254172818022500, guid: 24ef94265a54e4b4cbb23f6e1a76d3c4, type: 3}
   - {fileID: 0}

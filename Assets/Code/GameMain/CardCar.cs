@@ -174,8 +174,8 @@ public class CardCar : MonoBehaviour
     {
         Debug.Log(StrongRandom.RNG.Next(body.Count));
         character.body = body[StrongRandom.RNG.Next(body.Count)];
-        character.hair = hair[StrongRandom.RNG.Next(body.Count)];
-        character.head = head[StrongRandom.RNG.Next(body.Count)];
+        character.hair = hair[StrongRandom.RNG.Next(hair.Count)];
+        character.head = head[StrongRandom.RNG.Next(head.Count)];
 
         switch (character.MainStat)
         {
