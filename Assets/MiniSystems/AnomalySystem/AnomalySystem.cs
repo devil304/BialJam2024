@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class AnomalySystem : MonoBehaviour
 {
+	public event Action OnAnomalyStart;
+	public event Action OnAnomalyEnd;
 	[SerializeField]
 	JumpingText alertInfoText;
 
@@ -49,6 +51,11 @@ public class AnomalySystem : MonoBehaviour
 		}
 	}
 
+	public void StartAnomaly() {
+		alertInfoText.gameObject.SetActive(true);
+		OnAnomalyStart?.Invoke();
+	}
+
 	public AnomalyData DrawAnomaly() {
 		if(allAnomaliesData.Count <= 0) LoadAllAnomalyData();
 		AnomalyData drawdedAnomalyData = allAnomaliesData[UnityEngine.Random.Range(0, allAnomaliesData.Count)];
@@ -70,8 +77,6 @@ public class AnomalySystem : MonoBehaviour
 		CreateAnomaly();
 		decisionCanvas.DOFade(1f, 1f).SetDelay(1f);
 		activeCard = Instantiate(anomalyCardPrefab, transform.position, Quaternion.identity);
-		Debug.Log("DisplayAnomaly before Setup card 2");
-		Debug.Log(activeAnomaly.GetAnomalyData());
 		activeCard.SetupCard(activeAnomaly.GetAnomalyData());
 		activeCard.transform.parent = transform;
 		activeCard.OnDecisionActions += OnDecisionMake;
@@ -98,7 +103,6 @@ public class AnomalySystem : MonoBehaviour
 
 	public void OnDecisionMake(AnomalyReaction decision)
 	{
-		Debug.Log($"ON DECISIOn MAKED {decision}");
 		decisionCanvas.DOFade(0f, 1f);
 		GameManager.I.MainInput.Main.LeftArrow.started -= HandleLeftArrowClick;
 		GameManager.I.MainInput.Main.RightArrow.performed -= HandleRightArrowClick;
@@ -108,7 +112,7 @@ public class AnomalySystem : MonoBehaviour
 		{
 			GameManager.I.ModifyStats(activeAnomaly.GetStatsModel(decision));
 			activeCard = null;
-			alertInfoText.gameObject.SetActive(true);
+			OnAnomalyEnd?.Invoke();
 		}, false);
 	}
 }

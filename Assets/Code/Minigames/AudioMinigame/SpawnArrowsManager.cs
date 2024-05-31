@@ -55,8 +55,7 @@ public class SpawnArrowsManager : MonoBehaviour
 					newArrowRotation = Quaternion.Euler(0, 0, -90);
 				break;
 			}
-			Transform arrow = Instantiate(ArrowPrefab, newArrowPosition, newArrowRotation);
-			arrow.parent = transform.parent;
+			Instantiate(ArrowPrefab, newArrowPosition, newArrowRotation, transform.parent);
 		}
 
 		public void SetGameTime(float maxGameTime) {
