@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782ef314913d83a4bb99a1aacc398dff, type: 3}
+  m_Name: EmptyHead
+  m_EditorClassIdentifier: 
+  title: Empty Head!
+  imageSprite: {fileID: 0}
+  description: The black hole eats up ideas but allows you to focus on other activities.
+    Are we trying to remedy this?
+  positiveStatsModel:
+    codeStats: -5
+    qaStats: -5
+    audioStats: -5
+    artStats: -5
+    designStats: 15
+  negativeStatsModel:
+    codeStats: 5
+    qaStats: 5
+    audioStats: 5
+    artStats: 5
+    designStats: -15
+  neutralStatsModel:
+    codeStats: 0
+    qaStats: 0
+    audioStats: 0
+    artStats: 0
+    designStats: 0
+  randomPerson: 0
+  sharedWinnerBetweenEffects: 0

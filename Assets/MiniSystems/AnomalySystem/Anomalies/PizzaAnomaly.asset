@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782ef314913d83a4bb99a1aacc398dff, type: 3}
+  m_Name: PizzaAnomaly
+  m_EditorClassIdentifier: 
+  title: Pizza is here!
+  imageSprite: {fileID: 0}
+  description: "But some of the pizzas look a bit unfresh\u2026 We are so hungry\u2026
+    Should we take the risk? We have our food but it\u2019s cold."
+  positiveStatsModel:
+    codeStats: 0
+    qaStats: 0
+    audioStats: 0
+    artStats: 0
+    designStats: 0
+  negativeStatsModel:
+    codeStats: 0
+    qaStats: 0
+    audioStats: 0
+    artStats: 0
+    designStats: 0
+  neutralStatsModel:
+    codeStats: 0
+    qaStats: -15
+    audioStats: 0
+    artStats: 0
+    designStats: 0
+  randomPositive: 1
+  randomNegative: 1
+  randomNeutral: 0
+  sharedWinnerBetweenEffects: 0
+  randomPositiveStatsList:
+    winerPoints: -20
+    winerCount: 1
+    loserPoints: 10
+    loserCount: 4
+  randomNegativeStatsList:
+    winerPoints: -5
+    winerCount: 5
+    loserPoints: 0
+    loserCount: 0
+  randomNeutralStatsList:
+    winerPoints: 0
+    winerCount: 0
+    loserPoints: 0
+    loserCount: 0

@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 30eb11778a32a3f41957732f439496d8
+guid: 5138121ce5aa30248a2f495cf128daa8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7259517905286814884
-    second: arrow1_0
+      213: 5531369274929529614
+    second: energy-drink_0
+  - first:
+      213: 2758697924993095815
+    second: energy-drink_1
+  - first:
+      213: 5354688047119939729
+    second: energy-drink_2
+  - first:
+      213: -6110125371222216312
+    second: energy-drink_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,29 +131,38 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: arrow1_0
+      name: energy-drink_0
       rect:
         serializedVersion: 2
-        x: 50
+        x: 9
+        y: 403
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e034fa19c0f53cc40800000000000000
+      internalID: 5531369274929529614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: energy-drink_1
+      rect:
+        serializedVersion: 2
+        x: 110
         y: 0
-        width: 431
+        width: 293
         height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -154,8 +172,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4ac5531821dfeb460800000000000000
-      internalID: 7259517905286814884
+      spriteID: 78812d5852dd84620800000000000000
+      internalID: 2758697924993095815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: energy-drink_2
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 405
+        width: 76
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1983d93986caf4a40800000000000000
+      internalID: 5354688047119939729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: energy-drink_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 331
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 881b2330959743ba0800000000000000
+      internalID: -6110125371222216312
       vertices: []
       indices: 
       edges: []
@@ -171,8 +233,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      arrow1_0: 7259517905286814884
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

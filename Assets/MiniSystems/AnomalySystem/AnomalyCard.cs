@@ -1,6 +1,5 @@
 using DG.Tweening;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -27,8 +26,8 @@ public class AnomalyCard : MonoBehaviour
     }
 
 		private void EnableInputs() {
-			GameManager.I.MainInput.Main.LMB.started += OnMouseDown;
-			GameManager.I.MainInput.Main.LMB.canceled += OnMouseUp;
+			// GameManager.I.MainInput.Main.LMB.started += OnMouseDown;
+			// GameManager.I.MainInput.Main.LMB.canceled += OnMouseUp;
 			GameManager.I.MainInput.Main.MousePos.performed += OnMouseMove;
 		}
 
@@ -40,8 +39,21 @@ public class AnomalyCard : MonoBehaviour
 
 		private void OnMouseMove(InputAction.CallbackContext c) {
 			if (!followMouse) return;
-			Vector2 mouseMovement = mouseStartPosition - c.action.ReadValue<Vector2>();
+			Vector2 mouseActivePosition = c.action.ReadValue<Vector2>();
+			Vector2 mouseMovement = mouseStartPosition - mouseActivePosition;
+			float mouseDistance = Vector2.Distance(mouseStartPosition, mouseActivePosition);
+			if(Mathf.Abs(mouseMovement.normalized.x) > 0.7f && mouseDistance > 150) {
+				transform.DORotateQuaternion(Quaternion.Euler(0, 0, 45 * mouseMovement.normalized.x), 1f);
+				transform.DOMove(Vector3.zero, 1f);
+			} else if (mouseMovement.normalized.y > 0.7f && mouseDistance > 150) {
+				transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1f);
+				transform.DOMoveY(-5, 1f);
+			} else {
+				transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1f);
+				transform.DOMove(Vector3.zero, 1f);
+			}
 			Debug.Log($"ON MOUSE MOVE {mouseMovement.normalized}");
+			Debug.Log($"ON MOUSE Distance {mouseDistance}");
 		}
 		private void OnMouseEnter() {
 			canFollowMouse = true;
@@ -51,19 +63,19 @@ public class AnomalyCard : MonoBehaviour
 			canFollowMouse = false;
 		}
 
-		public void OnMouseDown(InputAction.CallbackContext c) {
+		public void OnMouseDown() {
 			if (!canFollowMouse) return;
 			mouseStartPosition = GameManager.I.MainInput.Main.MousePos.ReadValue<Vector2>();
 			followMouse = true;
 		}
 
-		public void OnMouseUp(InputAction.CallbackContext c) {
+		public void OnMouseUp() {
 			followMouse = false;
 		}
 
 		private void OnDestroy() {
-			GameManager.I.MainInput.Main.LMB.started -= OnMouseDown;
-			GameManager.I.MainInput.Main.LMB.canceled -= OnMouseUp;
+			// GameManager.I.MainInput.Main.LMB.started -= OnMouseDown;
+			// GameManager.I.MainInput.Main.LMB.canceled -= OnMouseUp;
 			GameManager.I.MainInput.Main.MousePos.performed -= OnMouseMove;
 		}
 
