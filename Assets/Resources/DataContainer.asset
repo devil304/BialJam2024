@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959dfc8f49758f64396a9f1ff23f8654, type: 3}
   m_Name: DataContainer
   m_EditorClassIdentifier: 
-  NickNames: []
+  NickNames:
+  - Lorem Ipsum
+  - Lorem Ipsum2
+  - Lorem Ipsum3
+  - Lorem Ipsum4
+  - Lorem Ipsum5
+  - Lorem Ipsum6
+  - Lorem Ipsum7
+  - Lorem Ipsum8
+  - Lorem Ipsum9
+  - Lorem Ipsum10
   CharMinStatsSum: 50
   CharMaxStatsSum: 100

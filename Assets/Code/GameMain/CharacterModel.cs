@@ -1,16 +1,22 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterModel : MonoBehaviour
+[Serializable]
+public class CharacterModel
 {
     public StatsModel CharStats { get; private set; }
-    public string NickName { get; private set; }
-    public List<Sprite> Sprites { get; private set; } = new List<Sprite>();
+    public string NickName;
     public int MainStat;
+
+    public Sprite body;
+    public Sprite head;
+    public Sprite hair;
+    public Sprite accessory;
 
     public CharacterModel()
     {
-        GenerateRandom();
+
     }
 
     public void GenerateRandom()
@@ -20,8 +26,5 @@ public class CharacterModel : MonoBehaviour
         NickName = DataObjectAccess.GetNick();
     }
 
-    public void AddSprite(Sprite sprite)
-    {
-        Sprites.Add(sprite);
-    }
+
 }

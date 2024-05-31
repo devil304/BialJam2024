@@ -6,7 +6,7 @@ using UnityEngine;
 public static class DataObjectAccess
 {
     static DataContainer _dataContainer;
-    public static Queue<string> NickNames = new();
+    public static Queue<string> NickNames = null;
     public static int MinSumStats => _dataContainer.CharMinStatsSum;
     public static int MaxSumStats => _dataContainer.CharMaxStatsSum;
 
