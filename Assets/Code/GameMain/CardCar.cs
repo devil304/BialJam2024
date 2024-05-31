@@ -45,6 +45,7 @@ public class CardCar : MonoBehaviour
     {
         if(GameManager.I.Team.Count == 5)
         {
+            text.text = $"Current Team Size: {GameManager.I.Team.Count}/5";
             ShowStartButton();
             HideRecruitmentButton();
         }
@@ -90,13 +91,19 @@ public class CardCar : MonoBehaviour
             var localIndex = (i + offset) % _cards.Length;
             _cards[i].transform.DOLocalMoveX(cardDistance.Evaluate(Math.Abs(localIndex - 2)) * (localIndex - 2), 0.5f);
             _cards[i].transform.DOScale(Vector3.one * (1f / (Math.Abs(localIndex - 2) + 1)), 0.5f);
-            _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -Math.Abs(localIndex - 2);
+            _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -Math.Abs(localIndex - 2)*10;
+            _cards[i].GetComponentInChildren<BounceHead>().ShiftOrder(-Math.Abs(localIndex - 2) * 10);
+            _cards[i].GetComponentInChildren<Canvas>().sortingOrder = -Math.Abs(localIndex - 2) * 10 + 1;
             if (localIndex == 0)
             {
-                _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -3;
+                _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -3 * 10;
+                _cards[i].GetComponentInChildren<BounceHead>().ShiftOrder(-3 * 10);
+                _cards[i].GetComponentInChildren<Canvas>().sortingOrder = -3 * 10 + 1;
             }
         }
-        UpdateDeck(offset);
+        currentSelectedCharacter = _cards[(2 + offset) % _cards.Length].GetComponent<CardScript>();
+        RecruitButton.interactable = !currentSelectedCharacter.character.Taken;
+        //UpdateDeck(offset);
     }
 
     public void MoveLeft()
@@ -111,13 +118,19 @@ public class CardCar : MonoBehaviour
             var localIndex = (i + offset) % _cards.Length;
             _cards[i].transform.DOLocalMoveX(cardDistance.Evaluate(Math.Abs(localIndex - 2)) * (localIndex - 2), 0.5f);
             _cards[i].transform.DOScale(Vector3.one * (1f / (Math.Abs(localIndex - 2) + 1)), 0.5f);
-            _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -Math.Abs(localIndex - 2);
+            _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -Math.Abs(localIndex - 2) * 10;
+            _cards[i].GetComponentInChildren<BounceHead>().ShiftOrder(-Math.Abs(localIndex - 2) * 10);
+            _cards[i].GetComponentInChildren<Canvas>().sortingOrder = -Math.Abs(localIndex - 2) * 10+1;
             if (localIndex == 4)
             {
-                _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -3;
+                _cards[i].GetComponentInChildren<SpriteRenderer>().sortingOrder = -3 * 10;
+                _cards[i].GetComponentInChildren<BounceHead>().ShiftOrder(-3 * 10);
+                _cards[i].GetComponentInChildren<Canvas>().sortingOrder = -3 * 10+1;
             }
         }
-        UpdateDeck(offset);
+        currentSelectedCharacter = _cards[(2 + offset) % _cards.Length].GetComponent<CardScript>();
+        RecruitButton.interactable = !currentSelectedCharacter.character.Taken;
+        //UpdateDeck(offset);
     }
 
     void CreateNewCardPull()
@@ -148,7 +161,7 @@ public class CardCar : MonoBehaviour
     public void Recruit()
     {
         GameManager.I.AddTeamMember(currentSelectedCharacter.character);
-        characters.Remove(currentSelectedCharacter.character);
+        currentSelectedCharacter.character.Taken = true;
         MoveRight();
     }
 

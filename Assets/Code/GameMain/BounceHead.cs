@@ -18,12 +18,32 @@ public class BounceHead : MonoBehaviour
     {
         if (_headSR)
             _baseOrderHead = _headSR.sortingOrder;
+        if(_hairSR)
+            _baseOrderHair = _hairSR.sortingOrder;
+        if (_accSR)
+            _baseOrderAcc = _accSR.sortingOrder;
+        if (_bodySR)
+            _baseOrderBody = _bodySR.sortingOrder;
+        if (_deskSR)
+            _baseOrderDesk = _deskSR.sortingOrder;
+        if (_shadowSR)
+            _baseOrderShadow = _shadowSR.sortingOrder;
     }
 
     public void ShiftOrder(int offset)
     {
         if (_headSR)
             _headSR.sortingOrder = _baseOrderHead + offset;
+        if (_hairSR)
+            _hairSR.sortingOrder = _baseOrderHair + offset;
+        if (_accSR)
+            _accSR.sortingOrder = _baseOrderAcc + offset;
+        if (_bodySR)
+            _bodySR.sortingOrder = _baseOrderBody + offset;
+        if (_deskSR)
+            _deskSR.sortingOrder = _baseOrderDesk + offset;
+        if (_shadowSR)
+            _shadowSR.sortingOrder = _baseOrderShadow + offset;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

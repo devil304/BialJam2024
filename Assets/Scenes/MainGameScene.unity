@@ -350,10 +350,14 @@ MonoBehaviour:
   _minS: 0.005
   _maxS: 0.02
   _head: {fileID: 1589072542}
+  _name: {fileID: 968109182}
   _bunceSpeed: 0.4255319
   _headSR: {fileID: 1589072543}
   _hairSR: {fileID: 676047158}
   _accSR: {fileID: 1813686914}
+  _bodySR: {fileID: 0}
+  _deskSR: {fileID: 0}
+  _shadowSR: {fileID: 0}
 --- !u!1 &103209759
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,10 +651,14 @@ MonoBehaviour:
   _minS: 0.005
   _maxS: 0.02
   _head: {fileID: 592243517}
+  _name: {fileID: 745832576}
   _bunceSpeed: 0.4255319
   _headSR: {fileID: 592243518}
   _hairSR: {fileID: 1421239520}
   _accSR: {fileID: 505429955}
+  _bodySR: {fileID: 0}
+  _deskSR: {fileID: 0}
+  _shadowSR: {fileID: 0}
 --- !u!1 &207157545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2461,10 +2469,14 @@ MonoBehaviour:
   _minS: 0.005
   _maxS: 0.02
   _head: {fileID: 1211339889}
+  _name: {fileID: 2009375638}
   _bunceSpeed: 0.4255319
   _headSR: {fileID: 1211339890}
   _hairSR: {fileID: 1077024707}
   _accSR: {fileID: 1584879911}
+  _bodySR: {fileID: 0}
+  _deskSR: {fileID: 0}
+  _shadowSR: {fileID: 0}
 --- !u!1 &922633986
 GameObject:
   m_ObjectHideFlags: 0
@@ -3988,10 +4000,14 @@ MonoBehaviour:
   _minS: 0.005
   _maxS: 0.02
   _head: {fileID: 136784795}
+  _name: {fileID: 2143005551}
   _bunceSpeed: 0.4255319
   _headSR: {fileID: 136784796}
   _hairSR: {fileID: 225985981}
   _accSR: {fileID: 282410395}
+  _bodySR: {fileID: 0}
+  _deskSR: {fileID: 0}
+  _shadowSR: {fileID: 0}
 --- !u!1 &1500586941
 GameObject:
   m_ObjectHideFlags: 0
@@ -5207,10 +5223,14 @@ MonoBehaviour:
   _minS: 0.005
   _maxS: 0.02
   _head: {fileID: 637671297}
+  _name: {fileID: 922633988}
   _bunceSpeed: 0.4255319
   _headSR: {fileID: 637671298}
   _hairSR: {fileID: 268874223}
   _accSR: {fileID: 1950426692}
+  _bodySR: {fileID: 0}
+  _deskSR: {fileID: 0}
+  _shadowSR: {fileID: 0}
 --- !u!1 &1813686912
 GameObject:
   m_ObjectHideFlags: 0
