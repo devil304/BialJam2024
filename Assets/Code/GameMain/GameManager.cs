@@ -35,6 +35,11 @@ public class GameManager : MonoBehaviour
             Awake();
     }
 
+    private void OnDestroy()
+    {
+        I = null;
+    }
+
     public void StartGame()
     {
         StatsAct.Reset();
