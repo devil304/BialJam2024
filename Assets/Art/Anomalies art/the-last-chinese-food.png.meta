@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      the-last-chinese-food_0: -7917371100560378818
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

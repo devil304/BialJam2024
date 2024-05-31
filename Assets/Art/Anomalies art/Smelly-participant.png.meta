@@ -233,7 +233,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Smelly-participant_0: 7544826441995727853
+      Smelly-participant_1: -4071133936875962298
+      Smelly-participant_2: -8897864728467972232
+      Smelly-participant_3: -1366689488371298466
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

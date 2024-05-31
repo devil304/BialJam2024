@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Snoring-graphic-designer_0: 6230374469917854993
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

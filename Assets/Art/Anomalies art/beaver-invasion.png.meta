@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      beaver-invasion_0: 4048946774207890215
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

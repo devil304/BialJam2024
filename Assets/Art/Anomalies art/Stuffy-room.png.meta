@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Stuffy-room_0: -6397332597414482978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
