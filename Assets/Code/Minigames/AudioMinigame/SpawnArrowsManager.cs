@@ -24,15 +24,14 @@ public class SpawnArrowsManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-			Debug.Log($"Should spawn {shouldSpawn}");
-				if (gameTime >= maxGameTime || !shouldSpawn) return;
+			if (gameTime >= maxGameTime || !shouldSpawn) return;
 
-				gameTime += Time.deltaTime;
-        lastSpawnTime += Time.deltaTime;
-				if(spawnTime <= lastSpawnTime) {
-					lastSpawnTime = 0;
-					SpawnNewArrow();
-				}
+			gameTime += Time.deltaTime;
+			lastSpawnTime += Time.deltaTime;
+			if(spawnTime <= lastSpawnTime) {
+				lastSpawnTime = 0;
+				SpawnNewArrow();
+			}
     }
 
 		void SpawnNewArrow() {
