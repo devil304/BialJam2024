@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Card
   - Bug
+  - MenuButtons
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,8 @@ public class MainMenuHandler : MonoBehaviour
 {
     [SerializeField] private CanvasGroup menuCanvas;
 
+    public List<Image> buttonsBackground;
+
     public List<Button> buttons;
 
     Tween fadeTween;
@@ -22,8 +24,9 @@ public class MainMenuHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
 
     void Fade(float end, float dur, CanvasGroup newCanvas, TweenCallback onEnd)
     {
@@ -35,20 +38,27 @@ public class MainMenuHandler : MonoBehaviour
 
     void FadeIn(float dur, CanvasGroup newCanvas)
     {
+
         Fade(1f, dur, newCanvas, () =>
         {
+            ChangeAlpha(1);
             newCanvas.interactable = true;
             newCanvas.blocksRaycasts = true;
         });
+
     }
 
     void FadeOut(float dur, CanvasGroup newCanvas)
     {
+        
+
         Fade(0f, dur, newCanvas, () =>
         {
+            ChangeAlpha(0);
             newCanvas.interactable = true;
             newCanvas.blocksRaycasts = false;
         });
+
     }
 
     private IEnumerator Test()
@@ -77,4 +87,18 @@ public class MainMenuHandler : MonoBehaviour
         FadeIn(0.5f, to);
         
     }
+
+    private void ChangeAlpha(int a)
+    {
+        foreach (Image img in buttonsBackground)
+        {
+            img.color = new Color(img.color.r, img.color.g, img.color.b, a);
+        }
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Bye bye");
+    }
+    
 }
