@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minigamesPrefabs: []
+  _debug: 0
 --- !u!114 &365098582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +411,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1809990252962339619, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
+      propertyPath: m_Size.x
+      value: 38.399998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809990252962339619, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
+      propertyPath: m_Size.y
+      value: 21.599998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809990252962339619, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 83aa3ba47539c864f990b6b3727fbdb7, type: 3}
+    - target: {fileID: 1809990252962339619, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2542396720482948875, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
       propertyPath: sprites.Array.size
       value: 8
@@ -429,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 2542396720482948875, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
       propertyPath: 'sprites.Array.data[3]'
       value: 
-      objectReference: {fileID: -7226382747494397708, guid: 3d0d5718981e9b841ad2c3434433b89f, type: 3}
+      objectReference: {fileID: 2976314129385055886, guid: a596c94ca502ef34ca910266aa9eacfc, type: 3}
     - target: {fileID: 2542396720482948875, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
       propertyPath: 'sprites.Array.data[4]'
       value: 
