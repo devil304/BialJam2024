@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class BounceHead : MonoBehaviour
@@ -6,6 +7,7 @@ public class BounceHead : MonoBehaviour
     [SerializeField] float _minY = 0.05f, _maxY = 0.1f;
     [SerializeField] float _minS = 0f, _maxS = 0.015f;
     [SerializeField] Transform _head;
+    [SerializeField] TextMeshProUGUI _name;
     float _minMaxY;
     float _minMaxS;
     [SerializeField] float _bunceSpeed;
@@ -22,7 +24,7 @@ public class BounceHead : MonoBehaviour
         _head.DOScale(Vector3.one + Vector3.one * _minMaxS, _bunceSpeed).SetLoops(-1, LoopType.Yoyo);
     }
 
-    public void UpdateSprites(Sprite headSR, Sprite hairSR, Sprite accSR)
+    public void UpdateSprites(Sprite headSR, Sprite hairSR, Sprite accSR, string myName)
     {
         _headSR.sprite = headSR;
         if (!hairSR || hairSR == null)
@@ -35,5 +37,6 @@ public class BounceHead : MonoBehaviour
         else
             _accSR.enabled = true;
         _accSR.sprite = accSR;
+        _name.text = myName;
     }
 }

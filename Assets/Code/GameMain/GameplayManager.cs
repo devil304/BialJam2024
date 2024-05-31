@@ -19,7 +19,7 @@ public class GameplayManager : MonoBehaviour
         for (int i = 0; i < GameManager.I.Team.Count; i++)
         {
             var charM = GameManager.I.Team[i];
-            _teamSprites[i].UpdateSprites(charM.head, charM.hair, charM.accessory);
+            _teamSprites[i].UpdateSprites(charM.head, charM.hair, charM.accessory, charM.NickName);
         }
     }
 
