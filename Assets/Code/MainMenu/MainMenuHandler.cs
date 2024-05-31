@@ -116,7 +116,7 @@ public class MainMenuHandler : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        Application.Quit();
     }
 
 }
