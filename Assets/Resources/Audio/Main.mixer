@@ -50,9 +50,7 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: 6e15bad17a0294a4684fb784528e64b8
-    name: MusicMain
-  - guid: 2b1ab130efc12fe47bb209a5f032f597
-    name: MusicMiniGames
+    name: Music
   - guid: 28fc2d5cc0a85e64d8411408ad4cc7c5
     name: Master
   - guid: ed37bb455653935479c4fc2f981d7f9a
@@ -77,7 +75,6 @@ AudioMixerGroupController:
   m_GroupID: 47840d556a864db48823c0f40e4659c1
   m_Children:
   - {fileID: 7152002411575598226}
-  - {fileID: -6503452223177326509}
   - {fileID: 6266254944194160461}
   m_Volume: 28fc2d5cc0a85e64d8411408ad4cc7c5
   m_Pitch: 23809b16b3aa5874c9212d1de88fa79b
@@ -169,7 +166,8 @@ AudioMixerGroupController:
   m_Name: BGMMain
   m_AudioMixer: {fileID: 24100000}
   m_GroupID: 21a8cc32d288fcf40b07bf45fa9921c6
-  m_Children: []
+  m_Children:
+  - {fileID: -6503452223177326509}
   m_Volume: 6e15bad17a0294a4684fb784528e64b8
   m_Pitch: 79208a390ab06a346861b176cdbdec02
   m_Send: 00000000000000000000000000000000

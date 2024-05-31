@@ -27,7 +27,6 @@ public static class Sound
     public static AudioSource PlaySoundAtPos(Vector3 target, AudioClip clip, MixerTypes mixer, float vol = 1f, bool play_right_away = true, bool sound2D = false, bool destroyAfter = false, float initialFadeDur = 0)
     {
         var AudioGO = new GameObject(clip.name);
-        AudioGO.transform.parent = null;
         AudioGO.transform.position = target;
         AudioGO.transform.rotation = Quaternion.identity;
         var AudioS = AudioGO.AddComponent<AudioSource>();

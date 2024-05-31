@@ -21,12 +21,16 @@ public class MainMenuHandler : MonoBehaviour
 
     Tween fadeTween;
 
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
 
-        source = Sound.PlaySoundAtTarget(transform, menuMusic, Sound.MixerTypes.BGMMain, 1, sound2D: true, destroyAfter: true, initialFadeDur: 1f);
+        source = Sound.PlaySoundAtPos(transform.position, menuMusic, Sound.MixerTypes.BGMMain, 1, sound2D: true, destroyAfter: true, initialFadeDur: 1f);
         source.loop = true;
+        DontDestroyOnLoad(source.gameObject); 
+        source.gameObject.AddComponent<DestroyWhenSceneChangeTo>().SetSceneIndex(2);
         StartCoroutine(Test());
 
     }
