@@ -20,10 +20,12 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 		DOVirtual.DelayedCall(initializationTime, () => gameContainer.SetActive(false), false);
 		gameOverTween?.Kill();
 		gameMonitor.transform.DOMoveY(-10f, 0.5f).SetDelay(1f);
+		PlayCardClip(monitorSlideDownClip);
 		Debug.Log("Close Game");
 	}
 
 	public void ShowGame() {
+		PlayCardClip(monitorSlideUpClip);
 		gameMonitor.transform.DOMoveY(0f, 0.5f);
 		gameContainer.SetActive(true);
 		gameContainer.transform.localScale = new Vector3(0, 0, 0);
@@ -55,10 +57,20 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 	Vector3 gameContainerPosition = new Vector3(0, 0.7f, 0);
 	[SerializeField]
 	GameObject gameMonitor;
+	[SerializeField]
+	private AudioClip monitorSlideUpClip;
+	[SerializeField]
+	private AudioClip monitorSlideDownClip;
+	private void PlayCardClip(AudioClip audioClip) {
+		if(audioClip != null) {
+			Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.SFX, 1f, true, false, true);
+		}
+	}
 
 	public void GameOver()
 	{
 		MinigameFinished?.Invoke();
 		CloseGame();
 	}
+
 }

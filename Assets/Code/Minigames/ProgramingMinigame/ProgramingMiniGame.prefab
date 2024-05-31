@@ -733,6 +733,8 @@ MonoBehaviour:
   gameContainer: {fileID: 5705164912435078994}
   gameContainerPosition: {x: 0, y: 0.8, z: 0}
   gameMonitor: {fileID: 3780267011960831316}
+  monitorSlideUpClip: {fileID: 8300000, guid: 18d631cb11e73884a8247af41978ccce, type: 3}
+  monitorSlideDownClip: {fileID: 8300000, guid: eb7fa3664fbb7784286fcb771b60f13d, type: 3}
 --- !u!1 &5705164912435078994
 GameObject:
   m_ObjectHideFlags: 0

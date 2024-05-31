@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -21,6 +22,14 @@ public class AnomalyCard : MonoBehaviour
 	AnomalyReaction? anomalySelectedReaction;
 
 	Vector3 cardDefaultPosition = new Vector3(0, 0.7f, 0);
+	[SerializeField]
+	List<AudioClip> ignoreAudioClips;
+	[SerializeField]
+	List<AudioClip> positiveAudioClips;
+	[SerializeField]
+	List<AudioClip> negativeAudioClips;
+	[SerializeField]
+	AudioClip initialAudioClip;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -30,6 +39,7 @@ public class AnomalyCard : MonoBehaviour
 			// transform.DOShakePosition(0.5f, 5, 20, 80, false, true).SetDelay(1f);
 			transform.DOShakeRotation(0.25f, 5, 20, 80, true).SetDelay(1f);
 			DOVirtual.DelayedCall(1f, EnableInputs, false);
+			PlayCardClip(initialAudioClip);
 	}
 
 	private void EnableInputs() {
@@ -99,6 +109,8 @@ public class AnomalyCard : MonoBehaviour
 
 	public void HandleNegative()
 	{
+		AudioClip audioClip = negativeAudioClips[UnityEngine.Random.Range(0, negativeAudioClips.Count)];
+		PlayCardClip(audioClip);
 
 		transform.DOMoveX(-20f, 1f);
 		transform.DORotate(new Vector3(2, 0, 0), 1f);
@@ -107,6 +119,8 @@ public class AnomalyCard : MonoBehaviour
 
 	public void HandlePositive()
 	{
+		AudioClip audioClip = positiveAudioClips[UnityEngine.Random.Range(0, positiveAudioClips.Count)];
+		PlayCardClip(audioClip);
 		transform.DOMoveX(20f, 1f);
 		transform.DORotate(new Vector3(-2, 0, 0), 1f);
 		OnDecisionMake(AnomalyReaction.YES);
@@ -114,8 +128,16 @@ public class AnomalyCard : MonoBehaviour
 
 	public void HandleNeutral()
 	{
+		AudioClip audioClip = ignoreAudioClips[UnityEngine.Random.Range(0, ignoreAudioClips.Count)];
+		PlayCardClip(audioClip);
 		transform.DOMoveY(-20f, 1f);
 		OnDecisionMake(AnomalyReaction.IGNORE);
+	}
+
+	private void PlayCardClip(AudioClip audioClip) {
+		if(audioClip != null) {
+			Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.SFX, 1f, true, false, true);
+		}
 	}
 
 	public void OnDecisionMake(AnomalyReaction decision)

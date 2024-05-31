@@ -711,6 +711,19 @@ MonoBehaviour:
   descriptionLabel: {fileID: 337730652576896782}
   titleLabel: {fileID: 4942294512857625527}
   cardImage: {fileID: 4705004787719003178}
+  ignoreAudioClips:
+  - {fileID: 8300000, guid: 93e4f92ec484e6a4abc0915275f29b82, type: 3}
+  - {fileID: 8300000, guid: 7b531806ccf6e944c8511afb9ae22ae4, type: 3}
+  - {fileID: 8300000, guid: 2ce1553825ed4654cb1ac5aa8d7fd198, type: 3}
+  positiveAudioClips:
+  - {fileID: 8300000, guid: 9bda1933e9fa7a4419c7e662c2aca206, type: 3}
+  - {fileID: 8300000, guid: afc63557e25b2194db85210436d1ee67, type: 3}
+  - {fileID: 8300000, guid: 77cb4c3933810ce42a3ebe110f2321ad, type: 3}
+  negativeAudioClips:
+  - {fileID: 8300000, guid: a4adf33df2875514ca56b434c025a4d5, type: 3}
+  - {fileID: 8300000, guid: 1e0959516cb110a488a14ab27f3a5e98, type: 3}
+  - {fileID: 8300000, guid: b0958666cd203cb43b1f60bdd59f5fa2, type: 3}
+  initialAudioClip: {fileID: 8300000, guid: eb7fa3664fbb7784286fcb771b60f13d, type: 3}
 --- !u!61 &7486969393616854455
 BoxCollider2D:
   m_ObjectHideFlags: 0

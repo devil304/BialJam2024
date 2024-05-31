@@ -488,6 +488,7 @@ MonoBehaviour:
   negativeStatsPanel: {fileID: 5832042677119512604}
   neutralStatsPanel: {fileID: 2860862151680893805}
   background: {fileID: 6221931221511591011}
+  alertClip: {fileID: 8300000, guid: cbb369d66d6a748409a90184a8b32e69, type: 3}
 --- !u!1 &3506250153297928931
 GameObject:
   m_ObjectHideFlags: 0

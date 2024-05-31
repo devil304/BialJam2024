@@ -32,6 +32,8 @@ public class AnomalySystem : MonoBehaviour
 	private List<AnomalyData> drawdedAnomalies = new List<AnomalyData>();
 	[SerializeField]
 	private GameObject background;
+	[SerializeField]
+	private AudioClip alertClip;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -57,6 +59,13 @@ public class AnomalySystem : MonoBehaviour
 	public void StartAnomaly() {
 		alertInfoText.gameObject.SetActive(true);
 		OnAnomalyStart?.Invoke();
+		PlayCardClip(alertClip);
+	}
+
+	private void PlayCardClip(AudioClip audioClip) {
+		if(audioClip != null) {
+			Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.SFX, 1f, true, false, true);
+		}
 	}
 
 	public AnomalyData DrawAnomaly() {
