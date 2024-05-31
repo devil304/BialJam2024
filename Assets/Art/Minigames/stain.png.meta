@@ -1,19 +1,28 @@
 fileFormatVersion: 2
-guid: e15d47ef6a7361e4f845e82f525b5059
+guid: ab1b752f16fc4a4458a2084ec96c6ce0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2973451351822383342
-    second: score_0
+      213: -739705316645830706
+    second: stain_0
   - first:
-      213: 3451190071909101743
-    second: score_1
+      213: 2495112854947463680
+    second: stain_1
   - first:
-      213: 8695887021816083447
-    second: score_2
+      213: -8577392755070633028
+    second: stain_2
   - first:
-      213: -4809084988604215588
-    second: score_3
+      213: -1771175165980830238
+    second: stain_3
+  - first:
+      213: -7674179868023710353
+    second: stain_4
+  - first:
+      213: -8527218677528078137
+    second: stain_5
+  - first:
+      213: -6391340163242326560
+    second: stain_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,30 +140,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: score_0
+      name: stain_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 403
-        width: 39
-        height: 39
+        x: 38
+        y: 352
+        width: 91
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 217c8b1efbd2cb6d0800000000000000
-      internalID: -2973451351822383342
+      spriteID: ecf7bd20fe90cb5f0800000000000000
+      internalID: -739705316645830706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: score_1
+      name: stain_1
       rect:
         serializedVersion: 2
-        x: 110
-        y: 0
-        width: 293
-        height: 512
+        x: 60
+        y: 93
+        width: 332
+        height: 332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa03f70d51715ef20800000000000000
-      internalID: 3451190071909101743
+      spriteID: 00287a10ceb60a220800000000000000
+      internalID: 2495112854947463680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: score_2
+      name: stain_2
       rect:
         serializedVersion: 2
-        x: 427
-        y: 405
-        width: 76
-        height: 85
+        x: 155
+        y: 377
+        width: 70
+        height: 93
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -207,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f3f64e6c2ffda870800000000000000
-      internalID: 8695887021816083447
+      spriteID: cbb7107fbbaf6f880800000000000000
+      internalID: -8577392755070633028
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: score_3
+      name: stain_3
       rect:
         serializedVersion: 2
-        x: 49
-        y: 331
-        width: 18
-        height: 18
+        x: 332
+        y: 343
+        width: 75
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,8 +225,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cde0597bea2b24db0800000000000000
-      internalID: -4809084988604215588
+      spriteID: 2e518b412958b67e0800000000000000
+      internalID: -1771175165980830238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stain_4
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 219
+        width: 83
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6d1effc116df7590800000000000000
+      internalID: -7674179868023710353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stain_5
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 32
+        width: 83
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c8dcdbbacb39a980800000000000000
+      internalID: -8527218677528078137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: stain_6
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 53
+        width: 81
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0e5014bfbf56d47a0800000000000000
+      internalID: -6391340163242326560
       vertices: []
       indices: 
       edges: []
@@ -246,11 +308,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      score_0: -2973451351822383342
-      score_1: 3451190071909101743
-      score_2: 8695887021816083447
-      score_3: -4809084988604215588
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
