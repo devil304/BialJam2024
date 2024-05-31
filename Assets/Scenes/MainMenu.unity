@@ -561,13 +561,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 2038573733}
   m_HandleRect: {fileID: 372259448}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -80
+  m_MaxValue: 0
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 784403507}
+        m_TargetAssemblyTypeName: AudioHandlerScript, Assembly-CSharp
+        m_MethodName: changeVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &285628247
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,6 +1767,7 @@ GameObject:
   - component: {fileID: 784403504}
   - component: {fileID: 784403506}
   - component: {fileID: 784403505}
+  - component: {fileID: 784403507}
   m_Layer: 5
   m_Name: Panel (1)
   m_TagString: Untagged
@@ -1821,6 +1834,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784403503}
   m_CullTransparentMesh: 1
+--- !u!114 &784403507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784403503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70566d224374ac74c89e07972bdb600e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  param: SFX
 --- !u!1 &890253567
 GameObject:
   m_ObjectHideFlags: 0

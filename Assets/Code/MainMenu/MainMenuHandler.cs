@@ -1,5 +1,6 @@
 using DG.Tweening;
 using NUnit.Framework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,10 +25,9 @@ public class MainMenuHandler : MonoBehaviour
     void Start()
     {
 
-        source = Sound.PlaySoundAtTarget(transform, menuMusic, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true, initialFadeDur: 1f);
+        source = Sound.PlaySoundAtTarget(transform, menuMusic, Sound.MixerTypes.BGMMain, 1, sound2D: true, destroyAfter: true, initialFadeDur: 1f);
         source.loop = true;
         StartCoroutine(Test());
-
 
     }
 
@@ -38,22 +38,24 @@ public class MainMenuHandler : MonoBehaviour
     }
 
 
-    void Fade(float end, float dur, CanvasGroup newCanvas, TweenCallback onEnd)
+    void Fade(float end, float dur, CanvasGroup newCanvas, Action<CanvasGroup> onEnd)
     {
         fadeTween?.Kill(true);
 
         fadeTween = newCanvas.DOFade(end, dur);
-        fadeTween.onComplete += onEnd;
+        fadeTween.OnComplete(()=> {
+            onEnd?.Invoke(newCanvas);
+        });
     }
 
     void FadeIn(float dur, CanvasGroup newCanvas)
     {
 
-        Fade(1f, dur, newCanvas, () =>
+        Fade(1f, dur, newCanvas, (cg) =>
         {
+            cg.interactable = true;
+            cg.blocksRaycasts = true;
             ChangeAlpha(1);
-            newCanvas.interactable = true;
-            newCanvas.blocksRaycasts = true;
         });
 
     }
@@ -62,11 +64,11 @@ public class MainMenuHandler : MonoBehaviour
     {
 
 
-        Fade(0f, dur, newCanvas, () =>
+        Fade(0f, dur, newCanvas, (cg) =>
         {
+            cg.interactable = false;
+            cg.blocksRaycasts = false;
             ChangeAlpha(0);
-            newCanvas.interactable = true;
-            newCanvas.blocksRaycasts = false;
         });
 
     }
