@@ -51,12 +51,12 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = -1;
         swapper.position = mousePos;
-
-        scoreText.text = "Score: " + score.ToString();
+            
+        scoreText.text = $"Score: {score}";
 
         currTime -= Time.deltaTime;
         TimeSpan time = TimeSpan.FromSeconds(currTime);
-        timerText.text = time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+        timerText.text = $"{time.Seconds} : {time.Milliseconds}";
 
 
         if (currTime <= 0)
@@ -65,7 +65,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
             StopCoroutine(NewBug());
             foreach (Transform child in transform)
             {
-                if (child.tag == "Bug")
+                if(child.tag == "Bug")
                 {
                     Destroy(child.gameObject);
                 }
@@ -95,14 +95,14 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
     void CreateNewBug(GameObject bugPrefab)
     {
-        GameObject newBug = Instantiate(bugPrefab, this.transform, false);
+        GameObject newBug = Instantiate(bugPrefab,this.transform,false);
         newBug.transform.localPosition = new Vector3(StrongRandom.RNG.Next(-900, 900) / 2000f, StrongRandom.RNG.Next(-900, 900) / 2000f, 0);
         newBug.GetComponent<BugScript>().handler = this;
     }
 
     public StatsModel GetStatsFromGame()
     {
-        throw new NotImplementedException();
+        return gameStats;
     }
 
     public void CloseGame()

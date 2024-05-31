@@ -22,9 +22,13 @@ public class BugScript : MonoBehaviour
     bool canHit;
 
     Coroutine loopCorotuine;
+    AudioSource source;
 
     void Start()
     {
+        source = Sound.PlaySoundAtTarget(transform, walking, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true, initialFadeDur: 0f);
+        source.loop = true;
+
         loopCorotuine = StartCoroutine(Loop());
         GameManager.I.MainInput.Main.LMB.started += LefMouseButtonDown;
     }
@@ -76,6 +80,7 @@ public class BugScript : MonoBehaviour
 
     IEnumerator WaitAfterDead()
     {
+        source.DOFade(0, 0.5f);
         Debug.Log("ded");
         StopCoroutine(loopCorotuine);
         transform.DOKill();

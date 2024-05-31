@@ -13,12 +13,21 @@ public class MainMenuHandler : MonoBehaviour
 
     public List<Button> buttons;
 
+    [SerializeField] AudioClip menuMusic;
+
+    AudioSource source;
+
     Tween fadeTween;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        source = Sound.PlaySoundAtTarget(transform, menuMusic, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true, initialFadeDur:1f);
+        source.loop = true;
         StartCoroutine(Test());  
+
+
     }
 
     // Update is called once per frame
@@ -90,10 +99,7 @@ public class MainMenuHandler : MonoBehaviour
 
     private void ChangeAlpha(int a)
     {
-        foreach (Image img in buttonsBackground)
-        {
-            img.color = new Color(img.color.r, img.color.g, img.color.b, a);
-        }
+        buttonsBackground.ForEach(img => img.color = new Color(img.color.r, img.color.g, img.color.b, a));
     }
 
     public void ExitGame()
