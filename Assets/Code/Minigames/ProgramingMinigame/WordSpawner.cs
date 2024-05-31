@@ -129,6 +129,6 @@ public class WordSpawner : MonoBehaviour {
 
 	string GetCorrectLetter(int currentPosition) {
 		string replacedWord = wordToWrite.Replace(" ", "_");
-		return $"<color=\"green\">{replacedWord.Substring(0, currentPosition)}</color>{replacedWord.Substring(currentPosition, replacedWord.Length - currentPosition)}";
+		return $"<color=#ade4a4>{replacedWord.Substring(0, currentPosition)}</color>{replacedWord.Substring(currentPosition, replacedWord.Length - currentPosition)}";
 	}
 }
