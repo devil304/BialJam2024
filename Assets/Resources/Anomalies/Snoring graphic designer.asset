@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Snoring graphic designer
   m_EditorClassIdentifier: 
   title: Snoring graphic designer
-  imageSprite: {fileID: 0}
+  imageSprite: {fileID: 6230374469917854993, guid: dbb046f4676b6464ba465704de652193, type: 3}
   description: Our graphic designer is snoring but the rest of the team needs a nap.
     Should we wake him up and let the rest of the team some rest?
   positiveStatsModel:

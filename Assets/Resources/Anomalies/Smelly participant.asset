@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Smelly participant
   m_EditorClassIdentifier: 
   title: Smelly participant
-  imageSprite: {fileID: 0}
+  imageSprite: {fileID: 7544826441995727853, guid: 8e64933e6996c9747b54192365c30288, type: 3}
   description: "Sniff, sniff\u2026 Oh no, there\u2019s a smelly participant here.
     We\u2019re not sure who is this but it gets on our nerves. Should we investigate
     and send this person into the shower?"
