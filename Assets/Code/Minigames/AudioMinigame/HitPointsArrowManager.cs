@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class HitPointsArrowManager : MonoBehaviour
 
 		[Header("Configurations")]
 		[SerializeField] float hitboxRadius = 0.75f;
+		[SerializeField] List<AudioClip> arrowHitAudioClips = new List<AudioClip>();
 
 		private int score;
 
@@ -64,6 +66,14 @@ public class HitPointsArrowManager : MonoBehaviour
 
 			hittedArrowCollider.transform.DOKill();
 			Destroy(hittedArrowCollider.gameObject);
+			PlayHitArrowClip();
+		}
+
+		private void PlayHitArrowClip() {
+			if (arrowHitAudioClips.Count > 0) {
+				AudioClip audioClip = arrowHitAudioClips[Random.Range(0, arrowHitAudioClips.Count)];
+				Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.BGMMinigames, 1f, true, false, true);
+			}
 		}
 
 		int GetPointsFromDistance(float distance) {

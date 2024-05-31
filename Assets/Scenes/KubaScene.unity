@@ -2816,6 +2816,11 @@ MonoBehaviour:
   scoreLabel: {fileID: 243123519}
   arrowHitEffect: {fileID: 6579669232948825848, guid: cdb4b490a0e2dfc4d8cdabf146903273, type: 3}
   hitboxRadius: 0.75
+  arrowHitAudioClips:
+  - {fileID: 8300000, guid: ed39d1ec378f7c14dab133cd216ba176, type: 3}
+  - {fileID: 8300000, guid: 45b051177c4ea954d9d00fe643d5beb9, type: 3}
+  - {fileID: 8300000, guid: bdb1eff7eec1fa3428d70ac6f50b4b04, type: 3}
+  - {fileID: 8300000, guid: e283afedbae6b5d48a6a77d4c633f5be, type: 3}
 --- !u!1001 &1602254134
 PrefabInstance:
   m_ObjectHideFlags: 0

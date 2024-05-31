@@ -17,6 +17,7 @@ public class WordSpawner : MonoBehaviour {
 
 	private string wordToWrite;
 	int currentCharIndex;
+	private int activeWordIndex = -1;
 
 	bool tryFocus = false;
 
@@ -27,12 +28,6 @@ public class WordSpawner : MonoBehaviour {
 
 	private void Start() {
 		inputField.onValueChanged.AddListener(OnInputFieldChanged);
-		inputField.onDeselect.AddListener((string a) => {
-			tryFocus = true;
-		});
-		inputField.onSelect.AddListener((string a) => {
-			tryFocus = false;
-		});
 	}
 
 	private void Update() {
@@ -49,13 +44,25 @@ public class WordSpawner : MonoBehaviour {
 		score = 0;
 		wordToWriteLabel.text = "";
 		shouldSpawn = true;
+		inputField.onDeselect.AddListener(StartTryingFocusInput);
+		inputField.onSelect.AddListener(StopTryingFocusInput);
 		inputField.Select();
 		SetNewWord();
+	}
+
+	private void StartTryingFocusInput(string a) {
+		tryFocus = true;
+	}
+
+	private void StopTryingFocusInput(string a) {
+		tryFocus = false;
 	}
 
 	public void EndGame() {
 		shouldSpawn = false;
 		tryFocus = false;
+		inputField.onDeselect.RemoveListener(StartTryingFocusInput);
+		inputField.onSelect.RemoveListener(StopTryingFocusInput);
 	}
 
 	private void SetNewWord() {
@@ -70,14 +77,25 @@ public class WordSpawner : MonoBehaviour {
 
 		char userInput = newValue[0];
 		inputField.text = "";
-		AudioClip audioClip = audioClips[Random.Range(0, audioClips.Count)];
-		Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.BGMMinigames, 1f, true, false, true);
+		PlayKeyboardClip();
 
 		HandleUserInput(userInput);
 	}
 
+	private void PlayKeyboardClip() {
+		if (audioClips.Count > 0) {
+			AudioClip audioClip = audioClips[Random.Range(0, audioClips.Count)];
+			Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.BGMMinigames, 1f, true, false, true);
+		}
+	}
+
 	private string GetNewWord() {
-		return keywords[Random.Range(0, keywords.Count)];
+		int newIndex = Random.Range(0, keywords.Count);
+		if (activeWordIndex != newIndex) {
+			activeWordIndex = newIndex;
+			return keywords[newIndex];
+		}
+		return GetNewWord();
 	}
 
 	void HandleUserInput(char userInput) {

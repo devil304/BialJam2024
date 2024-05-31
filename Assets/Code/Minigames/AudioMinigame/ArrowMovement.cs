@@ -7,6 +7,7 @@ public class ArrowMovement : MonoBehaviour
 		Tween tween;
 
 		[SerializeField] float arrowDisplacementTime = 2f;
+		[SerializeField] AudioClip missAudioClip;
     void Start()
     {
 				var initialScale = transform.localScale;
@@ -20,6 +21,7 @@ public class ArrowMovement : MonoBehaviour
 		void DeleteArrow(bool withEffect) {
 			if (withEffect) {
 				Instantiate(missEffect, transform.position,  Quaternion.Euler(-90, 0, 0));
+				PlayMissClip();
 			}
 			transform.DOKill();
 			Destroy(gameObject);
@@ -31,5 +33,11 @@ public class ArrowMovement : MonoBehaviour
 
 		private void OnDisable() {
 			DeleteArrow(false);
+		}
+
+		private void PlayMissClip() {
+			if(missAudioClip != null) {
+				Sound.PlaySoundAtPos(Vector3.zero, missAudioClip, Sound.MixerTypes.BGMMinigames, 1f, true, false, true);
+			}
 		}
 }

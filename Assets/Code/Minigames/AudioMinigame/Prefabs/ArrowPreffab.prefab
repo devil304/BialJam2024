@@ -167,3 +167,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missEffect: {fileID: 1089360056439015840, guid: eb58bc664cd16a6459caa2a9693f4022, type: 3}
   arrowDisplacementTime: 1.75
+  missAudioClip: {fileID: 8300000, guid: f1d3210a72e2af646980665770f25e26, type: 3}
