@@ -14,6 +14,8 @@ public class CharacterModel
     public Sprite hair;
     public Sprite accessory;
 
+    public bool Taken = false;
+
     public CharacterModel()
     {
 
@@ -24,6 +26,7 @@ public class CharacterModel
         CharStats = new();
         MainStat = CharStats.GenerateRandom();
         NickName = DataObjectAccess.GetNick();
+        Taken = false;
     }
 
 

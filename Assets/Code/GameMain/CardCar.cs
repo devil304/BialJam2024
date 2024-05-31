@@ -45,6 +45,7 @@ public class CardCar : MonoBehaviour
     {
         if(GameManager.I.Team.Count == 5)
         {
+            text.text = $"Current Team Size: {GameManager.I.Team.Count}/5";
             ShowStartButton();
             HideRecruitmentButton();
         }
@@ -100,6 +101,8 @@ public class CardCar : MonoBehaviour
                 _cards[i].GetComponentInChildren<Canvas>().sortingOrder = -3 * 10 + 1;
             }
         }
+        currentSelectedCharacter = _cards[(2 + offset) % _cards.Length].GetComponent<CardScript>();
+        RecruitButton.interactable = !currentSelectedCharacter.character.Taken;
         //UpdateDeck(offset);
     }
 
@@ -125,6 +128,8 @@ public class CardCar : MonoBehaviour
                 _cards[i].GetComponentInChildren<Canvas>().sortingOrder = -3 * 10+1;
             }
         }
+        currentSelectedCharacter = _cards[(2 + offset) % _cards.Length].GetComponent<CardScript>();
+        RecruitButton.interactable = !currentSelectedCharacter.character.Taken;
         //UpdateDeck(offset);
     }
 
@@ -156,7 +161,7 @@ public class CardCar : MonoBehaviour
     public void Recruit()
     {
         GameManager.I.AddTeamMember(currentSelectedCharacter.character);
-        characters.Remove(currentSelectedCharacter.character);
+        currentSelectedCharacter.character.Taken = true;
         MoveRight();
     }
 
