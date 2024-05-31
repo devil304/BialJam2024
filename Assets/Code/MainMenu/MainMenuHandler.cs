@@ -3,6 +3,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuHandler : MonoBehaviour
@@ -23,9 +24,9 @@ public class MainMenuHandler : MonoBehaviour
     void Start()
     {
 
-        source = Sound.PlaySoundAtTarget(transform, menuMusic, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true, initialFadeDur:1f);
+        source = Sound.PlaySoundAtTarget(transform, menuMusic, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true, initialFadeDur: 1f);
         source.loop = true;
-        StartCoroutine(Test());  
+        StartCoroutine(Test());
 
 
     }
@@ -59,7 +60,7 @@ public class MainMenuHandler : MonoBehaviour
 
     void FadeOut(float dur, CanvasGroup newCanvas)
     {
-        
+
 
         Fade(0f, dur, newCanvas, () =>
         {
@@ -74,7 +75,7 @@ public class MainMenuHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds: 0.5f);
         FadeIn(0.5f, menuCanvas);
-        
+
     }
 
     public void ShowAnotherPanel(CanvasGroup to)
@@ -94,7 +95,7 @@ public class MainMenuHandler : MonoBehaviour
         FadeOut(0.5f, from);
         yield return new WaitForSeconds(0.1f);
         FadeIn(0.5f, to);
-        
+
     }
 
     private void ChangeAlpha(int a)
@@ -106,5 +107,10 @@ public class MainMenuHandler : MonoBehaviour
     {
         Debug.Log("Bye bye");
     }
-    
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
 }
