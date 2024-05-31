@@ -1,32 +1,37 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(-1000)]
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    public static GameManager I { get; private set; }
     public MainInput MainInput => _mainInput;
     public StatsModel StatsAct { get; private set; } // Aktualne staty gry
     public StatsModel StatsTeam { get; private set; } //Łączne staty zespołu
     public List<CharacterModel> Team { get; private set; }
+    [SerializeField]
+    List<GameObject> _minigamesPrefabs;
+    List<IMinigame> _minigames;
 
     MainInput _mainInput;
 
     private void Awake()
     {
-        if (Instance != null) return;
-        Instance = this;
+        if (I != null) return;
+        I = this;
         _mainInput = new();
         _mainInput.Enable();
         _mainInput.Main.Enable();
         StatsAct = new();
         StatsTeam = new();
+        _minigames = _minigamesPrefabs.Select(mp => mp.GetComponent<IMinigame>()).ToList();
     }
 
     private void OnEnable()
     {
-        if (Instance == null)
+        if (I == null)
             Awake();
     }
 
