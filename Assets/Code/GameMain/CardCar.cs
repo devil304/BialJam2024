@@ -46,12 +46,22 @@ public class CardCar : MonoBehaviour
         if(GameManager.I.Team.Count == 5)
         {
             ShowStartButton();
+            HideRecruitmentButton();
         }
         else
         {
             text.text = $"Current Team Size: {GameManager.I.Team.Count}/5";
         }
         
+    }
+
+    void HideRecruitmentButton()
+    {
+        CanvasGroup cg;
+        cg = RecruitButton.GetComponent<CanvasGroup>();
+        cg.DOFade(0, 0.5f);
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
     }
 
     void ShowStartButton()
@@ -118,6 +128,7 @@ public class CardCar : MonoBehaviour
             CharacterModel character = new CharacterModel();
             character.GenerateRandom();
             characters.Add(character);
+            InitCharacterSprites(character);
         }
         UpdateDeck(offset);
 
@@ -148,8 +159,10 @@ public class CardCar : MonoBehaviour
 
     void InitCharacterSprites(CharacterModel character)
     {
-        character.body = body[StrongRandom.RNG.Next(body.Count) - 1];
-        character.hair = hair[StrongRandom.RNG.Next(body.Count) - 1];
+        Debug.Log(StrongRandom.RNG.Next(body.Count));
+        character.body = body[StrongRandom.RNG.Next(body.Count)];
+        character.hair = hair[StrongRandom.RNG.Next(body.Count)];
+        character.head = head[StrongRandom.RNG.Next(body.Count)];
 
         switch (character.MainStat)
         {
@@ -160,7 +173,7 @@ public class CardCar : MonoBehaviour
                 }
             case 1:
                 {
-                    break;
+                    break; 
                 }
             case 2:
                 {
@@ -175,6 +188,7 @@ public class CardCar : MonoBehaviour
             case 4:
                 {
                     character.accessory = accessory[4];
+                    character.head = head[1];
                     break;
                 }
 

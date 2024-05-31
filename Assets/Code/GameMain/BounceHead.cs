@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class BounceHead : MonoBehaviour
@@ -6,9 +7,24 @@ public class BounceHead : MonoBehaviour
     [SerializeField] float _minY = 0.05f, _maxY = 0.1f;
     [SerializeField] float _minS = 0f, _maxS = 0.015f;
     [SerializeField] Transform _head;
+    [SerializeField] TextMeshProUGUI _name;
     float _minMaxY;
     float _minMaxS;
     [SerializeField] float _bunceSpeed;
+    [SerializeField] SpriteRenderer _headSR, _hairSR, _accSR, _bodySR, _deskSR, _shadowSR;
+    int _baseOrderHead, _baseOrderHair, _baseOrderAcc, _baseOrderBody, _baseOrderDesk, _baseOrderShadow;
+
+    private void Awake()
+    {
+        if (_headSR)
+            _baseOrderHead = _headSR.sortingOrder;
+    }
+
+    public void ShiftOrder(int offset)
+    {
+        if (_headSR)
+            _headSR.sortingOrder = _baseOrderHead + offset;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,5 +35,21 @@ public class BounceHead : MonoBehaviour
         _head.DOLocalMoveY(-_minMaxY, _bunceSpeed).SetLoops(-1, LoopType.Yoyo);
         _head.localScale = Vector3.one - Vector3.one * _minMaxS;
         _head.DOScale(Vector3.one + Vector3.one * _minMaxS, _bunceSpeed).SetLoops(-1, LoopType.Yoyo);
+    }
+
+    public void UpdateSprites(Sprite headSR, Sprite hairSR, Sprite accSR, string myName)
+    {
+        _headSR.sprite = headSR;
+        if (!hairSR || hairSR == null)
+            _hairSR.enabled = false;
+        else
+            _hairSR.enabled = true;
+        _hairSR.sprite = hairSR;
+        if (!accSR || accSR == null)
+            _accSR.enabled = false;
+        else
+            _accSR.enabled = true;
+        _accSR.sprite = accSR;
+        _name.text = myName;
     }
 }

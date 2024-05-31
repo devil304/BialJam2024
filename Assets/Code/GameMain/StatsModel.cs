@@ -110,6 +110,12 @@ public class StatsModel
         for (int i = 0; i < Stats.Length; i++)
             Stats[i] = Stats[i] / sum * 100f;
     }
+
+    public void Clamp()
+    {
+        for (int i = 0; i < Stats.Length; i++)
+            Stats[i] = Math.Clamp(Stats[i], 0f, 100f);
+    }
 }
 
 public enum StatsTypes { Code, Design, Art, Audio, QA }
