@@ -26,12 +26,12 @@ public class BugScript : MonoBehaviour
     void Start()
     {
         loopCorotuine = StartCoroutine(Loop());
-        GameManager.Instance.MainInput.Main.LMB.started += LefMouseButtonDown;
+        GameManager.I.MainInput.Main.LMB.started += LefMouseButtonDown;
     }
 
     private void OnDestroy()
     {
-        GameManager.Instance.MainInput.Main.LMB.started -= LefMouseButtonDown;
+        GameManager.I.MainInput.Main.LMB.started -= LefMouseButtonDown;
     }
 
     private void LefMouseButtonDown(InputAction.CallbackContext obj)
@@ -44,13 +44,13 @@ public class BugScript : MonoBehaviour
         else
         {
             Sound.PlaySoundAtTarget(transform, misses[StrongRandom.RNG.Next(misses.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
-        } 
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     Vector3 RandomCoordnidantes()

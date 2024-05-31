@@ -1,20 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class TrailMinigameManager : MonoBehaviour, IMinigame
 {
     [SerializeField] SpriteRenderer _spriteRenderer;
-    [SerializeField] EdgeCollider2D _collider;
+    [SerializeField] List<EdgeCollider2D> _trails = new List<EdgeCollider2D>();
+    [SerializeField] TextMeshProUGUI _scoreTxt;
+    [SerializeField] TextMeshProUGUI _timerUI;
+    [SerializeField] AnimationCurve _timeCurve;
+    [SerializeField] float _perfectScore = 25f;
+    int _currentTrail = 0;
     Texture2D _texture;
     int _index = 0;
     List<Vector2> _points;
     bool _mouseOver;
+    float _score = 0;
+    float _timer;
 
     public Action MinigameFinished { get; set; }
 
-    public bool IsDisplayed => throw new NotImplementedException();
+    public bool IsDisplayed => gameObject.activeInHierarchy;
+
+    private void Awake()
+    {
+        _trails.Shuffle();
+    }
 
     private void OnEnable()
     {
@@ -36,21 +49,32 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
         var pointInWorldSpriteBounds = _spriteRenderer.bounds.size / 2f;
         float scaleFactor = pointInWorld.x / pointInWorldSpriteBounds.x;
         _spriteRenderer.transform.localScale *= scaleFactor;
-        _points = _collider.points.Select(p => (Vector2)_collider.transform.TransformPoint(p)).ToList();
+        _currentTrail++;
+        if (_currentTrail >= _trails.Count)
+        {
+            _currentTrail = 0;
+            _trails.Shuffle();
+        }
+        _trails[_currentTrail].gameObject.SetActive(true);
+        _points = _trails[_currentTrail].points.Select(p => (Vector2)_trails[_currentTrail].transform.TransformPoint(p)).ToList();
         _index = 0;
+        _scoreTxt.text = $"Score: {0}";
+        _timer = _timeCurve.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.Art));
     }
 
     void Update()
     {
-        if (_index == _points.Count) return;
-        var mousPos = GameManager.Instance.MainInput.Main.MousePos.ReadValue<Vector2>();
+        if (_timer <= 0) return;
+        _timer -= Time.deltaTime;
+        _timerUI.text = $"";
+        if (_index >= _points.Count) return;
+        var mousPos = GameManager.I.MainInput.Main.MousePos.ReadValue<Vector2>();
         var worldPos = (Vector2)Camera.main.ScreenToWorldPoint(mousPos);
         if (_index <= 0)
         {
             if ((worldPos - _points[0]).sqrMagnitude < 0.11f * 0.11f && _mouseOver)
             {
                 _index = 1;
-
             }
             else
                 return;
@@ -58,6 +82,10 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
         CheckAllPoints(worldPos);
         _texture.SetPixel((int)(mousPos.x / 4), (int)(mousPos.y / 4), Color.red);
         _texture.Apply();
+        if (_index >= _points.Count)
+        {
+            MinigameFinished?.Invoke();
+        }
     }
 
     void CheckAllPoints(Vector2 worldPos)
@@ -67,12 +95,16 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
             if (_mouseOver && (worldPos - _points[i]).sqrMagnitude < 0.11f * 0.11f)
             {
                 if (i - _index > 0)
-                    Debug.Log($"Missed points: {i - _index}");
+                {
+                    _score -= (i - _index) / (float)_points.Count * _perfectScore * 0.8f;
+                }
                 else
-                    Debug.Log("Next point captured!");
+                    _score += 1f / _points.Count * _perfectScore;
                 _index = i + 1;
             }
         }
+        _score = Math.Clamp(_score, 0, _perfectScore);
+        _scoreTxt.text = $"Score: {_score:n2}";
     }
 
     public void MouseEnter()
@@ -84,13 +116,19 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     {
         _mouseOver = false;
         if (_index > 0 && _index < _points.Count)
-            Debug.Log("Left line");
+            _score -= _perfectScore * 0.05f;
+        _score = Math.Clamp(_score, 0, _perfectScore);
+        _scoreTxt.text = $"Score: {_score:n2}";
+    }
+
+    private void OnDisable()
+    {
+        _trails.ForEach(trail => trail.gameObject.SetActive(false));
     }
 
     public StatsModel GetStatsFromGame()
     {
-        //TODO
-        return new();
+        return new StatsModel(StatsTypes.Art, _score);
     }
 
     public void CloseGame()

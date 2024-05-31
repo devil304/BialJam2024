@@ -2,22 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Mono.Cecil.Cil;
 
 public class StatsModel
 {
-    public float Code { get; private set; } //0
-    public float Design { get; private set; } //1
-    public float Art { get; private set; } //2
-    public float Audio { get; private set; } //3
-    public float QA { get; private set; } //4
+    public float[] Stats = new float[5];
+    // public float Code { get; private set; } //0
+    // public float Design { get; private set; } //1
+    // public float Art { get; private set; } //2
+    // public float Audio { get; private set; } //3
+    // public float QA { get; private set; } //4
 
     public StatsModel((float, float, float, float, float) stats)
     {
-        Code = stats.Item1;
-        Design = stats.Item2;
-        Art = stats.Item3;
-        Audio = stats.Item4;
-        QA = stats.Item5;
+        Stats[0] = stats.Item1;
+        Stats[1] = stats.Item2;
+        Stats[2] = stats.Item3;
+        Stats[3] = stats.Item4;
+        Stats[4] = stats.Item5;
     }
 
     public StatsModel()
@@ -25,31 +27,39 @@ public class StatsModel
         Reset();
     }
 
+    public StatsModel(StatsTypes statType, float val)
+    {
+        Reset();
+        Stats[(int)statType] = val;
+    }
+
     public void Reset()
     {
-        Code = 0;
-        Design = 0;
-        Art = 0;
-        Audio = 0;
-        QA = 0;
+        Array.Fill(Stats, 0);
     }
 
     public void StatsModify((float, float, float, float, float) statsMod)
     {
-        Code += statsMod.Item1;
-        Design += statsMod.Item2;
-        Art += statsMod.Item3;
-        Audio += statsMod.Item4;
-        QA += statsMod.Item5;
+        Stats[0] = statsMod.Item1;
+        Stats[1] = statsMod.Item2;
+        Stats[2] = statsMod.Item3;
+        Stats[3] = statsMod.Item4;
+        Stats[4] = statsMod.Item5;
     }
 
     public void StatsModify(StatsModel statsMod)
     {
-        Code += statsMod.Code;
-        Design += statsMod.Design;
-        Art += statsMod.Art;
-        Audio += statsMod.Audio;
-        QA += statsMod.QA;
+        Stats = Stats.Select((v, i) => v + statsMod.Stats[i]).ToArray();
+    }
+
+    public void StatModify(StatsTypes statType, float val)
+    {
+        ModifyStat((int)statType, val);
+    }
+
+    public float GetStat(StatsTypes statType)
+    {
+        return Stats[(int)statType];
     }
 
     public void GenerateRandom()
@@ -83,33 +93,15 @@ public class StatsModel
 
     public void ModifyStat(int StatIndex, float val)
     {
-        switch (StatIndex)
-        {
-            case 0:
-                Code += val;
-                break;
-            case 1:
-                Design += val;
-                break;
-            case 2:
-                Art += val;
-                break;
-            case 3:
-                Audio += val;
-                break;
-            case 4:
-                QA += val;
-                break;
-        }
+        Stats[StatIndex] += val;
     }
 
     public void Normalize()
     {
-        var sum = Code + Design + Art + Audio + QA;
-        Code = Code / sum * 100f;
-        Design = Design / sum * 100f;
-        Art = Art / sum * 100f;
-        Audio = Audio / sum * 100f;
-        QA = QA / sum * 100f;
+        var sum = Stats.Sum();
+        for (int i = 0; i < Stats.Length; i++)
+            Stats[i] = Stats[i] / sum * 100f;
     }
 }
+
+public enum StatsTypes { Code, Design, Art, Audio, QA }
