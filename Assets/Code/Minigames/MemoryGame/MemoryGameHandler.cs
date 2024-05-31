@@ -11,6 +11,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 {
 
     public List<MemoryGameCardScript> flippedCards;
+    public List<GameObject> cards;
     public TMP_Text countdownTimerText;
     private float currTime;
     public float countdownTime;
@@ -32,9 +33,8 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
         countdownTime = timer.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.Design));
 
 
-        flippedCards = new();
-
-        InitCards(countdownTime);
+        ResetGame();
+        
     }
 
     void Start()
@@ -103,6 +103,26 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     }
 
 
+    void ResetGame()
+    {
+        Debug.Log("Reset?");
+
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Card")
+            {
+                child.gameObject.SetActive(true);
+                child.GetComponent<MemoryGameCardScript>().FlipBackCard();
+                child.GetComponent<MemoryGameCardScript>().isGameOver=false;
+            }
+        }
+
+
+        flippedCards = new();
+
+        InitCards(countdownTime);
+    }
+
     void GameOver(float score)
     {
 
@@ -126,11 +146,13 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     public void CloseGame()
     {
         transform.DOMove(new Vector3(0, 20, 0), 0.5f).OnComplete(() => this.gameObject.SetActive(false));
+        ResetGame();
     }
 
     public void ShowGame()
     {
         this.gameObject.SetActive(true);
+        ResetGame();
     }
 
     public bool IsDisplayed => gameObject.activeInHierarchy;

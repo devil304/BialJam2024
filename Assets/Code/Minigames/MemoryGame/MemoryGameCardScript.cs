@@ -111,8 +111,8 @@ public class MemoryGameCardScript : MonoBehaviour
     {
         Sound.PlaySoundAtTarget(transform, matchSound, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
         _anim.Kill(true);
-        CardTransform.DOScale(0f,0.25f)
-        .OnComplete(() => Destroy(this.gameObject));
+        CardTransform.DOScale(0f, 0.25f)
+        .OnComplete(() => gameObject.SetActive(false));
     }
 
     public void FlipBackCard()
