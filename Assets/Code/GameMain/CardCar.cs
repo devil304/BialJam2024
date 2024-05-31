@@ -128,8 +128,10 @@ public class CardCar : MonoBehaviour
         for (int i = 0; i < _cards.Length; i++)
         {
             _cards[i].GetComponent<CardScript>().character = characters[(i + offset) % characters.Count];
+
         }
         currentSelectedCharacter = _cards[3].GetComponent<CardScript>();
+        
     }
 
     public void Recruit()
@@ -144,4 +146,38 @@ public class CardCar : MonoBehaviour
         GameManager.I.FinishSelectingTeam();
     }
 
+    void InitCharacterSprites(CharacterModel character)
+    {
+        character.body = body[StrongRandom.RNG.Next(body.Count) - 1];
+        character.hair = hair[StrongRandom.RNG.Next(body.Count) - 1];
+
+        switch (character.MainStat)
+        {
+            case 0:
+                {
+                    character.accessory = accessory[0];
+                    break;
+                }
+            case 1:
+                {
+                    break;
+                }
+            case 2:
+                {
+                    character.accessory = accessory[2];
+                    break;
+                }
+            case 3:
+                {
+                    character.accessory = accessory[3];
+                    break;
+                }
+            case 4:
+                {
+                    character.accessory = accessory[4];
+                    break;
+                }
+
+        }
+    }
 }
