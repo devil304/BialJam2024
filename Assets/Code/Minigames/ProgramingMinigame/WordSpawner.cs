@@ -63,13 +63,13 @@ public class WordSpawner : MonoBehaviour {
 	}
 
 	public void EndGame() {
+		wordToWriteLabel.text = "END";
 		shouldSpawn = false;
 		tryFocus = false;
 		inputField.onDeselect.RemoveListener(StartTryingFocusInput);
 		inputField.onSelect.RemoveListener(StopTryingFocusInput);
 		inputField.ReleaseSelection();
 		inputField.DeactivateInputField();
-		wordToWriteLabel.text = "END";
 	}
 
 	private void SetNewWord() {
