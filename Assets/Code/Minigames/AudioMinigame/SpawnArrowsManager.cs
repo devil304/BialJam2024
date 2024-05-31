@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class SpawnArrowsManager : MonoBehaviour
@@ -21,9 +22,13 @@ public class SpawnArrowsManager : MonoBehaviour
 
 		Tween startSpawnTweenCall;
 
+		[SerializeField]
+		TextMeshProUGUI timeLabel;
+
     // Update is called once per frame
     void Update()
     {
+			UpdateTime();
 			if (gameTime >= maxGameTime || !shouldSpawn) return;
 
 			gameTime += Time.deltaTime;
@@ -33,6 +38,14 @@ public class SpawnArrowsManager : MonoBehaviour
 				SpawnNewArrow();
 			}
     }
+
+		private void UpdateTime() {
+			float timeDiff = maxGameTime - gameTime;
+			if(timeDiff < 0) timeDiff = 0;
+			TimeSpan gameTimeSpan = TimeSpan.FromSeconds(timeDiff);
+			string milisecondsTime = gameTimeSpan.Milliseconds.ToString();
+			timeLabel.text = $"{gameTimeSpan.Seconds}:{milisecondsTime}";
+		}
 
 		void SpawnNewArrow() {
 			int arrowIndex = UnityEngine.Random.Range(0, 4);

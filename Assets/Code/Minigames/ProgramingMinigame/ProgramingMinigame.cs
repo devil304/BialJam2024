@@ -51,7 +51,7 @@ public class ProgramingMinigame : MonoBehaviour, IMinigame
 	}
 
 	public void StartGame() {
-		wordSpawner.StartGame(30f);
+		wordSpawner.StartGame(GetTimeFromTeam());
 	}
 
 	[SerializeField]
