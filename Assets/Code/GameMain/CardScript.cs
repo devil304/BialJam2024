@@ -16,8 +16,8 @@ public class CardScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = character.NickName;
-        Debug.Log(character.NickName);
+        //text.text = character.NickName;
+        //Debug.Log(character.NickName);
 
         characterModel.UpdateSprites(character.head, character.hair, character.accessory, character.NickName);
 
