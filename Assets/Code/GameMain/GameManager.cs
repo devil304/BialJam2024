@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         }
         _minigames = _minigamesPrefabs.Select(mp => mp.GetComponent<IMinigame>()).ToList();
         DontDestroyOnLoad(gameObject);
+        DataObjectAccess.ClearNicks();
     }
 
     private void OnEnable()
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
         }
         StatsTeam.Normalize();
         SceneManager.LoadScene(_gameplaySceneIndex);
+
     }
 
     private void Update()
