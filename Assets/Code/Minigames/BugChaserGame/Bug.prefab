@@ -29,8 +29,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.03, y: -0.06, z: -0.48}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: -0.005, y: -0.01, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3367932149377307684, guid: 0d39fdf641453684a8f46ff51f21f748, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.038758278, a: 1}
+  m_Sprite: {fileID: -1927273192739970689, guid: e0c63713f086f8d45bf48b2463f1c562, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 70567ca2bab27cc44880b0b0d910cc4c, type: 3}
   - {fileID: 8300000, guid: fcfda180671f2e04da1891a64fc68cab, type: 3}
   walking: {fileID: 8300000, guid: e7dec20b2cbd8264a8d1a49ea7f40754, type: 3}
+  ded: {fileID: 2495112854947463680, guid: ab1b752f16fc4a4458a2084ec96c6ce0, type: 3}
   handler: {fileID: 0}
   swapper: {fileID: 0}
 --- !u!70 &430906246737014709
@@ -149,5 +150,5 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4, y: 3}
+  m_Size: {x: 27, y: 25}
   m_Direction: 0

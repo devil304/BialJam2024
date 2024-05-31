@@ -460,6 +460,7 @@ GameObject:
   - component: {fileID: 572448468}
   - component: {fileID: 572448467}
   - component: {fileID: 572448466}
+  - component: {fileID: 572448469}
   m_Layer: 5
   m_Name: BStartGame
   m_TagString: Untagged
@@ -530,7 +531,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 572448467}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 592623276}
+        m_TargetAssemblyTypeName: CardCar, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &572448467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,6 +582,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572448464}
   m_CullTransparentMesh: 1
+--- !u!225 &572448469
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572448464}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &592623273
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +684,9 @@ MonoBehaviour:
   - {fileID: 4086895658025638556, guid: 6e5c265cf9949874e9ab7721ebccb509, type: 3}
   - {fileID: 2007579494698807958, guid: 95bfe90c53313e9429e3687527df0de1, type: 3}
   currentSelectedCharacter: {fileID: 0}
+  StartButton: {fileID: 572448466}
+  RecruitButton: {fileID: 819340713}
+  text: {fileID: 1989581240}
 --- !u!1 &706998870
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,6 +831,7 @@ GameObject:
   - component: {fileID: 819340715}
   - component: {fileID: 819340714}
   - component: {fileID: 819340713}
+  - component: {fileID: 819340716}
   m_Layer: 5
   m_Name: BRecruit
   m_TagString: Untagged
@@ -873,7 +902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 819340714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 592623276}
+        m_TargetAssemblyTypeName: CardCar, Assembly-CSharp
+        m_MethodName: Recruit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &819340714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,6 +953,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 819340711}
   m_CullTransparentMesh: 1
+--- !u!225 &819340716
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819340711}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &836262232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 794480752963951252, guid: ad24cc2388bd75848b9e5bc42d4a62c9, type: 3}

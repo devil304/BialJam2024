@@ -19,6 +19,8 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     [SerializeField]
     AnimationCurve timer;
 
+    [SerializeField] List<Sprite> sprites;
+
     public Action MinigameFinished { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -65,7 +67,9 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
             if (child.tag == "Card")
             {
                 int random = StrongRandom.RNG.Next(idList.Count);
-                child.GetComponent<MemoryGameCardScript>().cardNum = idList[random];
+                MemoryGameCardScript cs = child.GetComponent<MemoryGameCardScript>();
+                cs.cardNum = idList[random];
+                cs.rewers.GetComponent<SpriteRenderer>().sprite = sprites[idList[random]-1];
                 idList.RemoveAt(random);
             }
         }

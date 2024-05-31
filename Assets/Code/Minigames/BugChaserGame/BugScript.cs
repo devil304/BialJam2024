@@ -15,6 +15,8 @@ public class BugScript : MonoBehaviour
     public List<AudioClip> misses;
     public AudioClip walking;
 
+    public Sprite ded;
+
 
     Vector3 coordinates;
     public BugChaserHandler handler;
@@ -75,13 +77,16 @@ public class BugScript : MonoBehaviour
             RandomCoordnidantes();
             dur = (coordinates - transform.localPosition).magnitude / 1f;
             transform.DOLocalMove(coordinates, dur).SetEase(Ease.Linear);
+
+            //transform.DORotate(Vector3.forward*StrongRandom.RNG.Next(0,360),1f, RotateMode.Fast);
         }
     }
 
     IEnumerator WaitAfterDead()
     {
+        GetComponent<SpriteRenderer>().sprite = ded;
         source.DOFade(0, 0.5f);
-        Debug.Log("ded");
+        transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
         StopCoroutine(loopCorotuine);
         transform.DOKill();
 

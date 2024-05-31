@@ -158,7 +158,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pizza (1)_0: -4088273504746612161
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

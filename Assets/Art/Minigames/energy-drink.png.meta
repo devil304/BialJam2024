@@ -233,7 +233,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      energy-drink_0: 5531369274929529614
+      energy-drink_1: 2758697924993095815
+      energy-drink_2: 5354688047119939729
+      energy-drink_3: -6110125371222216312
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
