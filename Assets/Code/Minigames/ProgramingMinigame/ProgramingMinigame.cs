@@ -22,6 +22,7 @@ public class ProgramingMinigame : MonoBehaviour, IMinigame
 			transform.localScale = new Vector3(0, 0, 0);
 			transform.DOScale(1f, initializationTime);
 			transform.DOJump(Vector3.zero, 1f, 1, initializationTime);
+			wordSpawner.SetupGame();
 			DOVirtual.DelayedCall(initializationTime + 0.5f, StartGame, false);
 			gameOverTween = DOVirtual.DelayedCall(35f, GameOver, false);
 			Debug.Log("Show Game");
