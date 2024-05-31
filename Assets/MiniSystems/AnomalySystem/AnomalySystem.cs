@@ -17,6 +17,13 @@ public class AnomalySystem : MonoBehaviour
 	private GameObject activeCard;
 
 	private List<Anomaly> activeAnomalies;
+
+	[SerializeField]
+	private StatsPanel positiveStatsPanel;
+	[SerializeField]
+	private StatsPanel negativeStatsPanel;
+	[SerializeField]
+	private StatsPanel neutralStatsPanel;
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
