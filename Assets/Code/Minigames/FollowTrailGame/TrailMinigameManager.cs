@@ -78,6 +78,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
                 return;
         }
         if (_timer <= 0) return;
+        if (_index >= _points.Count) return;
         _timer -= Time.deltaTime;
         TimeSpan timeSpan = TimeSpan.FromSeconds(_timer);
         _timerUI.text = $"Time left {timeSpan.Seconds:D2}:{timeSpan.Milliseconds / 10:D2}";
@@ -87,10 +88,10 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
             {
                 _score -= (_points.Count - _index) / (float)_points.Count * _perfectScore * 0.1f;
                 DisplayScore();
+                MinigameFinished?.Invoke();
             }
             return;
         }
-        if (_index >= _points.Count) return;
         CheckAllPoints(worldPos);
         _texture.SetPixel((int)(mousPos.x / 4), (int)(mousPos.y / 4), _drawColor);
         _texture.Apply();

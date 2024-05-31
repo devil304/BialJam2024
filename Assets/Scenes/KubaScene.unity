@@ -350,7 +350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &60948527
 Transform:
   m_ObjectHideFlags: 0
@@ -561,6 +561,9 @@ MonoBehaviour:
   - float
   - return
   - console.log
+  - for
+  - foreach
+  - bool
   - if (a <= b)
   wordToWriteLabel: {fileID: 1650765425}
   scoreLabel: {fileID: 970442465}
@@ -1985,7 +1988,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1.5, y: 1.5}
+  m_SizeDelta: {x: 1.5, y: 0.5}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &970442465
 MonoBehaviour:
@@ -2034,7 +2037,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.3
+  m_fontSize: 0.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2717,7 +2720,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 15, y: 8}
+  m_SizeDelta: {x: 15, y: 8.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1417589669
 MonoBehaviour:
