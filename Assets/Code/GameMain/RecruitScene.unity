@@ -1150,7 +1150,6 @@ GameObject:
   - component: {fileID: 1145206047}
   - component: {fileID: 1145206046}
   - component: {fileID: 1145206049}
-  - component: {fileID: 1145206050}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1276,20 +1275,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!114 &1145206050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1145206045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e2762b0601072b4aba2111e0265b035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _minigamesPrefabs: []
-  _debug: 0
 --- !u!1 &1209193027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 794480752963951252, guid: ad24cc2388bd75848b9e5bc42d4a62c9, type: 3}
@@ -1738,6 +1723,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad24cc2388bd75848b9e5bc42d4a62c9, type: 3}
+--- !u!1 &1954864434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1954864436}
+  - component: {fileID: 1954864437}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1954864436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954864434}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7303741, y: 1.4157919, z: 2454.6685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1954864437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1954864434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2762b0601072b4aba2111e0265b035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _minigamesPrefabs: []
+  _gameplaySceneIndex: 2
+  _debug: 0
 --- !u!1 &1985735563 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 794480752963951252, guid: ad24cc2388bd75848b9e5bc42d4a62c9, type: 3}
@@ -1891,3 +1923,4 @@ SceneRoots:
   - {fileID: 1145206048}
   - {fileID: 592623275}
   - {fileID: 36843528}
+  - {fileID: 1954864436}

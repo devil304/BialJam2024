@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-1000)]
 public class GameManager : MonoBehaviour
@@ -14,7 +15,9 @@ public class GameManager : MonoBehaviour
     public List<CharacterModel> Team { get; private set; } = new();
     [SerializeField]
     List<GameObject> _minigamesPrefabs;
-    List<IMinigame> _minigames;
+    [SerializeField]
+    int _gameplaySceneIndex = 2;
+    public List<IMinigame> _minigames;
 
     MainInput _mainInput;
 
@@ -40,6 +43,7 @@ public class GameManager : MonoBehaviour
             FinishSelectingTeam();
         }
         _minigames = _minigamesPrefabs.Select(mp => mp.GetComponent<IMinigame>()).ToList();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()
@@ -51,6 +55,9 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         I = null;
+        _mainInput.Main.Disable();
+        _mainInput.Disable();
+        _mainInput.Dispose();
     }
 
     public void StartGame()
@@ -71,6 +78,21 @@ public class GameManager : MonoBehaviour
             StatsTeam.StatsModify(character.CharStats);
         }
         StatsTeam.Normalize();
+        SceneManager.LoadScene(_gameplaySceneIndex);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoadMenu();
+        }
+    }
+
+    public void LoadMenu()
+    {
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
 
     public void ModifyStats((float, float, float, float, float) statsMod)
