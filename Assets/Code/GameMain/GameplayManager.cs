@@ -67,6 +67,8 @@ public class GameplayManager : MonoBehaviour
                 _actMG = GameManager.I._minigames[StrongRandom.RNG.Next(0, 5)];
                 _actMG.ShowGame();
                 _actMG.MinigameFinished += MGFinished;
+
+                //!Tutaj koniec gry
                 return;
             }
         }
