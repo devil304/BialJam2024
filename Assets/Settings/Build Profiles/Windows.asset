@@ -19,6 +19,8 @@ MonoBehaviour:
     rid: 5385459206531579904
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/Scenes/MainMenu.unity
+  - m_enabled: 1
     m_path: Assets/Code/GameMain/RecruitScene.unity
   - m_enabled: 1
     m_path: Assets/Scenes/MainGameScene.unity
