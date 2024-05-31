@@ -73,6 +73,8 @@ public class WordSpawner : MonoBehaviour {
 		inputField.DeactivateInputField();
 	}
 
+	public int GetScore() => score;
+
 	private void SetNewWord() {
 		wordToWrite = GetNewWord();
 		wordToWriteLabel.text = wordToWrite.Replace(" ", "_");

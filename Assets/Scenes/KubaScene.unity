@@ -252,6 +252,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6c311cde662c746bdc0243174b95dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamSkillCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 10
+      inSlope: 0.15
+      outSlope: 0.15
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 25
+      inSlope: 0.15
+      outSlope: 0.15
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   wordSpawner: {fileID: 224766212}
 --- !u!1001 &42462047
 PrefabInstance:
@@ -1272,6 +1296,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e1116c0b49367449b0e22ba8419ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teamSkillCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 10
+      inSlope: 0.25
+      outSlope: 0.25
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 100
+      value: 35
+      inSlope: 0.25
+      outSlope: 0.25
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   spawnArrowsManager: {fileID: 1557422595}
   hitPointsArrowManager: {fileID: 1568765470}
 --- !u!1001 &493050454
@@ -1482,6 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2762b0601072b4aba2111e0265b035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minigamesPrefabs: []
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0

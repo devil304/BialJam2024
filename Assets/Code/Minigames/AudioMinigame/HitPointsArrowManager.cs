@@ -94,4 +94,6 @@ public class HitPointsArrowManager : MonoBehaviour
 		return 1;
 	}
 
+	public int GetScore() => score;
+
 }
