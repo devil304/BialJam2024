@@ -220,7 +220,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &6205884252831077345
@@ -406,7 +406,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 4.86}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &9007258984417848496
@@ -532,9 +532,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (7)
@@ -642,9 +666,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (11)
@@ -752,9 +800,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (12)
@@ -862,9 +934,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (8)
@@ -972,9 +1068,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (15)
@@ -1082,9 +1202,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab
@@ -1192,9 +1336,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (3)
@@ -1302,9 +1470,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (14)
@@ -1412,9 +1604,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (2)
@@ -1522,9 +1738,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (4)
@@ -1632,9 +1872,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (1)
@@ -1742,9 +2006,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (13)
@@ -1852,9 +2140,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (9)
@@ -1962,9 +2274,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (6)
@@ -2072,9 +2408,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (10)
@@ -2182,9 +2542,33 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.x
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Size.y
+      value: 5.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -628527381061854565, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+      objectReference: {fileID: 21300000, guid: 25f21f7ed8846db43936d2e2f051c365, type: 3}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902512164784254271, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3760465207655416474, guid: 78f2e6f6c5796764a98061a6f2a8c03d, type: 3}
       propertyPath: m_Name
       value: CardPrefab (5)
