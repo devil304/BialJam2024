@@ -40,6 +40,7 @@ public class WordSpawner : MonoBehaviour {
 
 	public void SetupGame() {
 		score = 0;
+		scoreLabel.text = "0";
 		wordToWriteLabel.text = "";
 	}
 
