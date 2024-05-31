@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public MainInput MainInput => _mainInput;
     public StatsModel StatsAct { get; private set; } // Aktualne staty gry
     public StatsModel StatsTeam { get; private set; } //Łączne staty zespołu
-    public List<CharacterModel> Team { get; private set; }
+    public List<CharacterModel> Team { get; private set; }= new();
     [SerializeField]
     List<GameObject> _minigamesPrefabs;
     List<IMinigame> _minigames;
