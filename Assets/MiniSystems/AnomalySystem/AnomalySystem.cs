@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,7 +18,7 @@ public class AnomalySystem : MonoBehaviour
 
 	private AnomalyCard activeCard;
 
-	private List<Anomaly> activeAnomalies;
+	private Anomaly activeAnomaly;
 
 	[SerializeField]
 	private StatsPanel positiveStatsPanel;
@@ -24,11 +26,31 @@ public class AnomalySystem : MonoBehaviour
 	private StatsPanel negativeStatsPanel;
 	[SerializeField]
 	private StatsPanel neutralStatsPanel;
+
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
 		alertInfoText.OnJumpingTextEnd += DisplayAnomaly;
 		decisionCanvas.DOFade(0, 0);
+		LoadAllAnomalyData();
+	}
+
+	private void LoadAllAnomalyData() {
+		Debug.Log("LoadAddAnomalyData");
+		try {
+			var loadedObjects = Resources.LoadAll("MiniSystems/AnomalySystem/Anomalies", typeof(AnomalyData)).Cast<AnomalyData>();
+			Debug.Log("LoadAddAnomalyData");
+			Debug.Log(loadedObjects.Count());
+			foreach(var go in loadedObjects)
+			{
+					Debug.Log(go.title);
+			}
+		}
+		catch (Exception e)
+		{
+			Debug.Log("Proper Method failed with the following exception: ");
+			Debug.Log(e);
+		}
 	}
 
 	void DisplayAnomaly()
