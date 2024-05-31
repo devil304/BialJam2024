@@ -20,11 +20,13 @@ public class AnomalyCard : MonoBehaviour
 	Vector2 mouseStartPosition;
 	AnomalyReaction? anomalySelectedReaction;
 
+	Vector3 cardDefaultPosition = new Vector3(0, 0.7f, 0);
+
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
 			transform.position = new Vector3(0, -100f, 0);
-			transform.DOMove(new Vector3(0, 0.7f, 0), 1f, false);
+			transform.DOMove(cardDefaultPosition, 1f, false);
 			// transform.DOShakePosition(0.5f, 5, 20, 80, false, true).SetDelay(1f);
 			transform.DOShakeRotation(0.25f, 5, 20, 80, true).SetDelay(1f);
 			DOVirtual.DelayedCall(1f, EnableInputs, false);
@@ -41,7 +43,7 @@ public class AnomalyCard : MonoBehaviour
 		float mouseDistance = Vector2.Distance(mouseStartPosition, mouseActivePosition);
 		if(Mathf.Abs(mouseMovement.normalized.x) > 0.7f && mouseDistance > 150) {
 			transform.DORotateQuaternion(Quaternion.Euler(0, 0, 45 * mouseMovement.normalized.x), 1f);
-			transform.DOMove(Vector3.zero, 1f);
+			transform.DOMove(cardDefaultPosition, 1f);
 			anomalySelectedReaction = mouseMovement.normalized.x < 0 ? AnomalyReaction.YES : AnomalyReaction.NO;
 		} else if (mouseMovement.normalized.y > 0.7f && mouseDistance > 150) {
 			anomalySelectedReaction = AnomalyReaction.IGNORE;
@@ -50,7 +52,7 @@ public class AnomalyCard : MonoBehaviour
 		} else {
 			anomalySelectedReaction = null;
 			transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1f);
-			transform.DOMove(Vector3.zero, 1f);
+			transform.DOMove(cardDefaultPosition, 1f);
 		}
 	}
 	private void OnMouseEnter() {
@@ -89,9 +91,10 @@ public class AnomalyCard : MonoBehaviour
 		GameManager.I.MainInput.Main.MousePos.performed -= OnMouseMove;
 	}
 
-	public void SetupCard(string description, Sprite imageSprite) {
-		descriptionLabel.text = description;
-		cardImage.sprite = imageSprite;
+	public void SetupCard(AnomalyData anomalyData) {
+		titleLabel.text = anomalyData.title;
+		descriptionLabel.text = anomalyData.description;
+		cardImage.sprite = anomalyData.imageSprite;
 	}
 
 	public void HandleNegative()

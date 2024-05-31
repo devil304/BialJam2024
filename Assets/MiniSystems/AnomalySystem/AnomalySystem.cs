@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,7 +18,7 @@ public class AnomalySystem : MonoBehaviour
 
 	private AnomalyCard activeCard;
 
-	private List<Anomaly> activeAnomalies;
+	private Anomaly activeAnomaly;
 
 	[SerializeField]
 	private StatsPanel positiveStatsPanel;
@@ -24,18 +26,53 @@ public class AnomalySystem : MonoBehaviour
 	private StatsPanel negativeStatsPanel;
 	[SerializeField]
 	private StatsPanel neutralStatsPanel;
+	private List<AnomalyData> allAnomaliesData;
+	private List<AnomalyData> drawdedAnomalies = new List<AnomalyData>();
+
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
 		alertInfoText.OnJumpingTextEnd += DisplayAnomaly;
 		decisionCanvas.DOFade(0, 0);
+		LoadAllAnomalyData();
+	}
+
+	private void LoadAllAnomalyData() {
+		try {
+			drawdedAnomalies = new List<AnomalyData>();
+			allAnomaliesData = Resources.LoadAll("Anomalies/", typeof(AnomalyData)).Cast<AnomalyData>().ToList();
+		}
+		catch (Exception e)
+		{
+			Debug.Log("Proper Method failed with the following exception: ");
+			Debug.Log(e);
+		}
+	}
+
+	public AnomalyData DrawAnomaly() {
+		if(allAnomaliesData.Count <= 0) LoadAllAnomalyData();
+		AnomalyData drawdedAnomalyData = allAnomaliesData[UnityEngine.Random.Range(0, allAnomaliesData.Count)];
+
+		allAnomaliesData.Remove(drawdedAnomalyData);
+		drawdedAnomalies.Add(drawdedAnomalyData);
+		return drawdedAnomalyData;
+	}
+
+	public void CreateAnomaly() {
+		activeAnomaly = new Anomaly(DrawAnomaly());
+		positiveStatsPanel.SetupStats(activeAnomaly.GetStatsModel(AnomalyReaction.YES));
+		negativeStatsPanel.SetupStats(activeAnomaly.GetStatsModel(AnomalyReaction.NO));
+		neutralStatsPanel.SetupStats(activeAnomaly.GetStatsModel(AnomalyReaction.IGNORE));
 	}
 
 	void DisplayAnomaly()
 	{
-		Debug.Log("ANOMALY CAN BE DISPLAYED!");
+		CreateAnomaly();
 		decisionCanvas.DOFade(1f, 1f).SetDelay(1f);
 		activeCard = Instantiate(anomalyCardPrefab, transform.position, Quaternion.identity);
+		Debug.Log("DisplayAnomaly before Setup card 2");
+		Debug.Log(activeAnomaly.GetAnomalyData());
+		activeCard.SetupCard(activeAnomaly.GetAnomalyData());
 		activeCard.transform.parent = transform;
 		activeCard.OnDecisionActions += OnDecisionMake;
 
@@ -69,6 +106,7 @@ public class AnomalySystem : MonoBehaviour
 		activeCard.OnDecisionActions -= OnDecisionMake;
 		DOVirtual.DelayedCall(1f, () =>
 		{
+			GameManager.I.ModifyStats(activeAnomaly.GetStatsModel(decision));
 			activeCard = null;
 			alertInfoText.gameObject.SetActive(true);
 		}, false);

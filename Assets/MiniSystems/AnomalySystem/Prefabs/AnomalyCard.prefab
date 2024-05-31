@@ -709,6 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionLabel: {fileID: 337730652576896782}
+  titleLabel: {fileID: 4942294512857625527}
   cardImage: {fileID: 4705004787719003178}
 --- !u!61 &7486969393616854455
 BoxCollider2D:

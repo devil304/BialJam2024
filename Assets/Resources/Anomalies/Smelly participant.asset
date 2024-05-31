@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 782ef314913d83a4bb99a1aacc398dff, type: 3}
-  m_Name: The last chinese soup
+  m_Name: Smelly participant
   m_EditorClassIdentifier: 
-  title: The last chinese soup
+  title: Smelly participant
   imageSprite: {fileID: 0}
-  description: "It\u2019s night, all the shops are closed and we are hungry. There\u2019s
-    only one chinese soup for 5 of us\u2026 Should we share?"
+  description: "Sniff, sniff\u2026 Oh no, there\u2019s a smelly participant here.
+    We\u2019re not sure who is this but it gets on our nerves. Should we investigate
+    and send this person into the shower?"
   positiveStatsModel:
-    codeStats: 5
-    qaStats: 5
-    audioStats: 5
-    artStats: 5
-    designStats: 5
+    codeStats: 0
+    qaStats: 0
+    audioStats: 0
+    artStats: 0
+    designStats: 0
   negativeStatsModel:
     codeStats: 0
     qaStats: 0
@@ -34,20 +35,20 @@ MonoBehaviour:
     audioStats: 0
     artStats: 0
     designStats: 0
-  randomPositive: 0
+  randomPositive: 1
   randomNegative: 1
   randomNeutral: 0
-  sharedWinnerBetweenEffects: 0
+  sharedWinnerBetweenEffects: 1
   randomPositiveStatsList:
-    winerPoints: 0
-    winerCount: 0
-    loserPoints: 0
-    loserCount: 0
-  randomNegativeStatsList:
-    winerPoints: 15
+    winerPoints: -25
     winerCount: 1
-    loserPoints: 4
-    loserCount: -5
+    loserPoints: 15
+    loserCount: 4
+  randomNegativeStatsList:
+    winerPoints: 0
+    winerCount: 1
+    loserPoints: -15
+    loserCount: 4
   randomNeutralStatsList:
     winerPoints: 0
     winerCount: 0
