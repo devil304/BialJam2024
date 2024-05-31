@@ -11,24 +11,51 @@ public class BugScript : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
+    public List<AudioClip> hits;
+    public List<AudioClip> misses;
+    public AudioClip walking;
+
+
     Vector3 coordinates;
     public BugChaserHandler handler;
     public Transform swapper;
+    bool canHit;
+
+    Coroutine loopCorotuine;
 
     void Start()
     {
-        StartCoroutine(Loop());
+        loopCorotuine = StartCoroutine(Loop());
+        GameManager.Instance.MainInput.Main.LMB.started += LefMouseButtonDown;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.MainInput.Main.LMB.started -= LefMouseButtonDown;
+    }
+
+    private void LefMouseButtonDown(InputAction.CallbackContext obj)
+    {
+        if (canHit)
+        {
+            Sound.PlaySoundAtTarget(transform, hits[StrongRandom.RNG.Next(hits.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
+            StartCoroutine(WaitAfterDead());
+        }
+        else
+        {
+            Sound.PlaySoundAtTarget(transform, misses[StrongRandom.RNG.Next(misses.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
+        } 
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     Vector3 RandomCoordnidantes()
     {
-        coordinates = new Vector3(StrongRandom.RNG.Next(-900, 900) /2000f, StrongRandom.RNG.Next(-900, 900) / 2000f,0);
+        coordinates = new Vector3(StrongRandom.RNG.Next(-900, 900) / 2000f, StrongRandom.RNG.Next(-900, 900) / 2000f, 0);
         return coordinates;
     }
 
@@ -47,9 +74,27 @@ public class BugScript : MonoBehaviour
         }
     }
 
-    private void OnMouseDown()
+    IEnumerator WaitAfterDead()
     {
-        handler.score += 1;
-        Destroy(this.gameObject);
+        Debug.Log("ded");
+        StopCoroutine(loopCorotuine);
+        transform.DOKill();
+
+        yield return new WaitForSeconds(2);
+        {
+            handler.score += 1;
+            Destroy(this.gameObject);
+        }
+
+    }
+
+    private void OnMouseEnter()
+    {
+        canHit = true;
+    }
+
+    private void OnMouseExit()
+    {
+        canHit = false;
     }
 }

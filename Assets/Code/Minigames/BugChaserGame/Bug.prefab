@@ -101,6 +101,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5fd1dc82243da49bd4b031c3259bb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hits:
+  - {fileID: 8300000, guid: cb38284b86949b54092d0b5f23076e97, type: 3}
+  - {fileID: 8300000, guid: 5196e0b5f54c07b44bc92da7af946a42, type: 3}
+  - {fileID: 8300000, guid: 085ad01534051d54d82d3e8c5d0e30d2, type: 3}
+  - {fileID: 8300000, guid: 22cb64ee25637854492f005e55a90064, type: 3}
+  misses:
+  - {fileID: 8300000, guid: 68311d080a49f6f489b19df92da9803b, type: 3}
+  - {fileID: 8300000, guid: c77ce6c303fa8594c99882197bfd0762, type: 3}
+  - {fileID: 8300000, guid: 70567ca2bab27cc44880b0b0d910cc4c, type: 3}
+  - {fileID: 8300000, guid: fcfda180671f2e04da1891a64fc68cab, type: 3}
+  walking: {fileID: 8300000, guid: e7dec20b2cbd8264a8d1a49ea7f40754, type: 3}
   handler: {fileID: 0}
   swapper: {fileID: 0}
 --- !u!70 &430906246737014709

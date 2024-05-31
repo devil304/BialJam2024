@@ -72,6 +72,15 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LMB"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb3a3d94-9d22-4ba4-8409-a09fe1177107"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -127,6 +136,17 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DownArrow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2939f099-4533-4ae1-9615-20fd4001fb2c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LMB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -203,6 +223,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         m_Main_UpArrow = m_Main.FindAction("UpArrow", throwIfNotFound: true);
         m_Main_RightArrow = m_Main.FindAction("RightArrow", throwIfNotFound: true);
         m_Main_DownArrow = m_Main.FindAction("DownArrow", throwIfNotFound: true);
+        m_Main_LMB = m_Main.FindAction("LMB", throwIfNotFound: true);
     }
 
     ~@MainInput()
@@ -274,6 +295,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Main_UpArrow;
     private readonly InputAction m_Main_RightArrow;
     private readonly InputAction m_Main_DownArrow;
+    private readonly InputAction m_Main_LMB;
     public struct MainActions
     {
         private @MainInput m_Wrapper;
@@ -283,6 +305,7 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         public InputAction @UpArrow => m_Wrapper.m_Main_UpArrow;
         public InputAction @RightArrow => m_Wrapper.m_Main_RightArrow;
         public InputAction @DownArrow => m_Wrapper.m_Main_DownArrow;
+        public InputAction @LMB => m_Wrapper.m_Main_LMB;
         public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -307,6 +330,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @DownArrow.started += instance.OnDownArrow;
             @DownArrow.performed += instance.OnDownArrow;
             @DownArrow.canceled += instance.OnDownArrow;
+            @LMB.started += instance.OnLMB;
+            @LMB.performed += instance.OnLMB;
+            @LMB.canceled += instance.OnLMB;
         }
 
         private void UnregisterCallbacks(IMainActions instance)
@@ -326,6 +352,9 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
             @DownArrow.started -= instance.OnDownArrow;
             @DownArrow.performed -= instance.OnDownArrow;
             @DownArrow.canceled -= instance.OnDownArrow;
+            @LMB.started -= instance.OnLMB;
+            @LMB.performed -= instance.OnLMB;
+            @LMB.canceled -= instance.OnLMB;
         }
 
         public void RemoveCallbacks(IMainActions instance)
@@ -395,5 +424,6 @@ public partial class @MainInput: IInputActionCollection2, IDisposable
         void OnUpArrow(InputAction.CallbackContext context);
         void OnRightArrow(InputAction.CallbackContext context);
         void OnDownArrow(InputAction.CallbackContext context);
+        void OnLMB(InputAction.CallbackContext context);
     }
 }
