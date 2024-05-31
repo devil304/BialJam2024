@@ -13,20 +13,22 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 	public void CloseGame() {
 		int score = hitPointsArrowManager.GetScore();
 		GameManager.I.ModifyStats(new StatsModel((0f,0f,0f,score/25.0f,0f)));
-		transform.localScale = new Vector3(1, 1, 1);
-		transform.DOScale(0, initializationTime);
-		transform.DOJump(Vector3.zero, 1f, 1, initializationTime);
+		gameContainer.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+		gameContainer.transform.DOScale(0, initializationTime);
+		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime);
 		spawnArrowsManager.SetGameTime(0f);
-		DOVirtual.DelayedCall(initializationTime, () => gameObject.SetActive(false), false);
+		DOVirtual.DelayedCall(initializationTime, () => gameContainer.SetActive(false), false);
 		gameOverTween?.Kill();
+		gameMonitor.transform.DOMoveY(-10f, 0.5f).SetDelay(1f);
 		Debug.Log("Close Game");
 	}
 
 	public void ShowGame() {
-		gameObject.SetActive(true);
-		transform.localScale = new Vector3(0, 0, 0);
-		transform.DOScale(1f, initializationTime);
-		transform.DOJump(Vector3.zero, 1f, 1, initializationTime);
+		gameMonitor.transform.DOMoveY(0f, 0.5f);
+		gameContainer.SetActive(true);
+		gameContainer.transform.localScale = new Vector3(0, 0, 0);
+		gameContainer.transform.DOScale(0.7f, initializationTime).SetDelay(0.5f);
+		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime).SetDelay(0.5f);
 		float timeFromTeam = GetTimeFromTeam();
 		spawnArrowsManager.SetGameTime(timeFromTeam);
 		gameOverTween = DOVirtual.DelayedCall(timeFromTeam + 3f, GameOver, false);
@@ -37,7 +39,7 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 		return teamSkillCurve.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.Audio));
 	}
 
-	public bool IsDisplayed => gameObject.activeInHierarchy;
+	public bool IsDisplayed => gameContainer.activeInHierarchy;
 
 	Tween gameOverTween;
 	private float initializationTime = 0.6f;
@@ -47,6 +49,12 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 
 	[SerializeField]
 	HitPointsArrowManager hitPointsArrowManager;
+	[SerializeField]
+	GameObject gameContainer;
+	[SerializeField]
+	Vector3 gameContainerPosition = new Vector3(0, 0.7f, 0);
+	[SerializeField]
+	GameObject gameMonitor;
 
 	public void GameOver()
 	{

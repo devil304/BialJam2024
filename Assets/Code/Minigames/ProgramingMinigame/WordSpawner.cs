@@ -124,7 +124,7 @@ public class WordSpawner : MonoBehaviour {
 
 	bool CheckChar(char letterFromWord, char userInput) {
 		if (letterFromWord == ' ') return userInput == ' ' || userInput == '_';
-		return userInput == letterFromWord;
+		return userInput.ToString().ToLower() == letterFromWord.ToString().ToLower();
 	}
 
 	string GetCorrectLetter(int currentPosition) {

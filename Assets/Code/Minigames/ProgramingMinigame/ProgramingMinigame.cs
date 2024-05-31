@@ -14,19 +14,21 @@ public class ProgramingMinigame : MonoBehaviour, IMinigame
 		int score = wordSpawner.GetScore();
 		GameManager.I.ModifyStats(new StatsModel((score/5.0f,0f,0f,0f,0f)));
 		wordSpawner.EndGame();
-		transform.localScale = new Vector3(1, 1, 1);
-		transform.DOScale(0, initializationTime);
-		transform.DOJump(Vector3.zero, 1f, 1, initializationTime);
-		DOVirtual.DelayedCall(initializationTime, () => gameObject.SetActive(false), false);
+		gameContainer.transform.localScale = new Vector3(0.88f, 0.88f, 0.88f);
+		gameContainer.transform.DOScale(0, initializationTime);
+		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime);
+		DOVirtual.DelayedCall(initializationTime, () => gameContainer.SetActive(false), false);
 		gameOverTween?.Kill();
+		gameMonitor.transform.DOMoveY(-10f, 0.5f).SetDelay(1f);
 		Debug.Log("Close Game");
 	}
 
 	public void ShowGame() {
-		gameObject.SetActive(true);
-		transform.localScale = new Vector3(0, 0, 0);
-		transform.DOScale(1f, initializationTime);
-		transform.DOJump(Vector3.zero, 1f, 1, initializationTime);
+		gameMonitor.transform.DOMoveY(0f, 0.5f);
+		gameContainer.SetActive(true);
+		gameContainer.transform.localScale = new Vector3(0, 0, 0);
+		gameContainer.transform.DOScale(0.88f, initializationTime).SetDelay(0.5f);
+		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime).SetDelay(0.5f);
 		wordSpawner.SetupGame();
 		DOVirtual.DelayedCall(initializationTime + 0.5f, StartGame, false);
 		gameOverTween = DOVirtual.DelayedCall(GetTimeFromTeam(), GameOver, false);
@@ -37,7 +39,7 @@ public class ProgramingMinigame : MonoBehaviour, IMinigame
 		return teamSkillCurve.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.Audio));
 	}
 
-	public bool IsDisplayed => gameObject.activeInHierarchy;
+	public bool IsDisplayed => gameContainer.activeInHierarchy;
 
 	Tween gameOverTween;
 	private float initializationTime = 0.6f;
@@ -54,4 +56,11 @@ public class ProgramingMinigame : MonoBehaviour, IMinigame
 
 	[SerializeField]
 	WordSpawner wordSpawner;
+
+	[SerializeField]
+	GameObject gameContainer;
+	[SerializeField]
+	Vector3 gameContainerPosition = new Vector3(0, 0.7f, 0);
+	[SerializeField]
+	GameObject gameMonitor;
 }
