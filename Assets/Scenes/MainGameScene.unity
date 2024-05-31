@@ -6982,6 +6982,7 @@ MonoBehaviour:
   - {fileID: 28720459}
   - {fileID: 191737769}
   _anomalySystem: {fileID: 1613938359}
+  _clip: {fileID: 8300000, guid: 1d139dfc23b6f92428914b598bd10b71, type: 3}
 --- !u!4 &1986887840
 Transform:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     [SerializeField] AnimationCurve _timeCurve;
     [SerializeField] float _perfectScore = 25f;
     [SerializeField] Color _drawColor = Color.red;
+    [SerializeField] AudioClip _clip;
     int _currentTrail = 0;
     Texture2D _texture;
     int _index = 0;
@@ -21,6 +22,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     bool _mouseOver;
     float _score = 0;
     float _timer;
+    AudioSource _loop;
 
     public Action MinigameFinished { get; set; }
 
@@ -71,8 +73,11 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
         {
             if ((worldPos - _points[0]).sqrMagnitude < 0.12f * 0.12f && _mouseOver)
             {
+
                 _index = 1;
                 _timer = _timeCurve.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.Art));
+                _loop = Sound.PlaySoundAtPos(Vector3.zero, _clip, Sound.MixerTypes.SFX, sound2D: true);
+                _loop.loop = true;
             }
             else
                 return;
@@ -88,6 +93,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
             {
                 _score -= (_points.Count - _index) / (float)_points.Count * _perfectScore * 0.1f;
                 DisplayScore();
+                _loop.Pause();
                 MinigameFinished?.Invoke();
             }
             return;
@@ -97,6 +103,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
         _texture.Apply();
         if (_index >= _points.Count)
         {
+            _loop.Pause();
             MinigameFinished?.Invoke();
         }
     }
@@ -129,11 +136,14 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     public void MouseEnter()
     {
         _mouseOver = true;
+        if (_timer <= 0) return;
+        _loop.UnPause();
     }
 
     public void MouseLeft()
     {
         _mouseOver = false;
+        _loop.Pause();
         if (_timer <= 0) return;
         if (_index > 0 && _index < _points.Count)
             _score -= _perfectScore * 0.05f;
@@ -154,6 +164,11 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     {
         transform.DOKill(true);
         transform.DOScale(Vector3.zero, 1f).OnComplete(() => gameObject.SetActive(false)).SetEase(Ease.InSine);
+        if (_loop != null)
+        {
+            _loop.Stop();
+            Destroy(_loop.gameObject);
+        }
     }
 
     public void ShowGame()

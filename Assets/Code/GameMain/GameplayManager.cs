@@ -13,6 +13,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _timeUI;
     [SerializeField] BounceHead[] _teamSprites;
     [SerializeField] AnomalySystem _anomalySystem;
+    [SerializeField] AudioClip _clip;
     float _timer;
     float _mGameTimer;
     float _anomalyTimer;
@@ -41,6 +42,8 @@ public class GameplayManager : MonoBehaviour
         }
         _chances.Shuffle();
         Debug.Log($"Team stats: Code {GameManager.I.StatsTeam.GetStat(StatsTypes.Code)}, Design {GameManager.I.StatsTeam.GetStat(StatsTypes.Design)}, Art {GameManager.I.StatsTeam.GetStat(StatsTypes.Art)}, Audio {GameManager.I.StatsTeam.GetStat(StatsTypes.Audio)}, QA {GameManager.I.StatsTeam.GetStat(StatsTypes.QA)}");
+        var ThatASS = Sound.PlaySoundAtPos(Vector3.zero, _clip, Sound.MixerTypes.BGMMain, sound2D: true, initialFadeDur: 1f);
+        ThatASS.loop = true;
     }
 
     private void AnomalyEnd()
