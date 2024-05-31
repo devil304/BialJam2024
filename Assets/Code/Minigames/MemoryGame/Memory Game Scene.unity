@@ -417,6 +417,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MemoryGameHandler
       objectReference: {fileID: 0}
+    - target: {fileID: 6205884252831077345, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
