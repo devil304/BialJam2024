@@ -75,7 +75,7 @@ public class GameplayManager : MonoBehaviour
             _mGameTimer -= Time.deltaTime;
             if (_mGameTimer <= 0)
             {
-                var filtered = _chances.Where(i => GameManager.I.StatsAct.GetStat((StatsTypes)i) < 100f).ToList();
+                var filtered = _chances.Where(i => GameManager.I.StatsAct.GetStat((StatsTypes)i) < 90f).ToList();
                 _actMG = GameManager.I._minigames[filtered[StrongRandom.RNG.Next(0, filtered.Count)]];
                 _actMG.ShowGame();
                 _actMG.MinigameFinished += MGFinished;
