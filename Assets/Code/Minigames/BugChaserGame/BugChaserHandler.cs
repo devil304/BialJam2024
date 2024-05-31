@@ -52,11 +52,11 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
         mousePos.z = -1;
         swapper.position = mousePos;
             
-        scoreText.text = "Score: " + score.ToString();
+        scoreText.text = $"Score: {score}";
 
         currTime -= Time.deltaTime;
         TimeSpan time = TimeSpan.FromSeconds(currTime);
-        timerText.text = time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+        timerText.text = $"{time.Seconds} : {time.Milliseconds}";
 
 
         if (currTime <= 0)
@@ -102,7 +102,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
     public StatsModel GetStatsFromGame()
     {
-        throw new NotImplementedException();
+        return gameStats;
     }
 
     public void CloseGame()
