@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Mono.Cecil.Cil;
+using UnityEngine;
 
 public class StatsModel
 {
@@ -52,6 +53,12 @@ public class StatsModel
         Stats = Stats.Select((v, i) => v + statsMod.Stats[i]).ToArray();
     }
 
+    public void StatsModify(float valAll)
+    {
+        for (int i = 0; i < Stats.Length; i++)
+            Stats[i] += valAll;
+    }
+
     public void StatModify(StatsTypes statType, float val)
     {
         ModifyStat((int)statType, val);
@@ -64,7 +71,7 @@ public class StatsModel
 
     public int GenerateRandom()
     {
-        float sumStats = StrongRandom.RNG.Next(DataObjectAccess.MinSumStats * 10, DataObjectAccess.MinSumStats * 10) / 10f;
+        float sumStats = StrongRandom.RNG.Next(DataObjectAccess.MinSumStats * 100, DataObjectAccess.MaxSumStats * 100) / 100f;
         int mainStat = StrongRandom.RNG.Next(0, 5);
 
         Reset();
@@ -79,13 +86,13 @@ public class StatsModel
         {
             if (i == statsList.Count - 1)
             {
-                ModifyStat(i, sumStats);
+                ModifyStat(statsList[i], sumStats);
             }
             else
             {
-                var stat = StrongRandom.RNG.Next(0, (int)sumStats * 10) / 10f;
+                var stat = StrongRandom.RNG.Next(0, (int)(sumStats * 100)) / 100f;
                 sumStats -= stat;
-                ModifyStat(i, stat);
+                ModifyStat(statsList[i], stat);
                 if (sumStats <= 0) break;
             }
         }
