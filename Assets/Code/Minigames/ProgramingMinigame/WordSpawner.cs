@@ -38,14 +38,18 @@ public class WordSpawner : MonoBehaviour {
 		if (tryFocus && gameObject.activeInHierarchy && shouldSpawn) inputField.Select();
 	}
 
+	public void SetupGame() {
+		score = 0;
+		wordToWriteLabel.text = "";
+	}
+
 	public void StartGame(float maxGameTime) {
 		this.maxGameTime = maxGameTime;
 		gameTime = 0;
-		score = 0;
-		wordToWriteLabel.text = "";
 		shouldSpawn = true;
 		inputField.onDeselect.AddListener(StartTryingFocusInput);
 		inputField.onSelect.AddListener(StopTryingFocusInput);
+		inputField.ActivateInputField();
 		inputField.Select();
 		SetNewWord();
 	}
@@ -59,10 +63,13 @@ public class WordSpawner : MonoBehaviour {
 	}
 
 	public void EndGame() {
+		wordToWriteLabel.text = "END";
 		shouldSpawn = false;
 		tryFocus = false;
 		inputField.onDeselect.RemoveListener(StartTryingFocusInput);
 		inputField.onSelect.RemoveListener(StopTryingFocusInput);
+		inputField.ReleaseSelection();
+		inputField.DeactivateInputField();
 	}
 
 	private void SetNewWord() {
