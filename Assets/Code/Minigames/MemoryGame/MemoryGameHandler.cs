@@ -19,7 +19,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     [SerializeField]
     AnimationCurve timer;
 
-    public Action MinigameFinished { get ; set; }
+    public Action MinigameFinished { get; set; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -27,9 +27,9 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     {
         transform.DOMove(Vector3.zero, 0.5f);
 
-        countdownTime = timer.Evaluate(GameManager.Instance.StatsTeam.Design);
+        countdownTime = timer.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.Design));
 
-        
+
         flippedCards = new();
 
         InitCards(countdownTime);
@@ -58,11 +58,11 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     void InitCards(float time)
     {
         currTime = time;
-        List<int> idList = new(){ 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
+        List<int> idList = new() { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
 
         foreach (Transform child in transform)
         {
-            if(child.tag == "Card")
+            if (child.tag == "Card")
             {
                 int random = StrongRandom.RNG.Next(idList.Count);
                 child.GetComponent<MemoryGameCardScript>().cardNum = idList[random];
@@ -79,7 +79,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
             CheckCards(flippedCards[0], flippedCards[1]);
         }
 
-        if(transform.childCount-2 != 0)
+        if (transform.childCount - 2 != 0)
         {
             currTime -= Time.deltaTime;
             TimeSpan time = TimeSpan.FromSeconds(currTime);
@@ -87,7 +87,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
             if (currTime <= 0)
             {
-                GameOver(transform.childCount-2);
+                GameOver(transform.childCount - 2);
                 countdownTimerText.text = "00:000";
             }
         }
@@ -99,7 +99,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     }
 
 
-    void  GameOver(float score)
+    void GameOver(float score)
     {
 
         foreach (Transform child in transform)
@@ -121,12 +121,12 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     public void CloseGame()
     {
-        transform.DOMove(new Vector3(0,20,0), 0.5f).OnComplete(() => this.gameObject.SetActive(false));
+        transform.DOMove(new Vector3(0, 20, 0), 0.5f).OnComplete(() => this.gameObject.SetActive(false));
     }
 
     public void ShowGame()
     {
-        this.gameObject.SetActive(true);   
+        this.gameObject.SetActive(true);
     }
 
     public bool IsDisplayed => gameObject.activeInHierarchy;

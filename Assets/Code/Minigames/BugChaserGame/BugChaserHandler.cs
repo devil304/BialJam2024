@@ -31,7 +31,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
     {
         transform.DOMove(Vector3.zero, 0.5f);
 
-        countdownTime = timer.Evaluate(GameManager.Instance.StatsTeam.QA);
+        countdownTime = timer.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.QA));
         score = 0;
         StartCoroutine(NewBug());
         Cursor.visible = false;
@@ -47,11 +47,11 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = GameManager.Instance.MainInput.Main.MousePos.ReadValue<Vector2>();
+        Vector3 mousePos = GameManager.I.MainInput.Main.MousePos.ReadValue<Vector2>();
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = -1;
         swapper.position = mousePos;
-            
+
         scoreText.text = "Score: " + score.ToString();
 
         currTime -= Time.deltaTime;
@@ -65,7 +65,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
             StopCoroutine(NewBug());
             foreach (Transform child in transform)
             {
-                if(child.tag == "Bug")
+                if (child.tag == "Bug")
                 {
                     Destroy(child.gameObject);
                 }
@@ -95,7 +95,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
     void CreateNewBug(GameObject bugPrefab)
     {
-        GameObject newBug = Instantiate(bugPrefab,this.transform,false);
+        GameObject newBug = Instantiate(bugPrefab, this.transform, false);
         newBug.transform.localPosition = new Vector3(StrongRandom.RNG.Next(-900, 900) / 2000f, StrongRandom.RNG.Next(-900, 900) / 2000f, 0);
         newBug.GetComponent<BugScript>().handler = this;
     }
