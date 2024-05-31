@@ -9,6 +9,11 @@ public class CharacterModel : MonoBehaviour
 
     public CharacterModel()
     {
+        GenerateRandom();
+    }
+
+    public void GenerateRandom()
+    {
         CharStats = new();
         CharStats.GenerateRandom();
         NickName = DataObjectAccess.GetNick();
