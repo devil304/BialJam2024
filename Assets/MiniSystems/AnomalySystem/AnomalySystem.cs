@@ -12,9 +12,9 @@ public class AnomalySystem : MonoBehaviour
 	CanvasGroup decisionCanvas;
 
 	[SerializeField]
-	private GameObject anomalyCardPrefab;
+	private AnomalyCard anomalyCardPrefab;
 
-	private GameObject activeCard;
+	private AnomalyCard activeCard;
 
 	private List<Anomaly> activeAnomalies;
 
@@ -36,8 +36,8 @@ public class AnomalySystem : MonoBehaviour
 		Debug.Log("ANOMALY CAN BE DISPLAYED!");
 		decisionCanvas.DOFade(1f, 1f).SetDelay(1f);
 		activeCard = Instantiate(anomalyCardPrefab, transform.position, Quaternion.identity);
-		activeCard.GetComponent<AnomalyCard>();
 		activeCard.transform.parent = transform;
+		activeCard.OnDecisionActions += OnDecisionMake;
 
 		GameManager.I.MainInput.Main.LeftArrow.started += HandleLeftArrowClick;
 		GameManager.I.MainInput.Main.RightArrow.performed += HandleRightArrowClick;
@@ -46,34 +46,29 @@ public class AnomalySystem : MonoBehaviour
 
 	public void HandleLeftArrowClick(InputAction.CallbackContext e)
 	{
-
-		activeCard.transform.DOMoveX(-20f, 1f);
-		activeCard.transform.DORotate(new Vector3(2, 0, 0), 1f);
-		OnDecisionMake();
+		activeCard.HandleNegative();
 	}
 
 	public void HandleRightArrowClick(InputAction.CallbackContext e)
 	{
-		activeCard.transform.DOMoveX(20f, 1f);
-		activeCard.transform.DORotate(new Vector3(-2, 0, 0), 1f);
-		OnDecisionMake();
+		activeCard.HandlePositive();
 	}
 
 	public void HandleDownArrowClick(InputAction.CallbackContext e)
 	{
-		activeCard.transform.DOMoveY(-20f, 1f);
-		OnDecisionMake();
+		activeCard.HandlePositive();
 	}
 
-	public void OnDecisionMake()
+	public void OnDecisionMake(AnomalyReaction decision)
 	{
+		Debug.Log($"ON DECISIOn MAKED {decision}");
 		decisionCanvas.DOFade(0f, 1f);
 		GameManager.I.MainInput.Main.LeftArrow.started -= HandleLeftArrowClick;
 		GameManager.I.MainInput.Main.RightArrow.performed -= HandleRightArrowClick;
 		GameManager.I.MainInput.Main.DownArrow.started -= HandleDownArrowClick;
+		activeCard.OnDecisionActions -= OnDecisionMake;
 		DOVirtual.DelayedCall(1f, () =>
 		{
-			Destroy(activeCard);
 			activeCard = null;
 			alertInfoText.gameObject.SetActive(true);
 		}, false);
