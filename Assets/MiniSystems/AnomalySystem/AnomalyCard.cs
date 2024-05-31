@@ -91,9 +91,10 @@ public class AnomalyCard : MonoBehaviour
 		GameManager.I.MainInput.Main.MousePos.performed -= OnMouseMove;
 	}
 
-	public void SetupCard(string description, Sprite imageSprite) {
-		descriptionLabel.text = description;
-		cardImage.sprite = imageSprite;
+	public void SetupCard(AnomalyData anomalyData) {
+		titleLabel.text = anomalyData.title;
+		descriptionLabel.text = anomalyData.description;
+		cardImage.sprite = anomalyData.imageSprite;
 	}
 
 	public void HandleNegative()

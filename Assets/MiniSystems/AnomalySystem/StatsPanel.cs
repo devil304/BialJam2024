@@ -15,22 +15,21 @@ public class StatsPanel : MonoBehaviour
 	TextMeshProUGUI designValueLabel;
 
 	public void SetupStats(StatsModel statsModel) {
-		codingValueLabel.text = statsModel.GetStat(StatsTypes.Code).ToString();
-		qaValueLabel.text = statsModel.GetStat(StatsTypes.QA).ToString();
-		artValueLabel.text = statsModel.GetStat(StatsTypes.Art).ToString();
-		audioValueLabel.text = statsModel.GetStat(StatsTypes.Audio).ToString();
-		designValueLabel.text = statsModel.GetStat(StatsTypes.Design).ToString();
+		if(statsModel == null) return;
+		var codeValue = statsModel.GetStat(StatsTypes.Code);
+		var codeMark = codeValue > -1 ? "+" : "";
+		var qaValue = statsModel.GetStat(StatsTypes.QA);
+		var qaMark = qaValue > -1 ? "+" : "";
+		var artValue = statsModel.GetStat(StatsTypes.Art);
+		var artMark = artValue > -1 ? "+" : "";
+		var audioValue = statsModel.GetStat(StatsTypes.Audio);
+		var audioMark = audioValue > -1 ? "+" : "";
+		var designValue = statsModel.GetStat(StatsTypes.Design);
+		var designMark = designValue > -1 ? "+" : "";
+		codingValueLabel.text = $"{codeMark}{codeValue}";
+		qaValueLabel.text = $"{qaMark}{qaValue}";
+		artValueLabel.text = $"{artMark}{artValue}";
+		audioValueLabel.text = $"{audioMark}{audioValue}";
+		designValueLabel.text = $"{designMark}{designValue}";
 	}
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
