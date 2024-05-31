@@ -20,22 +20,14 @@ public class AnomalyCard : MonoBehaviour
     {
         transform.position = new Vector3(0, -100f, 0);
 				transform.DOMove(Vector3.zero, 1f, false);
-				transform.DOShakePosition(0.5f, 5, 20, 80, false, true).SetDelay(1f);
-				transform.DOShakeRotation(0.5f, 5, 20, 80, true).SetDelay(1f);
+				// transform.DOShakePosition(0.5f, 5, 20, 80, false, true).SetDelay(1f);
+				transform.DOShakeRotation(0.25f, 5, 20, 80, true).SetDelay(1f);
 				DOVirtual.DelayedCall(1f, EnableInputs, false);
     }
 
 		private void EnableInputs() {
-			// GameManager.I.MainInput.Main.LMB.started += OnMouseDown;
-			// GameManager.I.MainInput.Main.LMB.canceled += OnMouseUp;
 			GameManager.I.MainInput.Main.MousePos.performed += OnMouseMove;
 		}
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 		private void OnMouseMove(InputAction.CallbackContext c) {
 			if (!followMouse) return;
@@ -52,8 +44,6 @@ public class AnomalyCard : MonoBehaviour
 				transform.DORotateQuaternion(Quaternion.Euler(0, 0, 0), 1f);
 				transform.DOMove(Vector3.zero, 1f);
 			}
-			Debug.Log($"ON MOUSE MOVE {mouseMovement.normalized}");
-			Debug.Log($"ON MOUSE Distance {mouseDistance}");
 		}
 		private void OnMouseEnter() {
 			canFollowMouse = true;
@@ -74,8 +64,6 @@ public class AnomalyCard : MonoBehaviour
 		}
 
 		private void OnDestroy() {
-			// GameManager.I.MainInput.Main.LMB.started -= OnMouseDown;
-			// GameManager.I.MainInput.Main.LMB.canceled -= OnMouseUp;
 			GameManager.I.MainInput.Main.MousePos.performed -= OnMouseMove;
 		}
 
@@ -83,4 +71,7 @@ public class AnomalyCard : MonoBehaviour
 			descriptionLabel.text = description;
 			cardImage.sprite = imageSprite;
 		}
+
+
+
 }

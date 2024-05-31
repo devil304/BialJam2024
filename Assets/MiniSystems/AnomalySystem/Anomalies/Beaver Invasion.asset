@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 782ef314913d83a4bb99a1aacc398dff, type: 3}
+  m_Name: Beaver Invasion
+  m_EditorClassIdentifier: 
+  title: Beaver Invasion
+  imageSprite: {fileID: 0}
+  description: 'Beavers are biting the lead programmer''s hand! Our sound engineer
+    can step in and save him, but then he will be injured himself. '
+  positiveStatsModel:
+    codeStats: 15
+    qaStats: 0
+    audioStats: -20
+    artStats: 0
+    designStats: 0
+  negativeStatsModel:
+    codeStats: -20
+    qaStats: 0
+    audioStats: 15
+    artStats: 0
+    designStats: 0
+  neutralStatsModel:
+    codeStats: -10
+    qaStats: -10
+    audioStats: -10
+    artStats: -10
+    designStats: -10
+  randomPositive: 0
+  randomNegative: 0
+  randomNeutral: 0
+  sharedWinnerBetweenEffects: 0
+  randomPositiveStatsList:
+    winerPoints: 0
+    winerCount: 0
+    loserPoints: 0
+    loserCount: 0
+  randomNegativeStatsList:
+    winerPoints: 0
+    winerCount: 0
+    loserPoints: 0
+    loserCount: 0
+  randomNeutralStatsList:
+    winerPoints: 0
+    winerCount: 0
+    loserPoints: 0
+    loserCount: 0

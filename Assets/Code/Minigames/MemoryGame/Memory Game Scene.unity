@@ -494,6 +494,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7722474804245862450, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f73c208a06e574347a3b666bfded672a, type: 2}
+    - target: {fileID: 7722474804245862450, guid: 00aba45016d7b2f488d246be8641ebc9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
