@@ -20,8 +20,8 @@ public class HitPointsArrowManager : MonoBehaviour
 
 		private void OnEnable() {
         GameManager.Instance.MainInput.Main.LeftArrow.started += HandleLeftArrowClick;
-        GameManager.Instance.MainInput.Main.UpArrow.performed += HandleUpArrowClick;
-        GameManager.Instance.MainInput.Main.RightArrow.performed += HandleRightArrowClick;
+        GameManager.Instance.MainInput.Main.UpArrow.started += HandleUpArrowClick;
+        GameManager.Instance.MainInput.Main.RightArrow.started += HandleRightArrowClick;
         GameManager.Instance.MainInput.Main.DownArrow.started += HandleDownArrowClick;
 				score = 0;
 				scoreLabel.text = "0";
@@ -29,8 +29,8 @@ public class HitPointsArrowManager : MonoBehaviour
 
 		private void OnDisable() {
         GameManager.Instance.MainInput.Main.LeftArrow.started -= HandleLeftArrowClick;
-        GameManager.Instance.MainInput.Main.UpArrow.performed -= HandleUpArrowClick;
-        GameManager.Instance.MainInput.Main.RightArrow.performed -= HandleRightArrowClick;
+        GameManager.Instance.MainInput.Main.UpArrow.started -= HandleUpArrowClick;
+        GameManager.Instance.MainInput.Main.RightArrow.started -= HandleRightArrowClick;
         GameManager.Instance.MainInput.Main.DownArrow.started -= HandleDownArrowClick;
 		}
 
