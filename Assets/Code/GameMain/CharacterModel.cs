@@ -6,6 +6,7 @@ public class CharacterModel : MonoBehaviour
     public StatsModel CharStats { get; private set; }
     public string NickName { get; private set; }
     public List<Sprite> Sprites { get; private set; } = new List<Sprite>();
+    public int MainStat;
 
     public CharacterModel()
     {
@@ -15,7 +16,7 @@ public class CharacterModel : MonoBehaviour
     public void GenerateRandom()
     {
         CharStats = new();
-        CharStats.GenerateRandom();
+        MainStat = CharStats.GenerateRandom();
         NickName = DataObjectAccess.GetNick();
     }
 

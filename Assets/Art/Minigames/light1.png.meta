@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a897b5df067eb0e48a00009cf6c34075
+guid: b7c0ed77b5e2dc445b36cf0d97454c7e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4538851835707955932
-    second: bober-color_0
+      213: 1613917106605337109
+    second: light1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 250
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,30 +122,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bober-color_0
+      name: light1_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 29
-        width: 2109
-        height: 1667
+        x: 107
+        y: 0
+        width: 541
+        height: 2160
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cda908b52bd3dfe30800000000000000
-      internalID: 4538851835707955932
+      spriteID: 51a232cbe09c56610800000000000000
+      internalID: 1613917106605337109
       vertices: []
       indices: 
       edges: []
@@ -171,8 +158,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      bober-color_0: 4538851835707955932
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
