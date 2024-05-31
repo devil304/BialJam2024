@@ -11,7 +11,20 @@ public class BounceHead : MonoBehaviour
     float _minMaxY;
     float _minMaxS;
     [SerializeField] float _bunceSpeed;
-    [SerializeField] SpriteRenderer _headSR, _hairSR, _accSR;
+    [SerializeField] SpriteRenderer _headSR, _hairSR, _accSR, _bodySR, _deskSR, _shadowSR;
+    int _baseOrderHead, _baseOrderHair, _baseOrderAcc, _baseOrderBody, _baseOrderDesk, _baseOrderShadow;
+
+    private void Awake()
+    {
+        if (_headSR)
+            _baseOrderHead = _headSR.sortingOrder;
+    }
+
+    public void ShiftOrder(int offset)
+    {
+        if (_headSR)
+            _headSR.sortingOrder = _baseOrderHead + offset;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
