@@ -10,10 +10,12 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] float _gameTime;
     [SerializeField] TextMeshProUGUI _timeUI;
     [SerializeField] BounceHead[] _teamSprites;
+    [SerializeField] AnomalySystem _anomalySystem;
     float _timer;
     float _mGameTimer;
     float _anomalyTimer;
     IMinigame _actMG = null;
+    bool _anomalyOn = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,13 +26,27 @@ public class GameplayManager : MonoBehaviour
             var charM = GameManager.I.Team[i];
             _teamSprites[i].UpdateSprites(charM.head, charM.hair, charM.accessory, charM.NickName);
         }
-        _mGameTimer = StrongRandom.RNG.Next(6, 10);
+        _mGameTimer = StrongRandom.RNG.Next(10, 12);
+        _anomalyTimer = StrongRandom.RNG.Next(15, 18);
+        _anomalySystem.OnAnomalyStart += AnomalyStart;
+        _anomalySystem.OnAnomalyEnd += AnomalyEnd;
+    }
+
+    private void AnomalyEnd()
+    {
+        _anomalyOn = false;
+        _anomalyTimer = StrongRandom.RNG.Next(10, 15);
+    }
+
+    private void AnomalyStart()
+    {
+        _anomalyOn = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_actMG != null) return;
+        if (_actMG != null || _anomalyOn) return;
         if (_timer > 0)
         {
             _timer -= Time.deltaTime;
@@ -39,7 +55,7 @@ public class GameplayManager : MonoBehaviour
         _timeUI.text = $"Time left to make game {time.Seconds:D2}:{time.Milliseconds / 10:D2}";
         if (_timer <= 0)
         {
-            GameManager.I.LoadMenu();
+            //GameManager.I.LoadMenu();
             enabled = false;
             return;
         }
@@ -51,6 +67,16 @@ public class GameplayManager : MonoBehaviour
                 _actMG = GameManager.I._minigames[StrongRandom.RNG.Next(0, 5)];
                 _actMG.ShowGame();
                 _actMG.MinigameFinished += MGFinished;
+                return;
+            }
+        }
+        if (_anomalyTimer > 0)
+        {
+            _anomalyTimer -= Time.deltaTime;
+            if (_anomalyTimer <= 0)
+            {
+                _anomalySystem.StartAnomaly();
+                return;
             }
         }
         GameManager.I.ModifyStatsBasedOnTeam(_passivePointsSpeed * Time.deltaTime);
