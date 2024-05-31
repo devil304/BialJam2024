@@ -11,6 +11,8 @@ public class WordSpawner : MonoBehaviour {
 	[SerializeField] TextMeshProUGUI scoreLabel;
 	[SerializeField] TMP_InputField inputField;
 
+	[SerializeField] List<AudioClip> audioClips;
+
 	private int score = 0;
 
 	private string wordToWrite;
@@ -68,6 +70,8 @@ public class WordSpawner : MonoBehaviour {
 
 		char userInput = newValue[0];
 		inputField.text = "";
+		AudioClip audioClip = audioClips[Random.Range(0, audioClips.Count)];
+		Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.BGMMinigames, 1f, true, false, true);
 
 		HandleUserInput(userInput);
 	}
