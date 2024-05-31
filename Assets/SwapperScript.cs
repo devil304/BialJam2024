@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SwapperScript : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer renderer;
+    [SerializeField] SpriteRenderer ren;
     [SerializeField] List<Sprite> swappers;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,8 +26,8 @@ public class SwapperScript : MonoBehaviour
 
     IEnumerator Swap()
     {
-        renderer.sprite = swappers[1];
+        ren.sprite = swappers[1];
         yield return new WaitForSeconds(0.5f);
-        renderer.sprite = swappers[0];
+        ren.sprite = swappers[0];
     }
 }
