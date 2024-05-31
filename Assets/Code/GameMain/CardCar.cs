@@ -46,12 +46,22 @@ public class CardCar : MonoBehaviour
         if(GameManager.I.Team.Count == 5)
         {
             ShowStartButton();
+            HideRecruitmentButton();
         }
         else
         {
             text.text = $"Current Team Size: {GameManager.I.Team.Count}/5";
         }
         
+    }
+
+    void HideRecruitmentButton()
+    {
+        CanvasGroup cg;
+        cg = RecruitButton.GetComponent<CanvasGroup>();
+        cg.DOFade(0, 0.5f);
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
     }
 
     void ShowStartButton()
@@ -163,7 +173,7 @@ public class CardCar : MonoBehaviour
                 }
             case 1:
                 {
-                    break;
+                    break; 
                 }
             case 2:
                 {
