@@ -8,7 +8,12 @@ public class SwapperScript : MonoBehaviour
     [SerializeField] SpriteRenderer ren;
     [SerializeField] List<Sprite> swappers;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnDisable()
+    {
+        GameManager.I.MainInput.Main.LMB.started -= LefMouseButtonDown;
+    }
+
+    private void OnEnable()
     {
         GameManager.I.MainInput.Main.LMB.started += LefMouseButtonDown;
     }

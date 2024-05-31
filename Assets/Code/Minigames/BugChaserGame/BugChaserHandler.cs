@@ -78,7 +78,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
     void GameOver(float score)
     {
         Cursor.visible = true;
-        gameStats = new((0, 0, 0, 0, score*100));
+        gameStats = new((0, 0, 0, 0, score));
         MinigameFinished?.Invoke();
     }
 
