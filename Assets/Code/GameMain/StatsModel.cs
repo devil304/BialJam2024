@@ -62,7 +62,7 @@ public class StatsModel
         return Stats[(int)statType];
     }
 
-    public void GenerateRandom()
+    public int GenerateRandom()
     {
         float sumStats = StrongRandom.RNG.Next(DataObjectAccess.MinSumStats * 10, DataObjectAccess.MinSumStats * 10) / 10f;
         int mainStat = StrongRandom.RNG.Next(0, 5);
@@ -89,6 +89,7 @@ public class StatsModel
                 if (sumStats <= 0) break;
             }
         }
+        return mainStat;
     }
 
     public void ModifyStat(int StatIndex, float val)
