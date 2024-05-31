@@ -114,7 +114,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
             }
         }
 
-        gameStats = new((0, score, 0, 0, 0));
+        gameStats = new((0, score*100, 0, 0, 0));
         MinigameFinished?.Invoke();
     }
 
