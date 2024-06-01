@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Beaver Invasion
   m_EditorClassIdentifier: 
   title: Beaver Invasion
-  imageSprite: {fileID: 4048946774207890215, guid: 54288bb72a7627a4594ae582a21852d3, type: 3}
+  imageSprite: {fileID: 21300000, guid: 54288bb72a7627a4594ae582a21852d3, type: 3}
   description: 'Beavers are biting the lead programmer''s hand! Our sound engineer
     can step in and save him, but then he will be injured himself. '
   positiveStatsModel:

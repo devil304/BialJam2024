@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PizzaAnomaly
   m_EditorClassIdentifier: 
   title: Pizza is here!
-  imageSprite: {fileID: 5947443547759017310, guid: 7414ee53ed72d684a9b6bdce9112ed0d, type: 3}
+  imageSprite: {fileID: 21300000, guid: 7414ee53ed72d684a9b6bdce9112ed0d, type: 3}
   description: "But some of the pizzas look a bit unfresh\u2026 We are so hungry\u2026
     Should we take the risk? We have our food but it\u2019s cold."
   positiveStatsModel:

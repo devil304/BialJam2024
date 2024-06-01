@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EmptyHead
   m_EditorClassIdentifier: 
   title: Empty Head!
-  imageSprite: {fileID: -3715411589357282164, guid: c233ff9ed23530a4091a17bf7c2780c8, type: 3}
+  imageSprite: {fileID: 21300000, guid: c233ff9ed23530a4091a17bf7c2780c8, type: 3}
   description: The black hole eats up ideas but allows you to focus on other activities.
     Are we trying to remedy this?
   positiveStatsModel:
