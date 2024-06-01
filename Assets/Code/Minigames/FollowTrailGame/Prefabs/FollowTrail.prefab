@@ -1747,7 +1747,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _perfectScore: 25
+  _perfectScore: 35
   _drawColor: {r: 0.8039216, g: 0.6431373, b: 0.89411765, a: 1}
   _clip: {fileID: 8300000, guid: 4717a9c80ea3e0e4499fa176f8baa8d3, type: 3}
 --- !u!1 &5416591957006689003

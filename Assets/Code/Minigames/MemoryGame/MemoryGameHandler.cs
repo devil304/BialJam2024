@@ -23,6 +23,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     [SerializeField] List<Sprite> sprites;
 
     public Action MinigameFinished { get; set; }
+		private int score;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -34,7 +35,6 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
 
         ResetGame();
-        
     }
 
     void Start()
@@ -48,6 +48,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
         {
             a.EraseCard();
             b.EraseCard();
+						score += 4;
         }
         else
         {
@@ -91,13 +92,13 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
             if (currTime <= 0)
             {
-                GameOver(transform.childCount - 2);
+                GameOver(score);
                 countdownTimerText.text = "00:000";
             }
         }
         else
         {
-            GameOver(Mathf.CeilToInt(countdownTime - currTime) + 16);
+            GameOver(Mathf.CeilToInt(countdownTime - currTime) + score);
         }
 
     }
@@ -107,6 +108,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     {
         Debug.Log("Reset?");
 
+				score = 0;
         foreach (Transform child in transform)
         {
             if (child.tag == "Card")
@@ -123,7 +125,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
         InitCards(countdownTime);
     }
 
-    void GameOver(float score)
+    void GameOver(float endScore)
     {
 
         foreach (Transform child in transform)
@@ -134,7 +136,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
             }
         }
 
-        gameStats = new((0, score, 0, 0, 0));
+        gameStats = new((0, endScore, 0, 0, 0));
         MinigameFinished?.Invoke();
     }
 
@@ -145,7 +147,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     public void CloseGame()
     {
-        transform.DOMove(new Vector3(0, 20, 0), 0.5f).OnComplete(() => this.gameObject.SetActive(false));
+        transform.DOMove(new Vector3(0, 20, 0), 0.5f).OnComplete(() => gameObject.SetActive(false));
         ResetGame();
     }
 

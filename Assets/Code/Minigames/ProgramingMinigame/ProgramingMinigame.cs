@@ -5,14 +5,11 @@ using UnityEngine;
 public class ProgramingMinigame : MonoBehaviour, IMinigame
 {
 	public Action MinigameFinished { get; set; }
-	public StatsModel GetStatsFromGame() {
-		return new StatsModel((5,0,0,0,0));
-	}
+	private StatsModel gameScore;
+	public StatsModel GetStatsFromGame() => gameScore;
 	[SerializeField]
 	private AnimationCurve teamSkillCurve = new AnimationCurve();
 	public void CloseGame() {
-		int score = wordSpawner.GetScore();
-		GameManager.I.ModifyStats(new StatsModel((score/5.0f,0f,0f,0f,0f)));
 		wordSpawner.EndGame();
 		gameContainer.transform.localScale = new Vector3(0.88f, 0.88f, 0.88f);
 		gameContainer.transform.DOScale(0, initializationTime);
@@ -48,6 +45,8 @@ public class ProgramingMinigame : MonoBehaviour, IMinigame
 
 	public void GameOver()
 	{
+		int score = wordSpawner.GetScore();
+		gameScore = new StatsModel(StatsTypes.Code, score / 3f);
 		MinigameFinished?.Invoke();
 		CloseGame();
 	}
