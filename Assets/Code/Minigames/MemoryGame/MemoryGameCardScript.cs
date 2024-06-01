@@ -115,9 +115,9 @@ public class MemoryGameCardScript : MonoBehaviour
         .OnComplete(() => gameObject.SetActive(false));
     }
 
-    public void FlipBackCard()
+    public void FlipBackCard(bool playSound = true)
     {
-        Sound.PlaySoundAtTarget(transform, missSound, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
+        if(playSound)Sound.PlaySoundAtTarget(transform, missSound, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
         ResetScale();
         StopAnim(()=>isFlipped = false);
     }

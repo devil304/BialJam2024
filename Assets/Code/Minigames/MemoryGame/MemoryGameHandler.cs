@@ -112,7 +112,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
             if (child.tag == "Card")
             {
                 child.gameObject.SetActive(true);
-                child.GetComponent<MemoryGameCardScript>().FlipBackCard();
+                child.GetComponent<MemoryGameCardScript>().FlipBackCard(false);
                 child.GetComponent<MemoryGameCardScript>().isGameOver=false;
             }
         }
