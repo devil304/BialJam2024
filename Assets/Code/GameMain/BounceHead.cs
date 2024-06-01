@@ -12,13 +12,21 @@ public class BounceHead : MonoBehaviour
     float _minMaxS;
     [SerializeField] float _bunceSpeed;
     [SerializeField] SpriteRenderer _headSR, _hairSR, _accSR, _bodySR, _deskSR, _shadowSR;
-    int _baseOrderHead, _baseOrderHair, _baseOrderAcc, _baseOrderBody, _baseOrderDesk, _baseOrderShadow;
+    [SerializeField] int _baseOrderHead, _baseOrderHair, _baseOrderAcc, _baseOrderBody, _baseOrderDesk, _baseOrderShadow;
 
-    private void Awake()
+    private void OnValidate()
+    {
+        if (_baseOrderHead <= 0)
+        {
+            Init();
+        }
+    }
+
+    private void Init()
     {
         if (_headSR)
             _baseOrderHead = _headSR.sortingOrder;
-        if(_hairSR)
+        if (_hairSR)
             _baseOrderHair = _hairSR.sortingOrder;
         if (_accSR)
             _baseOrderAcc = _accSR.sortingOrder;
