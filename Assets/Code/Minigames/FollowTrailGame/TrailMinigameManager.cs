@@ -93,7 +93,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
             {
                 _score -= (_points.Count - _index) / (float)_points.Count * _perfectScore * 0.1f;
                 DisplayScore();
-                _loop.Pause();
+                _loop?.Pause();
                 MinigameFinished?.Invoke();
             }
             return;
@@ -103,7 +103,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
         _texture.Apply();
         if (_index >= _points.Count)
         {
-            _loop.Pause();
+            _loop?.Pause();
             MinigameFinished?.Invoke();
         }
     }
@@ -137,13 +137,15 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     {
         _mouseOver = true;
         if (_timer <= 0) return;
-        _loop.UnPause();
+        _loop?.UnPause();
     }
 
     public void MouseLeft()
     {
         _mouseOver = false;
-        _loop.Pause();
+        
+        if(_loop != null)
+        _loop?.Pause();
         if (_timer <= 0) return;
         if (_index > 0 && _index < _points.Count)
             _score -= _perfectScore * 0.05f;
