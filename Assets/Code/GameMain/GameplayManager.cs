@@ -13,6 +13,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _timeUI;
     [SerializeField] BounceHead[] _teamSprites;
     [SerializeField] AnomalySystem _anomalySystem;
+    [SerializeField] EndGameManager _endGameManager;
     [SerializeField] AudioClip _clip;
     float _timer;
     float _mGameTimer;
@@ -31,7 +32,7 @@ public class GameplayManager : MonoBehaviour
             _teamSprites[i].UpdateSprites(charM.head, charM.hair, charM.accessory, charM.NickName);
         }
         _mGameTimer = StrongRandom.RNG.Next(10, 12);
-        _anomalyTimer = StrongRandom.RNG.Next(150, 180);
+        _anomalyTimer = StrongRandom.RNG.Next(15, 18);
         _anomalySystem.OnAnomalyStart += AnomalyStart;
         _anomalySystem.OnAnomalyEnd += AnomalyEnd;
         for (int i = 0; i < 5; i++)
@@ -49,7 +50,7 @@ public class GameplayManager : MonoBehaviour
     private void AnomalyEnd()
     {
         _anomalyOn = false;
-        _anomalyTimer = StrongRandom.RNG.Next(100, 150);
+        _anomalyTimer = StrongRandom.RNG.Next(10, 15);
     }
 
     private void AnomalyStart()
@@ -71,7 +72,6 @@ public class GameplayManager : MonoBehaviour
         {
             //GameManager.I.LoadMenu();
             enabled = false;
-						//!Tutaj koniec gry
 						HandleEndGame();
             return;
         }
@@ -115,6 +115,6 @@ public class GameplayManager : MonoBehaviour
     }
 
 		private void HandleEndGame() {
-			Debug.Log("HANDLe END GAME");
+			_endGameManager.EndGame();
 		}
 }
