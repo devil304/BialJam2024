@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Stuffy room
   m_EditorClassIdentifier: 
   title: Stuffy room
-  imageSprite: {fileID: -6397332597414482978, guid: ae94074859781f24ab9615440bd0f9fc, type: 3}
+  imageSprite: {fileID: 21300000, guid: ae94074859781f24ab9615440bd0f9fc, type: 3}
   description: "Our QA team says that it\u2019s so stuffy in this room so they can
     barely breathe but the programmers are scared of getting cold. Should we open
     the window and let the airflow?"

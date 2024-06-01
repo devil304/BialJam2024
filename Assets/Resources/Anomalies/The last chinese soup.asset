@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: The last chinese soup
   m_EditorClassIdentifier: 
   title: The last chinese soup
-  imageSprite: {fileID: -7917371100560378818, guid: 6c83802bdf8cbff4c8329c4e46c58c39, type: 3}
+  imageSprite: {fileID: 21300000, guid: 6c83802bdf8cbff4c8329c4e46c58c39, type: 3}
   description: "It\u2019s night, all the shops are closed and we are hungry. There\u2019s
     only one chinese soup for 5 of us\u2026 Should we share?"
   positiveStatsModel:
