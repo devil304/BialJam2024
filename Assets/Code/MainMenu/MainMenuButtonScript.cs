@@ -21,14 +21,14 @@ public class MainMenuButtonScript : MonoBehaviour, IPointerEnterHandler, IPointe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Im here!");
+        //Debug.Log("Im here!");
         transform.DOKill();
         transform.DOMoveX(startPos.x+100,1f);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("Aaaand I'm not!");
+        //.Log("Aaaand I'm not!");
         transform.DOKill();
         transform.DOMoveX(startPos.x, 1f);
     }
