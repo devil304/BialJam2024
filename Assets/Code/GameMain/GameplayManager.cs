@@ -31,7 +31,7 @@ public class GameplayManager : MonoBehaviour
             var charM = GameManager.I.Team[i];
             _teamSprites[i].UpdateSprites(charM.head, charM.hair, charM.accessory, charM.NickName);
         }
-        _mGameTimer = StrongRandom.RNG.Next(10, 12);
+        _mGameTimer = StrongRandom.RNG.Next(6, 9);
         _anomalyTimer = StrongRandom.RNG.Next(15, 18);
         _anomalySystem.OnAnomalyStart += AnomalyStart;
         _anomalySystem.OnAnomalyEnd += AnomalyEnd;
@@ -80,8 +80,9 @@ public class GameplayManager : MonoBehaviour
             _mGameTimer -= Time.deltaTime;
             if (_mGameTimer <= 0)
             {
-                var filtered = _chances.Where(i => GameManager.I.StatsAct.GetStat((StatsTypes)i) < 90f).ToList();
-                _actMG = GameManager.I._minigames[filtered[StrongRandom.RNG.Next(0, filtered.Count)]];
+                // var filtered = _chances.Where(i => GameManager.I.StatsAct.GetStat((StatsTypes)i) < 90f).ToList();
+                // _actMG = GameManager.I._minigames[filtered[StrongRandom.RNG.Next(0, filtered.Count)]];
+								_actMG = GetRandomHelpfullGame();
                 _actMG.ShowGame();
                 _actMG.MinigameFinished += MGFinished;
 
@@ -105,13 +106,28 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+		private IMinigame GetRandomHelpfullGame() {
+			var filtered = _chances.Where(i => GameManager.I.StatsAct.GetStat((StatsTypes)i) < _endGameManager.GetMinScoreToWin()).ToList();
+
+			if(filtered.Count > 0) {
+				_chances.ForEach(i => {
+					if (GameManager.I.StatsAct.GetStat((StatsTypes)i) < _endGameManager.GetMinScoreToWin()/2) {
+						filtered.Add(i);
+					}
+				});
+				return GameManager.I._minigames[filtered[StrongRandom.RNG.Next(0, filtered.Count)]];
+			}
+
+			return GameManager.I._minigames[StrongRandom.RNG.Next(0, _chances.Count)];
+		}
+
     private void MGFinished()
     {
         _actMG.MinigameFinished -= MGFinished;
         GameManager.I.ModifyStats(_actMG.GetStatsFromGame());
         _actMG.CloseGame();
         _actMG = null;
-        _mGameTimer = StrongRandom.RNG.Next(6, 10);
+        _mGameTimer = StrongRandom.RNG.Next(4, 8);
     }
 
 		private void HandleEndGame() {

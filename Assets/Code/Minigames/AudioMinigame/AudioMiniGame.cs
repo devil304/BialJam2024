@@ -5,14 +5,12 @@ using UnityEngine;
 public class AudioMiniGame : MonoBehaviour, IMinigame
 {
 	public Action MinigameFinished { get; set; }
-	public StatsModel GetStatsFromGame() {
-		return new StatsModel((0,0,0,5,0));
-	}
+	private StatsModel gameScore;
+	public StatsModel GetStatsFromGame() => gameScore;
+
 	[SerializeField]
 	private AnimationCurve teamSkillCurve = new AnimationCurve();
 	public void CloseGame() {
-		int score = hitPointsArrowManager.GetScore();
-		GameManager.I.ModifyStats(new StatsModel((0f,0f,0f,score/25.0f,0f)));
 		gameContainer.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 		gameContainer.transform.DOScale(0, initializationTime);
 		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime);
@@ -69,6 +67,8 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 
 	public void GameOver()
 	{
+		int score = hitPointsArrowManager.GetScore();
+		gameScore = new StatsModel(StatsTypes.Audio, score / 5f);
 		MinigameFinished?.Invoke();
 		CloseGame();
 	}

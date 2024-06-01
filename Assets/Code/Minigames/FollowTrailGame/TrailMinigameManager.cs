@@ -12,7 +12,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     [SerializeField] TextMeshProUGUI _scoreTxt;
     [SerializeField] TextMeshProUGUI _timerUI;
     [SerializeField] AnimationCurve _timeCurve;
-    [SerializeField] float _perfectScore = 25f;
+    [SerializeField] float _perfectScore = 35f;
     [SerializeField] Color _drawColor = Color.red;
     [SerializeField] AudioClip _clip;
     int _currentTrail = 0;
@@ -120,7 +120,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
                     _score -= (i - _index) / (float)_points.Count * _perfectScore * 0.8f;
                 }
                 else
-                    _score += 1f / _points.Count * _perfectScore;
+                    _score += 0.9f / _points.Count * _perfectScore;
                 _index = i + 1;
             }
         }
@@ -143,7 +143,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     public void MouseLeft()
     {
         _mouseOver = false;
-        
+
         if(_loop != null)
         _loop?.Pause();
         if (_timer <= 0) return;

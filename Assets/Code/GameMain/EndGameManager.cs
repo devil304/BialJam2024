@@ -97,6 +97,8 @@ public class EndGameManager : MonoBehaviour
 	public void ExitGame() {
 		Application.Quit();
 	}
+
+	public int GetMinScoreToWin() => minScoreToWin;
 }
 
 [Serializable]
