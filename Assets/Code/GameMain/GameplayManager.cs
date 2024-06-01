@@ -31,7 +31,7 @@ public class GameplayManager : MonoBehaviour
             _teamSprites[i].UpdateSprites(charM.head, charM.hair, charM.accessory, charM.NickName);
         }
         _mGameTimer = StrongRandom.RNG.Next(10, 12);
-        _anomalyTimer = StrongRandom.RNG.Next(15, 18);
+        _anomalyTimer = StrongRandom.RNG.Next(150, 180);
         _anomalySystem.OnAnomalyStart += AnomalyStart;
         _anomalySystem.OnAnomalyEnd += AnomalyEnd;
         for (int i = 0; i < 5; i++)
@@ -49,7 +49,7 @@ public class GameplayManager : MonoBehaviour
     private void AnomalyEnd()
     {
         _anomalyOn = false;
-        _anomalyTimer = StrongRandom.RNG.Next(10, 15);
+        _anomalyTimer = StrongRandom.RNG.Next(100, 150);
     }
 
     private void AnomalyStart()
@@ -71,6 +71,8 @@ public class GameplayManager : MonoBehaviour
         {
             //GameManager.I.LoadMenu();
             enabled = false;
+						//!Tutaj koniec gry
+						HandleEndGame();
             return;
         }
         if (_mGameTimer > 0)
@@ -83,7 +85,6 @@ public class GameplayManager : MonoBehaviour
                 _actMG.ShowGame();
                 _actMG.MinigameFinished += MGFinished;
 
-                //!Tutaj koniec gry
                 return;
             }
         }
@@ -112,4 +113,8 @@ public class GameplayManager : MonoBehaviour
         _actMG = null;
         _mGameTimer = StrongRandom.RNG.Next(6, 10);
     }
+
+		private void HandleEndGame() {
+			Debug.Log("HANDLe END GAME");
+		}
 }

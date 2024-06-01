@@ -46,8 +46,7 @@ public class WordSpawner : MonoBehaviour {
 		float timeDiff = maxGameTime - gameTime;
 		if(timeDiff < 0) timeDiff = 0;
 		TimeSpan gameTimeSpan = TimeSpan.FromSeconds(timeDiff);
-		string milisecondsTime = gameTimeSpan.Milliseconds.ToString();
-		timeLabel.text = $"{gameTimeSpan.Seconds}:{milisecondsTime}";
+		timeLabel.text = $"{gameTimeSpan.Seconds}:{gameTimeSpan.Milliseconds / 10:D2}";
 	}
 
 	public void SetupGame() {
