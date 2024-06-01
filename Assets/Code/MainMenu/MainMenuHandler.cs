@@ -23,7 +23,7 @@ public class MainMenuHandler : MonoBehaviour
 
     [SerializeField] List<GameObject> developers;
 
-
+    public Coroutine credits;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,6 +34,8 @@ public class MainMenuHandler : MonoBehaviour
         DontDestroyOnLoad(source.gameObject); 
         source.gameObject.AddComponent<DestroyWhenSceneChangeTo>().SetSceneIndex(2);
         StartCoroutine(Test());
+
+        
 
     }
 
@@ -95,6 +97,7 @@ public class MainMenuHandler : MonoBehaviour
 
     public void ShowMenu(CanvasGroup from)
     {
+        
         StartCoroutine(MoveFromOneToAnotherPanel(from, menuCanvas));
     }
 
@@ -114,6 +117,7 @@ public class MainMenuHandler : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+        
     }
 
     public void StartGame()
@@ -123,7 +127,9 @@ public class MainMenuHandler : MonoBehaviour
 
     public void StartCredits (CanvasGroup to)
     {
-        StartCoroutine(CreditsPresentation(menuCanvas,to));
+        if(credits != null)
+        StopCoroutine(credits);
+        credits = StartCoroutine(CreditsPresentation(menuCanvas, to));
     }
 
     private IEnumerator CreditsPresentation(CanvasGroup from, CanvasGroup to)
