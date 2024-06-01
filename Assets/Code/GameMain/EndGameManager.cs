@@ -18,7 +18,7 @@ public class EndGameManager : MonoBehaviour
 	[SerializeField] Image summaryImage;
 	[SerializeField] CanvasGroup canvasGroup;
 
-	private int minScoreToWin = 80;
+	private int minScoreToWin = 75;
 
 	private void Start() {
 		canvasGroup.alpha = 0;
