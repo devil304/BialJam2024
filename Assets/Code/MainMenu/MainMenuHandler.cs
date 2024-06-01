@@ -21,6 +21,8 @@ public class MainMenuHandler : MonoBehaviour
 
     Tween fadeTween;
 
+    [SerializeField] List<GameObject> developers;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -117,6 +119,29 @@ public class MainMenuHandler : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void StartCredits (CanvasGroup to)
+    {
+        StartCoroutine(CreditsPresentation(menuCanvas,to));
+    }
+
+    private IEnumerator CreditsPresentation(CanvasGroup from, CanvasGroup to)
+    {
+
+        StartCoroutine(MoveFromOneToAnotherPanel(menuCanvas, to));
+
+        foreach (GameObject dev in developers)
+        {
+            yield return new WaitForSeconds(1f);
+            FadeIn(0.5f, dev.GetComponent<CanvasGroup>());
+            yield return new WaitForSeconds(5f);
+            FadeOut(0.5f, dev.GetComponent<CanvasGroup>());
+            yield return new WaitForSeconds(1f);
+        }
+
+        
+
     }
 
 }
