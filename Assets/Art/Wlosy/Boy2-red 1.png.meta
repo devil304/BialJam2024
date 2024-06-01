@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9212dc8b783445947998db69421351b8
+guid: 79ab08706bfef5c458d34201fa8c5c5d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4142475818922189058
-    second: Girl1-brown_0
+      213: -622895581405343706
+    second: Boy2-red_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,30 +122,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Girl1-brown_0
+      name: Boy2-red_0
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1032
-        width: 1061
-        height: 943
+        x: 463
+        y: 1070
+        width: 1031
+        height: 769
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: efe5f72c038f286c0800000000000000
-      internalID: -4142475818922189058
+      spriteID: 6209c2ad4c70b57f0800000000000000
+      internalID: -622895581405343706
       vertices: []
       indices: 
       edges: []
@@ -172,7 +159,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Girl1-brown_0: -4142475818922189058
+      Boy2-red_0: -622895581405343706
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

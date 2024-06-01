@@ -1,7 +1,5 @@
 using System.Collections;
-using TMPro.EditorUtilities;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
 using System;
 using DG.Tweening;
@@ -51,7 +49,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = -1;
         swapper.position = mousePos;
-            
+
         scoreText.text = $"Score: {score}";
 
         currTime -= Time.deltaTime;
@@ -65,7 +63,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
             StopCoroutine(NewBug());
             foreach (Transform child in transform)
             {
-                if(child.tag == "Bug")
+                if (child.tag == "Bug")
                 {
                     Destroy(child.gameObject);
                 }
@@ -84,7 +82,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
     IEnumerator NewBug()
     {
-        
+
         while (true)
         {
             yield return new WaitForSeconds(2f);
@@ -94,7 +92,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
     void CreateNewBug(GameObject bugPrefab)
     {
-        GameObject newBug = Instantiate(bugPrefab,this.transform,false);
+        GameObject newBug = Instantiate(bugPrefab, this.transform, false);
         newBug.transform.localPosition = new Vector3(StrongRandom.RNG.Next(-900, 900) / 2000f, StrongRandom.RNG.Next(-900, 900) / 2000f, 0);
         newBug.GetComponent<BugScript>().handler = this;
     }
