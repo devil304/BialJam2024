@@ -5340,9 +5340,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Justyna Kryscko
-
-    Sound Designer'
+  m_text: "Justyna Kryscio \nSound Designer"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f73c208a06e574347a3b666bfded672a, type: 2}
   m_sharedMaterial: {fileID: -717936159395489758, guid: f73c208a06e574347a3b666bfded672a, type: 2}
