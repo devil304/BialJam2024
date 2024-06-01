@@ -74,6 +74,8 @@ public class Anomaly {
 
 		if (anomalyData.randomNegative) {
 			if(!anomalyData.sharedWinnerBetweenEffects) {
+				winerTypes = new List<StatsTypes>();
+				loserTypes = new List<StatsTypes>();
 				DrawRandomTypes(winerTypes, loserTypes, anomalyData.randomNegativeStatsList.winerCount, anomalyData.randomNegativeStatsList.loserCount);
 			}
 
@@ -89,6 +91,8 @@ public class Anomaly {
 
 		if (anomalyData.randomNeutral) {
 			if(!anomalyData.sharedWinnerBetweenEffects) {
+				winerTypes = new List<StatsTypes>();
+				loserTypes = new List<StatsTypes>();
 				DrawRandomTypes(winerTypes, loserTypes, anomalyData.randomNeutralStatsList.winerCount, anomalyData.randomNeutralStatsList.loserCount);
 			}
 
@@ -104,10 +108,7 @@ public class Anomaly {
 	}
 
 	public void DrawRandomTypes(List<StatsTypes> list1, List<StatsTypes> list2, int list1Count, int list2Count) {
-		int typesCount = Enum.GetNames(typeof(StatsTypes)).Length;
 		List<StatsTypes> allTypes = Enum.GetValues(typeof(StatsTypes)).Cast<StatsTypes>().ToList();
-		Debug.Log("Before First list random");
-		Debug.Log(allTypes.Count);
 		for (int i = 0; i < list1Count; i++)
 		{
 			int randomIndex = UnityEngine.Random.Range(0, allTypes.Count);
@@ -115,8 +116,6 @@ public class Anomaly {
 			allTypes.RemoveAt(randomIndex);
 		}
 
-		Debug.Log("Before Second list random");
-		Debug.Log(allTypes.Count);
 		for (int i = 0; i < list2Count; i++)
 		{
 			int randomIndex = UnityEngine.Random.Range(0, allTypes.Count);

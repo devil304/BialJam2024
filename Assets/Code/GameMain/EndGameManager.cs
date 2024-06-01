@@ -18,6 +18,8 @@ public class EndGameManager : MonoBehaviour
 	[SerializeField] Image summaryImage;
 	[SerializeField] CanvasGroup canvasGroup;
 
+	private int minScoreToWin = 80;
+
 	private void Start() {
 		canvasGroup.alpha = 0;
 		canvasGroup.gameObject.SetActive(false);
@@ -37,10 +39,14 @@ public class EndGameManager : MonoBehaviour
 		}
 
 
-		float biggestScore = 90;
+		float biggestScore = minScoreToWin;
 		int biggestIndex = -1;
 		for (int i = 0; i < allScores.Length; i++) {
-			if(allScores[i] > biggestScore) {
+			if(allScores[i] >= biggestScore) {
+				if (allScores[i] == biggestScore) {
+					if (UnityEngine.Random.Range(0, 2) == 1)
+						continue;
+				}
 				biggestScore = allScores[i];
 				biggestIndex = i;
 			}
@@ -71,7 +77,7 @@ public class EndGameManager : MonoBehaviour
 
 	public bool IsWin(float[] allScores) {
 		foreach (var score in allScores) {
-			if (score < 90) return false;
+			if (score < minScoreToWin) return false;
 		}
 		return true;
 	}
