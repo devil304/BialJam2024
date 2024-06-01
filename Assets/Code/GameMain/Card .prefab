@@ -798,6 +798,12 @@ MonoBehaviour:
   _bodySR: {fileID: 6685025451649523348}
   _deskSR: {fileID: 7740236406977074971}
   _shadowSR: {fileID: 8218124156230427849}
+  _baseOrderHead: 5
+  _baseOrderHair: 6
+  _baseOrderAcc: 7
+  _baseOrderBody: 3
+  _baseOrderDesk: 4
+  _baseOrderShadow: 2
 --- !u!1 &8658173901736150882
 GameObject:
   m_ObjectHideFlags: 0
