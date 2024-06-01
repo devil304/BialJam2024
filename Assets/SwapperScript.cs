@@ -16,6 +16,7 @@ public class SwapperScript : MonoBehaviour
     private void OnEnable()
     {
         GameManager.I.MainInput.Main.LMB.started += LefMouseButtonDown;
+				ren.sprite = swappers[0];
     }
 
     // Update is called once per frame
