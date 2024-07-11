@@ -25,7 +25,11 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
     public Action MinigameFinished { get; set; }
 		private int score;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private List<MemoryGameCardScript> cardsToFlip = new();
+
+    public void RemoveCard(MemoryGameCardScript memoryCard) {
+      cardsToFlip.Remove(memoryCard);
+    }
 
     private void OnEnable()
     {
@@ -60,6 +64,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     void InitCards(float time)
     {
+        cardsToFlip = new();
         currTime = time;
         List<int> idList = new() { 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8 };
 
@@ -69,6 +74,7 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
             {
                 int random = StrongRandom.RNG.Next(idList.Count);
                 MemoryGameCardScript cs = child.GetComponent<MemoryGameCardScript>();
+                cardsToFlip.Add(cs);
                 cs.cardNum = idList[random];
                 cs.rewers.GetComponent<SpriteRenderer>().sprite = sprites[idList[random]-1];
                 idList.RemoveAt(random);
@@ -79,21 +85,22 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     void Update()
     {
+      Debug.Log(cardsToFlip.Count);
         if (flippedCards.Count == 2)
         {
             CheckCards(flippedCards[0], flippedCards[1]);
         }
 
-        if (transform.childCount - 2 != 0)
+        if (cardsToFlip.Count != 0)
         {
             currTime -= Time.deltaTime;
             TimeSpan time = TimeSpan.FromSeconds(currTime);
-            countdownTimerText.text = time.Seconds.ToString() + ":" + time.Milliseconds.ToString();
+            countdownTimerText.text = $"{time.Seconds}:{time.Milliseconds / 10:D2}";
 
             if (currTime <= 0)
             {
                 GameOver(score);
-                countdownTimerText.text = "00:000";
+                countdownTimerText.text = "00:00";
             }
         }
         else
@@ -127,6 +134,8 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     void GameOver(float endScore)
     {
+      Debug.Log("endScore");
+      Debug.Log(endScore);
 
         foreach (Transform child in transform)
         {

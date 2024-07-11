@@ -118,7 +118,7 @@ public class GameplayManager : MonoBehaviour
 				return GameManager.I._minigames[filtered[StrongRandom.RNG.Next(0, filtered.Count)]];
 			}
 
-			return GameManager.I._minigames[StrongRandom.RNG.Next(0, _chances.Count)];
+			return GameManager.I._minigames[StrongRandom.RNG.Next(0, GameManager.I._minigames.Count)];
 		}
 
     private void MGFinished()

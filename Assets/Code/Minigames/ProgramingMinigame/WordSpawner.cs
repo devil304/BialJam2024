@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
 public class WordSpawner : MonoBehaviour {
+  public Action OnGameEnd;
 	[SerializeField]
 	private List<string> keywords = new List<string>();
 
@@ -38,6 +40,9 @@ public class WordSpawner : MonoBehaviour {
 		if (gameTime >= maxGameTime || !shouldSpawn) return;
 
 		gameTime += Time.deltaTime;
+		if (gameTime >= maxGameTime) {
+      EndGame();
+    };
 
 		if (tryFocus && gameObject.activeInHierarchy && shouldSpawn) inputField.Select();
 	}
@@ -75,13 +80,14 @@ public class WordSpawner : MonoBehaviour {
 	}
 
 	public void EndGame() {
-		wordToWriteLabel.text = "END";
+		wordToWriteLabel.text = "TIME OVER";
 		shouldSpawn = false;
 		tryFocus = false;
 		inputField.onDeselect.RemoveListener(StartTryingFocusInput);
 		inputField.onSelect.RemoveListener(StopTryingFocusInput);
 		inputField.ReleaseSelection();
 		inputField.DeactivateInputField();
+    DOVirtual.DelayedCall(0.5f, () => OnGameEnd?.Invoke(), false);
 	}
 
 	public int GetScore() => score;

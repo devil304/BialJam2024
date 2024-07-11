@@ -14,25 +14,31 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 		gameContainer.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
 		gameContainer.transform.DOScale(0, initializationTime);
 		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime);
-		spawnArrowsManager.SetGameTime(0f);
+		// spawnArrowsManager.SetGameTime(0f);
+    spawnArrowsManager.OnEndGame -= GameOver;
 		DOVirtual.DelayedCall(initializationTime, () => gameContainer.SetActive(false), false);
 		gameOverTween?.Kill();
-		gameMonitor.transform.DOMoveY(-10f, 0.5f).SetDelay(1f);
-		PlayCardClip(monitorSlideDownClip);
-		Debug.Log("Close Game");
+    DOVirtual.DelayedCall(1f, () => {
+		  gameMonitor.transform.DOMoveY(-10f, 0.5f);
+		  PlayAudioClip(monitorSlideDownClip);
+    }, false);
+		PlayAudioClip(programSlideDownClip);
+		// Debug.Log("Close Game");
 	}
 
 	public void ShowGame() {
-		PlayCardClip(monitorSlideUpClip);
+		PlayAudioClip(monitorSlideUpClip);
 		gameMonitor.transform.DOMoveY(0f, 0.5f);
+		gameObject.SetActive(true);
 		gameContainer.SetActive(true);
 		gameContainer.transform.localScale = new Vector3(0, 0, 0);
 		gameContainer.transform.DOScale(0.7f, initializationTime).SetDelay(0.5f);
 		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime).SetDelay(0.5f);
 		float timeFromTeam = GetTimeFromTeam();
+    spawnArrowsManager.OnEndGame += GameOver;
 		spawnArrowsManager.SetGameTime(timeFromTeam);
-		gameOverTween = DOVirtual.DelayedCall(timeFromTeam + 3f, GameOver, false);
-		Debug.Log("Show Game");
+		// gameOverTween = DOVirtual.DelayedCall(timeFromTeam + 3f, GameOver, false);
+		// Debug.Log("Show Game");
 	}
 
 	public float GetTimeFromTeam() {
@@ -59,7 +65,9 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 	private AudioClip monitorSlideUpClip;
 	[SerializeField]
 	private AudioClip monitorSlideDownClip;
-	private void PlayCardClip(AudioClip audioClip) {
+	[SerializeField]
+	private AudioClip programSlideDownClip;
+	private void PlayAudioClip(AudioClip audioClip) {
 		if(audioClip != null) {
 			Sound.PlaySoundAtPos(Vector3.zero, audioClip, Sound.MixerTypes.SFX, 1f, true, false, true);
 		}
@@ -70,7 +78,7 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 		int score = hitPointsArrowManager.GetScore();
 		gameScore = new StatsModel(StatsTypes.Audio, score / 5f);
 		MinigameFinished?.Invoke();
-		CloseGame();
+		// CloseGame();
 	}
 
 }

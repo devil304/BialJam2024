@@ -29,7 +29,7 @@ public class MainMenuHandler : MonoBehaviour
     void Start()
     {
 
-        source = Sound.PlaySoundAtPos(transform.position, menuMusic, Sound.MixerTypes.BGMMain, 1, sound2D: true, destroyAfter: true, initialFadeDur: 1f);
+        source = Sound.PlaySoundAtPos(transform.position, menuMusic, Sound.MixerTypes.BGMMain, 1, sound2D: true, destroyAfter: false, initialFadeDur: 1f);
         source.loop = true;
         DontDestroyOnLoad(source.gameObject); 
         source.gameObject.AddComponent<DestroyWhenSceneChangeTo>().SetSceneIndex(2);
@@ -50,7 +50,7 @@ public class MainMenuHandler : MonoBehaviour
     {
         fadeTween?.Kill(true);
 
-        fadeTween = newCanvas.DOFade(end, dur);
+        fadeTween = newCanvas.DOFade(end, dur).SetLink(newCanvas.gameObject, LinkBehaviour.KillOnDestroy);
         fadeTween.OnComplete(()=> {
             onEnd?.Invoke(newCanvas);
         });
@@ -117,7 +117,6 @@ public class MainMenuHandler : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
-        
     }
 
     public void StartGame()

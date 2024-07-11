@@ -120,7 +120,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
                     _score -= (i - _index) / (float)_points.Count * _perfectScore * 0.8f;
                 }
                 else
-                    _score += 0.9f / _points.Count * _perfectScore;
+                    _score += 1.5f / _points.Count * _perfectScore;
                 _index = i + 1;
             }
         }
@@ -175,6 +175,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
 
     public void ShowGame()
     {
+        _score = 0;
         transform.DOKill(true);
         gameObject.SetActive(true);
         transform.DOScale(Vector3.one, 1f).SetEase(Ease.OutSine).OnComplete(() =>

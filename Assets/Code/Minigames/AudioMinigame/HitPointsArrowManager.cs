@@ -64,7 +64,7 @@ public class HitPointsArrowManager : MonoBehaviour
 		if (hittedArrowCollider == null) return;
 
 		float distanseFromCenter = Vector2.Distance(hitPointArrowPosition.position, hittedArrowCollider.transform.position);
-		Debug.Log($"Points to add: {GetPointsFromDistance(distanseFromCenter)}");
+		// Debug.Log($"Points to add: {GetPointsFromDistance(distanseFromCenter)}");
 
 		Instantiate(arrowHitEffect, hitPointArrowPosition.position, Quaternion.identity);
 

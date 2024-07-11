@@ -1,10 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.InputSystem;
 using System;
 using Sequence = DG.Tweening.Sequence;
-using NUnit.Framework.Constraints;
 using System.Collections.Generic;
 
 public class MemoryGameCardScript : MonoBehaviour
@@ -13,6 +10,7 @@ public class MemoryGameCardScript : MonoBehaviour
     public AudioClip matchSound;
     public AudioClip missSound;
 
+    [SerializeField]
     private Transform CardTransform;
     MemoryGameHandler mh;
     Vector3 rotationZ = new Vector3(0, 0, 10);
@@ -32,7 +30,7 @@ public class MemoryGameCardScript : MonoBehaviour
     {
         isGameOver = false;
         isFlipped = false;
-        CardTransform = this.gameObject.GetComponent<Transform>();
+        // CardTransform = this.gameObject.GetComponent<Transform>();
         mh = transform.parent.GetComponent<MemoryGameHandler>();
         ///test
         //cardNum = 1;
@@ -78,7 +76,7 @@ public class MemoryGameCardScript : MonoBehaviour
     private void StopAnim(Action callback = null)
     {
         _anim.Kill(true);
-        CardTransform.DORotate(Vector3.zero, 1f, RotateMode.Fast)
+        CardTransform.DORotate(Vector3.zero, 0.25f, RotateMode.Fast)
             .SetEase(Ease.InOutSine).OnComplete(()=>callback?.Invoke());
     }
 
@@ -96,7 +94,7 @@ public class MemoryGameCardScript : MonoBehaviour
                 StopAnim();
                 isFlipped = true;
                 CardTransform.DOKill(true);
-                Sound.PlaySoundAtTarget(transform, flipSounds[StrongRandom.RNG.Next(flipSounds.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
+                Sound.PlaySoundAtPos(transform.position, flipSounds[StrongRandom.RNG.Next(flipSounds.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
                 CardTransform.DORotate(rotationX, 0.5f).OnComplete(() => SendCardToHandler());
             }
         }
@@ -104,6 +102,7 @@ public class MemoryGameCardScript : MonoBehaviour
 
     void SendCardToHandler()
     {
+      if(!mh.flippedCards.Contains(this))
         mh.flippedCards.Add(this);
     }
 
@@ -111,6 +110,7 @@ public class MemoryGameCardScript : MonoBehaviour
     {
         Sound.PlaySoundAtTarget(transform, matchSound, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
         _anim.Kill(true);
+        mh.RemoveCard(this);
         CardTransform.DOScale(0f, 0.25f)
         .OnComplete(() => gameObject.SetActive(false));
     }

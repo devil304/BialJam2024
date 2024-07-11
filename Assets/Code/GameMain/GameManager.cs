@@ -56,9 +56,11 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         I = null;
-        _mainInput.Main.Disable();
-        _mainInput.Disable();
-        _mainInput.Dispose();
+        if (_mainInput != null) {
+          _mainInput.Main.Disable();
+          _mainInput.Disable();
+          _mainInput.Dispose();
+        }
     }
 
     public void StartGame()

@@ -46,6 +46,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
     void Update()
     {
         Vector3 mousePos = GameManager.I.MainInput.Main.MousePos.ReadValue<Vector2>();
+        if(Camera.main)
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = -1;
         swapper.position = mousePos;
@@ -54,12 +55,12 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
         currTime -= Time.deltaTime;
         TimeSpan time = TimeSpan.FromSeconds(currTime);
-        timerText.text = $"{time.Seconds} : {time.Milliseconds}";
+        timerText.text = $"{time.Seconds} : {time.Milliseconds / 10:D2}";
 
 
         if (currTime <= 0)
         {
-            timerText.text = "00:000";
+            timerText.text = "00:00";
             StopCoroutine(NewBug());
             foreach (Transform child in transform)
             {
@@ -79,6 +80,10 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
         gameStats = new((0, 0, 0, 0, score));
         MinigameFinished?.Invoke();
     }
+    
+    // private void OnDisable() {
+    //     Cursor.visible = true;
+    // }
 
     IEnumerator NewBug()
     {
@@ -110,7 +115,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
     public void ShowGame()
     {
         this.gameObject.SetActive(true);
-        transform.DOMove(Vector3.zero, 0.5f);
+        transform.DOMove(Vector3.zero, 0.5f).OnComplete(() => CreateNewBug(prefab));
     }
 
 

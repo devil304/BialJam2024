@@ -28,7 +28,7 @@ public class BugScript : MonoBehaviour
 
     void Start()
     {
-        source = Sound.PlaySoundAtTarget(transform, walking, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true, initialFadeDur: 0f);
+        source = Sound.PlaySoundAtTarget(transform, walking, Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: false, initialFadeDur: 0f);
         source.loop = true;
 
         loopCorotuine = StartCoroutine(Loop());
@@ -44,12 +44,12 @@ public class BugScript : MonoBehaviour
     {
         if (canHit)
         {
-            Sound.PlaySoundAtTarget(transform, hits[StrongRandom.RNG.Next(hits.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
+            Sound.PlaySoundAtPos(transform.position, hits[StrongRandom.RNG.Next(hits.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
             StartCoroutine(WaitAfterDead());
         }
         else
         {
-            Sound.PlaySoundAtTarget(transform, misses[StrongRandom.RNG.Next(misses.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
+            Sound.PlaySoundAtPos(transform.position, misses[StrongRandom.RNG.Next(misses.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
         }
     }
 
@@ -69,14 +69,14 @@ public class BugScript : MonoBehaviour
     {
         RandomCoordnidantes();
         var dur = (coordinates - transform.localPosition).magnitude / 1f;
-        transform.DOLocalMove(coordinates, dur).SetEase(Ease.Linear);
+        transform.DOLocalMove(coordinates, dur).SetEase(Ease.Linear).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
 
         while (true)
         {
             yield return new WaitForSeconds(dur);
             RandomCoordnidantes();
             dur = (coordinates - transform.localPosition).magnitude / 1f;
-            transform.DOLocalMove(coordinates, dur).SetEase(Ease.Linear);
+            transform.DOLocalMove(coordinates, dur).SetEase(Ease.Linear).SetLink(gameObject, LinkBehaviour.KillOnDestroy);
 
             //transform.DORotate(Vector3.forward*StrongRandom.RNG.Next(0,360),1f, RotateMode.Fast);
         }
@@ -93,10 +93,8 @@ public class BugScript : MonoBehaviour
         transform.DOKill();
 
         yield return new WaitForSeconds(2);
-        {
-            Destroy(gameObject);
-        }
 
+        Destroy(gameObject);
     }
 
     private void OnMouseEnter()

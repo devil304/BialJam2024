@@ -1,8 +1,10 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
 public class ArrowMovement : MonoBehaviour
 {
+  public Action<ArrowMovement> OnArrowDestroy;
 		[SerializeField] ParticleSystem missEffect;
 		Tween tween;
 
@@ -29,6 +31,7 @@ public class ArrowMovement : MonoBehaviour
 
 		private void OnDestroy() {
 			tween.Kill();
+      OnArrowDestroy?.Invoke(this);
 		}
 
 		private void OnDisable() {
