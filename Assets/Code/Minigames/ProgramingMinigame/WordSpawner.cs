@@ -15,6 +15,9 @@ public class WordSpawner : MonoBehaviour {
 	[SerializeField] TMP_InputField inputField;
 
 	[SerializeField] List<AudioClip> audioClips;
+  [SerializeField] private ParticleSystem correctParticle;
+  [SerializeField] private ParticleSystem incorrectParticle;
+  [SerializeField] private Transform correctParticlePosition;
 
 	private int score = 0;
 
@@ -132,10 +135,13 @@ public class WordSpawner : MonoBehaviour {
 
 			if (currentCharIndex == wordToWrite.Length) {
 				score += currentCharIndex;
+        Instantiate(correctParticle, correctParticlePosition.position, Quaternion.identity);
 				SetNewWord();
 			}
 		} else {
 			Debug.Log("INCORRECT");
+      Vector3 particlePosition = new Vector3(StrongRandom.RNG.Next(-2, 2), StrongRandom.RNG.Next(-2, 2), 0);
+      Instantiate(incorrectParticle, particlePosition, Quaternion.identity);
 		}
 	}
 

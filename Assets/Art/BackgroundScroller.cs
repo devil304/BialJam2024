@@ -10,8 +10,8 @@ public class BackgroundScroller : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		float positionX = rawImage.uvRect.position.x + scrollDirection.x * Time.deltaTime * scrollSpeed;
-		float positionY = rawImage.uvRect.position.y + scrollDirection.y * Time.deltaTime * scrollSpeed;
+		float positionX = rawImage.uvRect.position.x + scrollDirection.x * Time.fixedDeltaTime * scrollSpeed;
+		float positionY = rawImage.uvRect.position.y + scrollDirection.y * Time.fixedDeltaTime * scrollSpeed;
 		if (positionX >= 10 || positionX <= -10) positionX = 0;
 		if (positionY >= 10 || positionY <= -10) positionY = 0;
 		Vector2 newPosition = new Vector2(positionX, positionY);

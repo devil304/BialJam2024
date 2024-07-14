@@ -87,17 +87,15 @@ public class MemoryGameCardScript : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!isGameOver)
-        {
-            if (!isFlipped)
-            {
-                StopAnim();
-                isFlipped = true;
-                CardTransform.DOKill(true);
-                Sound.PlaySoundAtPos(transform.position, flipSounds[StrongRandom.RNG.Next(flipSounds.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
-                CardTransform.DORotate(rotationX, 0.5f).OnComplete(() => SendCardToHandler());
-            }
-        }
+        if (isGameOver || Time.timeScale == 0) return;
+        if (isFlipped) return;
+
+        StopAnim();
+        isFlipped = true;
+        CardTransform.DOKill(true);
+        Sound.PlaySoundAtPos(transform.position, flipSounds[StrongRandom.RNG.Next(flipSounds.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);
+        CardTransform.DORotate(rotationX, 0.5f).OnComplete(() => SendCardToHandler());
+
     }
 
     void SendCardToHandler()

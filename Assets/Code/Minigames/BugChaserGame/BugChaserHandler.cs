@@ -22,8 +22,8 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
     public bool IsDisplayed => gameObject.activeInHierarchy;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    private float initSpawnTime = 2f;
+    private float spawnTime;
 
     private void OnEnable()
     {
@@ -31,25 +31,23 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
 
         countdownTime = timer.Evaluate(GameManager.I.StatsTeam.GetStat(StatsTypes.QA));
         score = 0;
-        StartCoroutine(NewBug());
+        // StartCoroutine(NewBug());
         Cursor.visible = false;
 
         currTime = countdownTime;
-    }
-
-    void Start()
-    {
-
+        spawnTime = initSpawnTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 mousePos = GameManager.I.MainInput.Main.MousePos.ReadValue<Vector2>();
-        if(Camera.main)
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        mousePos.z = -1;
-        swapper.position = mousePos;
+        if (Time.timeScale == 1) {
+            Vector3 mousePos = GameManager.I.MainInput.Main.MousePos.ReadValue<Vector2>();
+            if(Camera.main)
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            mousePos.z = -1;
+            swapper.position = mousePos;
+        }
 
         scoreText.text = $"Score: {score}";
 
@@ -61,7 +59,7 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
         if (currTime <= 0)
         {
             timerText.text = "00:00";
-            StopCoroutine(NewBug());
+            // StopCoroutine(NewBug());
             foreach (Transform child in transform)
             {
                 if (child.tag == "Bug")
@@ -70,6 +68,12 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
                 }
             }
             GameOver(score);
+        } else {
+            spawnTime -= Time.deltaTime;
+            if(spawnTime <= 0) {
+                CreateNewBug(prefab);
+                spawnTime = initSpawnTime;
+            }
         }
 
     }
@@ -85,15 +89,15 @@ public class BugChaserHandler : MonoBehaviour, IMinigame
     //     Cursor.visible = true;
     // }
 
-    IEnumerator NewBug()
-    {
+    // IEnumerator NewBug()
+    // {
 
-        while (true)
-        {
-            yield return new WaitForSeconds(2f);
-            CreateNewBug(prefab);
-        }
-    }
+    //     while (true)
+    //     {
+    //         yield return new WaitForSeconds(2f);
+    //         CreateNewBug(prefab);
+    //     }
+    // }
 
     void CreateNewBug(GameObject bugPrefab)
     {

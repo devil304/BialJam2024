@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
     MainInput _mainInput;
 
     [SerializeField] bool _debug;
+    [SerializeField] CanvasGroup _pauseMenu;
+    private Vector3 _pauseMenuPosition;
+    private bool wasCursorVisible = true;
 
     private void Awake()
     {
@@ -45,6 +49,10 @@ public class GameManager : MonoBehaviour
         _minigames = _minigamesPrefabs.Select(mp => mp.GetComponent<IMinigame>()).ToList();
         DontDestroyOnLoad(gameObject);
         DataObjectAccess.ClearNicks();
+        if (_pauseMenu != null) {
+            _pauseMenuPosition =  _pauseMenu.transform.localPosition;
+        }
+       
     }
 
     private void OnEnable()
@@ -89,12 +97,50 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            LoadMenu();
+            ToggleMenu();
         }
+    }
+
+    public void ToggleMenu() {
+        if(Time.timeScale == 0) {
+            ResumeGame();
+        } else {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame() {
+        Time.timeScale = 0;
+        if(_pauseMenu != null) {
+            _pauseMenu.transform.DOLocalMove(Vector3.zero, 0.5f).SetUpdate(true);
+            _pauseMenu.DOFade(1, 0.5f);
+            _pauseMenu.interactable = true;
+            _pauseMenu.blocksRaycasts = true;
+        }
+        
+        wasCursorVisible = Cursor.visible;
+        Cursor.visible = true;
+    }
+
+    public void ResumeGame() {
+        Time.timeScale = 1;
+        if(_pauseMenu != null) {
+            _pauseMenu.transform.DOLocalMove(_pauseMenuPosition, 0.5f);
+            _pauseMenu.DOFade(1, 0.5f);
+            _pauseMenu.interactable = false;
+            _pauseMenu.blocksRaycasts = false;
+        }
+
+        Cursor.visible = wasCursorVisible;
+    }
+    
+    public void ExitGame() {
+        Application.Quit();
     }
 
     public void LoadMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
         Destroy(gameObject);
     }

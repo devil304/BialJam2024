@@ -82,6 +82,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
             else
                 return;
         }
+        if (Time.timeScale == 0) return;
         if (_timer <= 0) return;
         if (_index >= _points.Count) return;
         _timer -= Time.deltaTime;
@@ -91,7 +92,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
         {
             if (_index < _points.Count)
             {
-                _score -= (_points.Count - _index) / (float)_points.Count * _perfectScore * 0.1f;
+                _score -= (_points.Count - _index) / (float)_points.Count * _perfectScore * 0.1f;   //Subtracting points for not finished image trail
                 DisplayScore();
                 _loop?.Pause();
                 MinigameFinished?.Invoke();
@@ -117,10 +118,10 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
             {
                 if (i - _index > 0)
                 {
-                    _score -= (i - _index) / (float)_points.Count * _perfectScore * 0.8f;
+                    _score -= (i - _index) / (float)_points.Count * _perfectScore * 0.9f;   //Subtracting points for missed trail
                 }
                 else
-                    _score += 1.5f / _points.Count * _perfectScore;
+                    _score += 1.3f / _points.Count * _perfectScore; //Add points if follow the trail
                 _index = i + 1;
             }
         }
@@ -148,7 +149,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
         _loop?.Pause();
         if (_timer <= 0) return;
         if (_index > 0 && _index < _points.Count)
-            _score -= _perfectScore * 0.05f;
+            _score -= _perfectScore * 0.05f;//Subtracting points for not following the trail
         DisplayScore();
     }
 

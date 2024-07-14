@@ -34,6 +34,8 @@ public class AnomalySystem : MonoBehaviour
 	private GameObject background;
 	[SerializeField]
 	private AudioClip alertClip;
+  [SerializeField]
+  private Material glitchMaterial;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -42,7 +44,14 @@ public class AnomalySystem : MonoBehaviour
 		decisionCanvas.DOFade(0, 0);
 		LoadAllAnomalyData();
 		background.transform.localScale = Vector3.zero;
+    decisionCanvas.GetComponent<Canvas>().worldCamera = Camera.main;
 	}
+
+  void OnDestroy() {
+    glitchMaterial.SetFloat("_NoiseAmount", 0f);
+    glitchMaterial.SetFloat("_GlitchStrength", 0f);
+    glitchMaterial.SetFloat("_ScanLinesStrength", 0f);
+  }
 
 	private void LoadAllAnomalyData() {
 		try {
@@ -60,6 +69,9 @@ public class AnomalySystem : MonoBehaviour
 		alertInfoText.gameObject.SetActive(true);
 		OnAnomalyStart?.Invoke();
 		PlayCardClip(alertClip);
+    glitchMaterial.SetFloat("_NoiseAmount", 60f);
+    glitchMaterial.SetFloat("_GlitchStrength", 7f);
+    glitchMaterial.SetFloat("_ScanLinesStrength", 0.3f);
 	}
 
 	private void PlayCardClip(AudioClip audioClip) {
@@ -86,6 +98,9 @@ public class AnomalySystem : MonoBehaviour
 
 	void DisplayAnomaly()
 	{
+    glitchMaterial.SetFloat("_NoiseAmount", 1f);
+    glitchMaterial.SetFloat("_GlitchStrength", 0.5f);
+    glitchMaterial.SetFloat("_ScanLinesStrength", 0.1f);
 		CreateAnomaly();
 		decisionCanvas.DOFade(1f, 1f).SetDelay(1f);
 		activeCard = Instantiate(anomalyCardPrefab, transform.position, Quaternion.identity);
@@ -116,6 +131,9 @@ public class AnomalySystem : MonoBehaviour
 
 	public void OnDecisionMake(AnomalyReaction decision)
 	{
+    glitchMaterial.SetFloat("_NoiseAmount", 0f);
+    glitchMaterial.SetFloat("_GlitchStrength", 0f);
+    glitchMaterial.SetFloat("_ScanLinesStrength", 0f);
 		decisionCanvas.DOFade(0f, 1f);
 		GameManager.I.MainInput.Main.LeftArrow.started -= HandleLeftArrowClick;
 		GameManager.I.MainInput.Main.RightArrow.performed -= HandleRightArrowClick;

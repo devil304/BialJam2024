@@ -43,6 +43,8 @@ public class GameplayManager : MonoBehaviour
         }
         _chances.Shuffle();
         Debug.Log($"Team stats: Code {GameManager.I.StatsTeam.GetStat(StatsTypes.Code)}, Design {GameManager.I.StatsTeam.GetStat(StatsTypes.Design)}, Art {GameManager.I.StatsTeam.GetStat(StatsTypes.Art)}, Audio {GameManager.I.StatsTeam.GetStat(StatsTypes.Audio)}, QA {GameManager.I.StatsTeam.GetStat(StatsTypes.QA)}");
+        Debug.Log("_chances");
+        Debug.Log(_chances.Count);
         var ThatASS = Sound.PlaySoundAtPos(Vector3.zero, _clip, Sound.MixerTypes.BGMMain, sound2D: true, initialFadeDur: 1f);
         ThatASS.loop = true;
     }
@@ -108,12 +110,19 @@ public class GameplayManager : MonoBehaviour
 
 		private IMinigame GetRandomHelpfullGame() {
 			var filtered = _chances.Where(i => GameManager.I.StatsAct.GetStat((StatsTypes)i) < _endGameManager.GetMinScoreToWin()).ToList();
+      Debug.Log("filtered");
+      Debug.Log(filtered.Count);
 
 			if(filtered.Count > 0) {
 				_chances.ForEach(i => {
-					if (GameManager.I.StatsAct.GetStat((StatsTypes)i) < _endGameManager.GetMinScoreToWin()/2) {
+          float gameStats = GameManager.I.StatsAct.GetStat((StatsTypes)i);
+					if (gameStats < _endGameManager.GetMinScoreToWin()/3) {
 						filtered.Add(i);
 					}
+          if (gameStats < _endGameManager.GetMinScoreToWin()/2) {
+						filtered.Add(i);
+          }
+          filtered.Shuffle();
 				});
 				return GameManager.I._minigames[filtered[StrongRandom.RNG.Next(0, filtered.Count)]];
 			}

@@ -21,7 +21,8 @@ public class MainMenu : MonoBehaviour
       .SetLink(gameLogo.gameObject, LinkBehaviour.KillOnDestroy);
 
 		if(mainMenuMusic != null) {
-			Destroy(mainMenuMusic);
+			// Destroy(mainMenuMusic);
+      return;
 		}
 		mainMenuMusic = Sound.PlaySoundAtPos(transform.position, menuMusic, Sound.MixerTypes.BGMMain, 1, sound2D: true, destroyAfter: false, initialFadeDur: 1f);
 		mainMenuMusic.loop = true;

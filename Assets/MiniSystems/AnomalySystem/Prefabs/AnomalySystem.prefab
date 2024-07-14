@@ -489,6 +489,7 @@ MonoBehaviour:
   neutralStatsPanel: {fileID: 2860862151680893805}
   background: {fileID: 6221931221511591011}
   alertClip: {fileID: 8300000, guid: cbb369d66d6a748409a90184a8b32e69, type: 3}
+  glitchMaterial: {fileID: 2100000, guid: d7bbdaf69ef03af48984efe172e7cf35, type: 2}
 --- !u!1 &3506250153297928931
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +779,7 @@ Canvas:
   m_GameObject: {fileID: 6031412205105628126}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -790,7 +791,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!114 &7896212907610655795
 MonoBehaviour:

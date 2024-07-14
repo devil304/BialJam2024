@@ -278,7 +278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3280706202164588622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e2762b0601072b4aba2111e0265b035, type: 3}
   m_Name: 
@@ -286,6 +286,7 @@ MonoBehaviour:
   _minigamesPrefabs: []
   _gameplaySceneIndex: 2
   _debug: 0
+  _pauseMenu: {fileID: 0}
 --- !u!1 &5290837406506260937
 GameObject:
   m_ObjectHideFlags: 0

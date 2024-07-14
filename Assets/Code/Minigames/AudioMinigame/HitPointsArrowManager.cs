@@ -61,7 +61,7 @@ public class HitPointsArrowManager : MonoBehaviour
 
 	void OnArrowHit(Collider2D hittedArrowCollider, Transform hitPointArrowPosition)
 	{
-		if (hittedArrowCollider == null) return;
+		if (hittedArrowCollider == null || Time.timeScale == 0) return;
 
 		float distanseFromCenter = Vector2.Distance(hitPointArrowPosition.position, hittedArrowCollider.transform.position);
 		// Debug.Log($"Points to add: {GetPointsFromDistance(distanseFromCenter)}");

@@ -7,6 +7,7 @@ public class TestRunMinigame : MonoBehaviour {
 
   [SerializeField] List<GameObject> minigamesGameObjects;
   [SerializeField] List<IMinigame> minigames = new();
+  [SerializeField] AnomalySystem anomalySystem;
 
   private void Start() {
     // minigame = minigameGameObject.GetComponent<IMinigame>();
@@ -51,6 +52,10 @@ public class TestRunMinigame : MonoBehaviour {
     }
     if(Input.GetKeyDown(KeyCode.Keypad4)) {
       gameIndex = 4;
+    }
+
+    if(Input.GetKeyDown(KeyCode.Keypad9)) {
+      anomalySystem.StartAnomaly();
     }
 
     if (gameIndex >= 0 && gameIndex < minigames.Count) {

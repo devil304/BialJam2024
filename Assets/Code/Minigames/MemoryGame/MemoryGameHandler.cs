@@ -85,7 +85,6 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     void Update()
     {
-      Debug.Log(cardsToFlip.Count);
         if (flippedCards.Count == 2)
         {
             CheckCards(flippedCards[0], flippedCards[1]);
@@ -134,9 +133,6 @@ public class MemoryGameHandler : MonoBehaviour, IMinigame
 
     void GameOver(float endScore)
     {
-      Debug.Log("endScore");
-      Debug.Log(endScore);
-
         foreach (Transform child in transform)
         {
             if (child.tag == "Card")

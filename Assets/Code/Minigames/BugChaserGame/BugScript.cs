@@ -42,6 +42,7 @@ public class BugScript : MonoBehaviour
 
     private void LefMouseButtonDown(InputAction.CallbackContext obj)
     {
+        if (Time.timeScale == 0) return;
         if (canHit)
         {
             Sound.PlaySoundAtPos(transform.position, hits[StrongRandom.RNG.Next(hits.Count - 1)], Sound.MixerTypes.SFX, 1, sound2D: true, destroyAfter: true);

@@ -171,7 +171,7 @@ public class EndGameManager : MonoBehaviour
       summaryText += " game.";
     }
 
-		summaryLabel.text = $"{summaryText} Try again.";
+		summaryLabel.text = $"{summaryText}\nTry again.";
   }
 
   private EndResult? GetBestResult(EndResult? endResult, EndResult? bestResult) {
