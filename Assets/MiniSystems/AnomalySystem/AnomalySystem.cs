@@ -52,6 +52,12 @@ public class AnomalySystem : MonoBehaviour
     glitchMaterial.SetFloat("_GlitchStrength", 0f);
     glitchMaterial.SetFloat("_ScanLinesStrength", 0f);
   }
+  
+  void OnDisable() {
+    glitchMaterial.SetFloat("_NoiseAmount", 0f);
+    glitchMaterial.SetFloat("_GlitchStrength", 0f);
+    glitchMaterial.SetFloat("_ScanLinesStrength", 0f);
+  }
 
 	private void LoadAllAnomalyData() {
 		try {
@@ -98,9 +104,9 @@ public class AnomalySystem : MonoBehaviour
 
 	void DisplayAnomaly()
 	{
-    glitchMaterial.SetFloat("_NoiseAmount", 1f);
-    glitchMaterial.SetFloat("_GlitchStrength", 0.5f);
-    glitchMaterial.SetFloat("_ScanLinesStrength", 0.1f);
+    glitchMaterial.SetFloat("_NoiseAmount", 0.5f);
+    glitchMaterial.SetFloat("_GlitchStrength", 0.25f);
+    glitchMaterial.SetFloat("_ScanLinesStrength", 0.05f);
 		CreateAnomaly();
 		decisionCanvas.DOFade(1f, 1f).SetDelay(1f);
 		activeCard = Instantiate(anomalyCardPrefab, transform.position, Quaternion.identity);

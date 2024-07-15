@@ -21,7 +21,7 @@ public class CharacterSelector : MonoBehaviour
 
 
 	private List<CharacterModel> selectedCharacters = new();
-	private int focusedCharacterIndex;
+	private int focusedCharacterIndex = 0;
 
 	private List<GameObject> charactersCards = new();
 
@@ -35,6 +35,7 @@ public class CharacterSelector : MonoBehaviour
 		CreateNewCardPool();
 		UpdatePoolPosition(false);
 		startGameButton.interactable = false;
+    focusedCharacterIndex = 0;
 	}
 
 	void CreateNewCardPool()
@@ -48,7 +49,6 @@ public class CharacterSelector : MonoBehaviour
 				characters.Add(character);
 
 				GameObject characterCard = Instantiate(characterCardPrefab, transform);
-				Debug.Log(characterCard);
 				characterCard.transform.localScale = Vector3.zero;
 				characterCard.GetComponent<CharacterCard>().UpdateCharacterSprite(character);
 				charactersCards.Add(characterCard);
@@ -95,12 +95,20 @@ public class CharacterSelector : MonoBehaviour
 		UpdatePoolPosition(false);
 	}
 
-	public void UpdatePoolPosition(bool scaleRight) {
+	public void UpdatePoolPosition(bool scaleLeft) {
+    List<int> visibleIndexes = new();
 		UpdateSubscribeButton();
-		if(scaleRight) {
-			if (farLeftCard != null) farLeftCard.transform.DOScale(0f, 0.5f);
+    int hidingCardIndex = -1;
+		if(scaleLeft) {
+			if (farLeftCard != null) {
+        hidingCardIndex = charactersCards.IndexOf(farLeftCard);
+        farLeftCard.transform.DOScale(0f, 0.5f);
+      }
 		} else {
-			if (farRightCard != null) farRightCard.transform.DOScale(0f, 0.5f);
+			if (farRightCard != null) {
+        hidingCardIndex = charactersCards.IndexOf(farRightCard);
+        farRightCard.transform.DOScale(0f, 0.5f);
+      }
 		}
 		int farLeftIndex;
 		int leftIndex;
@@ -114,18 +122,51 @@ public class CharacterSelector : MonoBehaviour
 			farLeftIndex = focusedCharacterIndex - 2;
 			leftIndex = focusedCharacterIndex - 1;
 		}
+
+    int rightIndex = (focusedCharacterIndex + 1)%characterPoolCount;
+    int farRightIndex = (focusedCharacterIndex + 2)%characterPoolCount;
+    visibleIndexes.Add(hidingCardIndex);
+    visibleIndexes.Add(farLeftIndex);
+    visibleIndexes.Add(leftIndex);
+    visibleIndexes.Add(focusedCharacterIndex);
+    visibleIndexes.Add(rightIndex);
+    visibleIndexes.Add(farRightIndex);
+
 		farLeftCard = charactersCards[farLeftIndex];
 		leftCard = charactersCards[leftIndex];
 		centerCard = charactersCards[focusedCharacterIndex];
-		rightCard = charactersCards[(focusedCharacterIndex + 1)%characterPoolCount];
-		farRightCard = charactersCards[(focusedCharacterIndex + 2)%characterPoolCount];
+		rightCard = charactersCards[rightIndex];
+		farRightCard = charactersCards[farRightIndex];
 
+    MoveHidenCards(visibleIndexes, scaleLeft);
 		UpdateCardPosition(farLeftCard, 1);
 		UpdateCardPosition(leftCard, 2);
 		UpdateCardPosition(centerCard, 3);
 		UpdateCardPosition(rightCard, 4);
 		UpdateCardPosition(farRightCard, 5);
 	}
+
+  private void MoveHidenCards(List<int> visibleIndexes, bool moveToRight) {
+		Vector3 moveVector = Vector3.zero;
+		if(moveToRight) {
+				moveVector.x = 6.3f;
+		} else {
+				moveVector.x = -6.3f;
+		}
+
+    for(var i = 0; i < charactersCards.Count; i++) {
+      if(visibleIndexes.Contains(i)) continue;
+
+      if(visibleIndexes[0] == -1 && i <= charactersCards.Count / 2) { //For first display set elements on left and right to prevent long card jump
+        charactersCards[i].transform.localPosition = moveVector * -1;
+      } else {
+        charactersCards[i].transform.localPosition = moveVector;
+      }
+
+      charactersCards[i].transform.localScale = Vector3.zero;
+    }
+    
+  }
 
 	public void UpdateCardPosition(GameObject cardObj, int cardIndex) {
 		Vector3 moveVector = Vector3.zero;

@@ -12,7 +12,7 @@ public class TrailMinigameManager : MonoBehaviour, IMinigame
     [SerializeField] TextMeshProUGUI _scoreTxt;
     [SerializeField] TextMeshProUGUI _timerUI;
     [SerializeField] AnimationCurve _timeCurve;
-    [SerializeField] float _perfectScore = 35f;
+    [SerializeField] float _perfectScore = 30f;
     [SerializeField] Color _drawColor = Color.red;
     [SerializeField] AudioClip _clip;
     int _currentTrail = 0;

@@ -475,7 +475,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.7, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4402930433838013605}
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 2544146745529160093}
   - component: {fileID: 3092942181836873979}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TimerLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f73c208a06e574347a3b666bfded672a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -619,7 +619,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6321781045452147114
@@ -1428,12 +1428,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 8589136864473440924}
     m_Modifications:
     - target: {fileID: 5035839603219779715, guid: 31e0f64ba3b6bb5489f9db7f70f2ef00, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035839603219779715, guid: 31e0f64ba3b6bb5489f9db7f70f2ef00, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035839603219779715, guid: 31e0f64ba3b6bb5489f9db7f70f2ef00, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5035839603219779715, guid: 31e0f64ba3b6bb5489f9db7f70f2ef00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5035839603219779715, guid: 31e0f64ba3b6bb5489f9db7f70f2ef00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.65
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 5035839603219779715, guid: 31e0f64ba3b6bb5489f9db7f70f2ef00, type: 3}
       propertyPath: m_LocalPosition.z

@@ -19,7 +19,7 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 		DOVirtual.DelayedCall(initializationTime, () => gameContainer.SetActive(false), false);
 		gameOverTween?.Kill();
     DOVirtual.DelayedCall(1f, () => {
-		  gameMonitor.transform.DOMoveY(-10f, 0.5f);
+		  gameMonitor.transform.DOMoveY(-15f, 0.5f);
 		  PlayAudioClip(monitorSlideDownClip);
     }, false);
 		PlayAudioClip(programSlideDownClip);
@@ -28,11 +28,11 @@ public class AudioMiniGame : MonoBehaviour, IMinigame
 
 	public void ShowGame() {
 		PlayAudioClip(monitorSlideUpClip);
-		gameMonitor.transform.DOMoveY(0f, 0.5f);
+		gameMonitor.transform.DOMoveY(-0.15f, 0.5f);
 		gameObject.SetActive(true);
 		gameContainer.SetActive(true);
 		gameContainer.transform.localScale = new Vector3(0, 0, 0);
-		gameContainer.transform.DOScale(0.7f, initializationTime).SetDelay(0.5f);
+		gameContainer.transform.DOScale(0.78f, initializationTime).SetDelay(0.5f);
 		gameContainer.transform.DOJump(gameContainerPosition, 1f, 1, initializationTime).SetDelay(0.5f);
 		float timeFromTeam = GetTimeFromTeam();
     spawnArrowsManager.OnEndGame += GameOver;

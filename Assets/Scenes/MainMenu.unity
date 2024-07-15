@@ -8311,7 +8311,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8320,7 +8320,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 10
 --- !u!222 &300548520
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18656,7 +18656,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 10
 --- !u!222 &808686392
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29460,7 +29460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -29469,7 +29469,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 10
 --- !u!222 &941286516
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29925,8 +29925,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 60}
-  m_SizeDelta: {x: -39.999992, y: -160}
+  m_AnchoredPosition: {x: 0, y: 57.5}
+  m_SizeDelta: {x: -16, y: -145}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &982967795
 MonoBehaviour:
@@ -45707,6 +45707,14 @@ PrefabInstance:
     - target: {fileID: 2555446342809435548, guid: ee20d6663360b1445bffbfededb017bb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828893049476976767, guid: ee20d6663360b1445bffbfededb017bb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2828893049476976767, guid: ee20d6663360b1445bffbfededb017bb, type: 3}
+      propertyPath: m_PixelsPerUnitMultiplier
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2939224156647857030, guid: ee20d6663360b1445bffbfededb017bb, type: 3}
       propertyPath: m_Alpha

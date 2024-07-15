@@ -140,6 +140,10 @@ public class GameManager : MonoBehaviour
 
     public void LoadMenu()
     {
+        if(_pauseMenu != null) {
+          _pauseMenu.DOKill();
+          _pauseMenu.transform.DOKill();
+        }
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
         Destroy(gameObject);

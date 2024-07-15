@@ -61,7 +61,10 @@ public static class Sound
             AudioS.Play();
         }
         if (destroyAfter && play_right_away)
-            DOVirtual.DelayedCall(clip.length + 0.1f + initialFadeDur, () => Object.Destroy(AudioS.gameObject));
+            DOVirtual.DelayedCall(clip.length + 0.1f + initialFadeDur, () => {
+              if (AudioS != null && !AudioS.gameObject.IsDestroyed())
+                Object.Destroy(AudioS.gameObject);
+            });
     }
 
     public static AudioMixerGroup GetMixer(MixerTypes mixer)
