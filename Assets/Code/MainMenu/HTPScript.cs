@@ -25,7 +25,6 @@ public class HTPScript : MonoBehaviour
         }
         activePanelIndex++;
         ScrollPanels(activePanelIndex);
-        leftButton.interactable = true;
     }
 
     public void MoveLeft() {
@@ -34,7 +33,6 @@ public class HTPScript : MonoBehaviour
         }
         activePanelIndex--;
         ScrollPanels(activePanelIndex);
-        rightButton.interactable = true;
     }
 
     public void RestartPanelsPosition() {
@@ -45,10 +43,16 @@ public class HTPScript : MonoBehaviour
     public void ScrollPanels(int panelIndex = 0) {
         if(panelIndex <= 0) {
           leftButton.interactable = false;
+        } else {
+          leftButton.interactable = true;
         }
+
         if(panelIndex >= maxIndex) {
           rightButton.interactable = false;
+        } else {
+          rightButton.interactable = true;
         }
+
         panelsContainer.DOLocalMoveX(-1250 * panelIndex, 0.5f).SetEase(Ease.Linear);
     }
 }
